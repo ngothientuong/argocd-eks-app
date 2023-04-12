@@ -5,5 +5,5 @@ helmCharts:
   version: #
   releaseName: external-secrets
   namespace: external-secrets
-  helmCharts.valuesFile: external_secrets.values.yaml
+  valuesFile: external_secrets.values.yaml
 
