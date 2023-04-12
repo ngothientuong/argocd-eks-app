@@ -1,0 +1,3 @@
+resources:
+- ../base
+- patch_sa.yaml
