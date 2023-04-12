@@ -1,0 +1,11 @@
+namespace: external-secrets
+helmCharts:
+- name: external-secrets  # Name of the chart
+  repo: https://charts.external-secrets.io
+  version: #
+  releaseName: external-secrets
+  namespace: external-secrets
+  helmCharts.valuesFile: 
+
+# Reference to overlay
+
