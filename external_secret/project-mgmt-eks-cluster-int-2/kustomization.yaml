@@ -1,3 +1,5 @@
 resources:
 - ../base
 - patch_sa.yaml
+
+namespace: external-secrets

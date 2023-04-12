@@ -1,0 +1,5 @@
+# Reference to overlay
+resources:
+- project-mgmt-eks-cluster-rancher-test
+- project-mgmt-eks-cluster-int-test
+- project-mgmt-eks-cluster-int-2
