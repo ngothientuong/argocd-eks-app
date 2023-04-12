@@ -1,0 +1,10 @@
+namespace: kube-system
+resources:
+- cert.yaml
+- admission-configuration.yaml
+- crds.tpl.yaml
+- deploy.tpl.yaml
+- kustomization.yaml
+- rbac.tpl.yaml
+- webhook_rbac.tpl.yaml
+- wehook.tpl.yaml

@@ -1,0 +1,31 @@
+apiVersion: awspca.cert-manager.io/v1beta1
+kind: AWSPCAClusterIssuer
+metadata:
+  name: external-snapshotter-issuer
+  namespace: kube-system
+spec:
+  arn: arn:aws:acm-pca:us-east-2:682331604648:certificate-authority/d6d38646-9c02-488b-94ab-c5894de95b95
+  region: us-east-2
+---
+kind: Certificate
+apiVersion: cert-manager.io/v1
+metadata:
+  name: snapshot-validation-cert
+  namespace: kube-system
+spec:
+  commonName: snapshot-validation-service # Has to match with service name or Ingress's spec.tls.hosts
+  dnsNames:    # Has to match with service name or Ingress's spec.tls[*].hosts
+    - snapshotter.com
+  duration: 2160h0m0s
+  issuerRef:
+    group: awspca.cert-manager.io
+    kind: AWSPCAClusterIssuer
+    name: external-snapshotter-issuer
+  renewBefore: 360h0m0s
+  secretName: snapshot-validation-secret  # Has to match with the secret mounted in deployment by Ingress's spec.tls[*].hosts.secretName
+  usages:
+    - server auth
+    - client auth
+  privateKey:
+    algorithm: RSA
+    size: 2048
