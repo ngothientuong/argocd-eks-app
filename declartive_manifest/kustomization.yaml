@@ -1,0 +1,6 @@
+resources:
+- external_secret_project-mgmt-eks-cluster-int-2.yaml
+- external_secret_project-mgmt-eks-cluster-int-test.yaml
+- external_secret_project-mgmt-eks-cluster-rancher-test.yaml
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
