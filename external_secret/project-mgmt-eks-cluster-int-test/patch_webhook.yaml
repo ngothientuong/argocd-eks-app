@@ -7,10 +7,5 @@ spec:
   template:
     spec:
       containers:
-      - name: webhook
-        ports:
-        - containerPort: 10252
-          hostPort: 10252
-          name: webhook
-          protocol: TCP      
+      - name: webhook 
       hostNetwork: true
