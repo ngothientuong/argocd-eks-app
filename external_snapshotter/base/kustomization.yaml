@@ -1,4 +1,9 @@
 namespace: kube-system
+# CA certificate mount as secret but not being used in resources
+secretGenerator:
+- name: ca.crt
+  files:
+  - ../../common_files/ca.crt
 resources:
 - cert.yaml
 - admission-configuration.yaml
