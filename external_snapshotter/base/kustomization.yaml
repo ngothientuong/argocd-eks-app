@@ -2,14 +2,15 @@ namespace: kube-system
 # CA certificate mount as secret but not being used in resources
 secretGenerator:
 - files:
-  - ../../common_files/ca.crt
+  - common_files/ca.crt
   name: ca.crt
 resources:
 - cert.yaml
 - admission-configuration.yaml
 - crds.tpl.yaml
 - deploy.tpl.yaml
-- kustomization.yaml
 - rbac.tpl.yaml
 - webhook_rbac.tpl.yaml
 - wehook.tpl.yaml
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
