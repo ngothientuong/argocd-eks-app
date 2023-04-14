@@ -2,6 +2,7 @@ apiVersion: velero.io/v1
 kind: BackupStorageLocation
 metadata:
   name: backup-storage-default
+  namespace: velero
 spec:
   objectStorage:
     bucket: project-mgmt-int-test-eks-backup
