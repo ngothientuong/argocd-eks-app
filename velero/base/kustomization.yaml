@@ -6,4 +6,5 @@ helmCharts:
   releaseName: vmware-tanzu
   namespace: velero
   valuesFile: velero.values.yaml
+  includeCRDs: true ## default is false
 
