@@ -17,3 +17,9 @@ Repo for deploying apps to EKS cluster
 
 ### Buckets
 - Ensure buckets for backup storage for Velero exists
+
+### AWS EFS CSI
+- URL: https://github.com/kubernetes-sigs/aws-efs-csi-driver
+- Watch out for the node.DNS as a modification has to be required for use across different VPCs.
+- FIPS encryption at rest is enabled. Has to be mounting your file system using encryption of data in transit.
+- Need to read through other requirements
