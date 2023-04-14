@@ -1,3 +1,5 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
 resources:
 ## External-Snapshotter: Need to pay attention to the certificates requested via AWSPCA
 - external_secret_project-mgmt-eks-cluster-int-2.yaml
@@ -11,5 +13,8 @@ resources:
 - velero_project-mgmt-eks-cluster-int-2.yaml
 - velero_project-mgmt-eks-cluster-int-test.yaml
 - velero_project-mgmt-eks-cluster-rancher-test.yaml
-apiVersion: kustomize.config.k8s.io/v1beta1
-kind: Kustomization
+## aws-efs-csi-driver:  Since EFS is an elastic file system it doesn't really enforce any file system capacity. The actual storage capacity value in persistent volume and persistent volume claim is not used when creating the file system. However, since the storage capacity is a required field by Kubernetes, you must specify the value and you can use any valid value for the capacity.
+#                       node.DNS or so has to be altered/hardcoded to use across VPC
+- aws_efs_csi_project-mgmt-eks-cluster-int-2.yaml
+- aws_efs_csi_project-mgmt-eks-cluster-int-test.yaml
+- aws_efs_csi_project-mgmt-eks-cluster-rancher-test.yaml
