@@ -4,5 +4,5 @@ spec:
   objectStorage:
     bucket: project-mgmt-int-test-eks-backup
     prefix: "eks_backup/project-mgmt-int-test-eks-backup/cluster/"
-    config:
-      region: us-east-2
+  config:
+    region: us-east-2

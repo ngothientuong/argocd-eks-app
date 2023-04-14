@@ -4,11 +4,5 @@ spec:
   objectStorage:
     bucket: project-mgmt-int-2-eks-backup
     prefix: "eks_backup/project-mgmt-int-2-eks-backup/cluster/"
-    config:
-      region: us-east-2
----
-apiVersion: velero.io/v1
-kind: VolumeSnapshotLocation
-spec:
   config:
     region: us-east-2
