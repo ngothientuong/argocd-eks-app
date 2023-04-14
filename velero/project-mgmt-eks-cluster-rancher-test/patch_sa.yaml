@@ -1,7 +1,7 @@
 apiVersion: v1
 kind: ServiceAccount
 metadata:
-  name: velero
+  name: velero-server
   namespace: velero
   annotations:
     eks.amazonaws.com/role-arn: arn:aws:iam::682331604648:role/project/project-mgmt-eks-cluster-rancher-test-openid_connect_role
