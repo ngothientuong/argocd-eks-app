@@ -5,3 +5,4 @@ kind: Kustomization
 patches:
 - path: patch_sa.yaml
 - path: patch_backup_storage.yaml
+- path: patch_backup_volume.yaml

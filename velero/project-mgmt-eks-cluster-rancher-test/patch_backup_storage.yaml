@@ -6,9 +6,3 @@ spec:
     prefix: "eks_backup/project-mgmt-rancher-eks-backup/cluster/"
     config:
       region: us-east-2
----
-apiVersion: velero.io/v1
-kind: VolumeSnapshotLocation
-spec:
-  config:
-    region: us-east-2

@@ -1,0 +1,6 @@
+---
+apiVersion: velero.io/v1
+kind: VolumeSnapshotLocation
+spec:
+  config:
+    region: us-east-2
