@@ -1,5 +1,7 @@
 apiVersion: velero.io/v1
 kind: BackupStorageLocation
+metadata:
+  name: velero.io/aws
 spec:
   objectStorage:
     bucket: project-mgmt-rancher-eks-backup

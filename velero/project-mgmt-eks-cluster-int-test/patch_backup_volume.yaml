@@ -1,6 +1,8 @@
 ---
 apiVersion: velero.io/v1
 kind: VolumeSnapshotLocation
+metadata:
+  name: velero.io/aws
 spec:
   config:
     region: us-east-2
