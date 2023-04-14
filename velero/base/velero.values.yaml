@@ -5,6 +5,10 @@ serviceAccount:
 
 configuration:
   provider: velero.io/aws
+  VolumeSnapshotLocation:
+    name: volume-snapshot-default
+  BackupStorageLocation:
+    name: backup-storage-default
   ## Patched
   # volumeSnapshotLocation:  
   #   config:
@@ -21,8 +25,7 @@ configuration:
   #   AWS_CLUSTER_NAME: ${cluster_name}
   # Set log-level for Velero pod. Default: info. Other options: debug, warning, error, fatal, panic.
   logLevel: debug    
-  VolumeSnapshotLocation:
-    name: volume-snapshot-default
+
 ##
 ## Settings for additional Velero resources.
 ##
