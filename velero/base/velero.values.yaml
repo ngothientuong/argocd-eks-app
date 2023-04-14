@@ -1,0 +1,50 @@
+configuration:
+  provider: velero.io/aws
+  ## Patched
+  # volumeSnapshotLocation:  
+  #   config:
+  #     region: us-east-2  
+  # `velero server` default: 1m
+  backupSyncPeriod:
+  # `velero server` default: 1h
+  resticTimeout:
+  # `velero server` default: namespaces,persistentvolumes,persistentvolumeclaims,secrets,configmaps,serviceaccounts,limitranges,pods
+  restoreResourcePriorities:
+  # `velero server` default: false
+  restoreOnlyMode:
+  # extraEnvVars:
+  #   AWS_CLUSTER_NAME: ${cluster_name}
+  # Set log-level for Velero pod. Default: info. Other options: debug, warning, error, fatal, panic.
+  logLevel: debug      
+##
+## Settings for additional Velero resources.
+##
+rbac:
+  create: true
+  clusterAdministrator: true
+backupsEnabled: true
+snapshotsEnabled: true
+deployNodeAgent: false  
+
+initContainers:
+- name: velero-plugin-for-aws
+  image: velero/velero-plugin-for-aws:v1.6.1
+  volumeMounts:
+  - mountPath: /target
+    name: plugins
+
+credentials:
+  useSecret: false
+  ## Use service account annotations instead
+  # secretContents:
+  #   cloud: |
+  #     [default]
+  #     aws_access_key_id=${aws_access_key_id}
+  #     aws_secret_access_key=${aws_secret_access_key}  
+
+# # Allow API server to talk to webhook Pod via hostNetwork  
+# webhook:
+#   hostNetwork: true
+#   port: 
+# # Allow API server to talk to all pod Pods via hostNetwork  
+# hostNetwork: true

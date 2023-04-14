@@ -1,9 +1,15 @@
 resources:
+## External-Snapshotter: Need to pay attention to the certificates requested via AWSPCA
 - external_secret_project-mgmt-eks-cluster-int-2.yaml
 - external_secret_project-mgmt-eks-cluster-int-test.yaml
 - external_secret_project-mgmt-eks-cluster-rancher-test.yaml
+## External-Snapshotter: Need to pay attention to the certificates requested via AWSPCA
 - external_snapshotter_project-mgmt-eks-cluster-int-2.yaml
 - external_snapshotter_project-mgmt-eks-cluster-int-test.yaml
 - external_snapshotter_project-mgmt-eks-cluster-rancher-test.yaml
+## Velero: Need to make sure all prerequisite buckets for storage exists
+- velero_project-mgmt-eks-cluster-int-2.yaml
+- velero_project-mgmt-eks-cluster-int-test.yaml
+- velero_project-mgmt-eks-cluster-rancher-test.yaml
 apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization

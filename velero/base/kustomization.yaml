@@ -1,0 +1,9 @@
+namespace: velero
+helmCharts:
+- name: velero  # Name of the chart
+  repo: https://charts.external-secrets.io
+  version: #
+  releaseName: vmware-tanzu
+  namespace: velero
+  valuesFile: velero.values.yaml
+
