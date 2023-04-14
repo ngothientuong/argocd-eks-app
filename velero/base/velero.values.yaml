@@ -6,9 +6,9 @@ serviceAccount:
 configuration:
   provider: velero.io/aws
   volumeSnapshotLocation:
-    name: volume-snapshot-default
+    name: default
   backupStorageLocation:
-    name: backup-storage-default
+    name: default
   ## Patched
   # volumeSnapshotLocation:  
   #   config:

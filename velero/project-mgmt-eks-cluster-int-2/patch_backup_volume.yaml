@@ -2,7 +2,7 @@
 apiVersion: velero.io/v1
 kind: VolumeSnapshotLocation
 metadata:
-  name: volume-snapshot-default
+  name: default
   namespace: velero
 spec:
   config:

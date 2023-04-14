@@ -1,7 +1,7 @@
 apiVersion: velero.io/v1
 kind: BackupStorageLocation
 metadata:
-  name: backup-storage-default
+  name: default
   namespace: velero
 spec:
   objectStorage:
