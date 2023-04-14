@@ -1,3 +1,8 @@
+serviceAccount:
+  server:
+    create: true
+    name: velero-server
+
 configuration:
   provider: velero.io/aws
   ## Patched
@@ -15,7 +20,9 @@ configuration:
   # extraEnvVars:
   #   AWS_CLUSTER_NAME: ${cluster_name}
   # Set log-level for Velero pod. Default: info. Other options: debug, warning, error, fatal, panic.
-  logLevel: debug      
+  logLevel: debug    
+  VolumeSnapshotLocation:
+    name: volume-snapshot-default
 ##
 ## Settings for additional Velero resources.
 ##
