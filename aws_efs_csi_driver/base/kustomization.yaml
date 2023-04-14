@@ -1,0 +1,10 @@
+namespace: kube-system
+helmCharts:
+- name: aws-efs-csi-driver  # Name of the chart
+  repo: https://kubernetes-sigs.github.io/aws-efs-csi-driver/
+  version: #
+  releaseName: aws-efs-csi-driver
+  namespace: kube-system
+  valuesFile: aws-efs-csi-driver.values.yaml
+  includeCRDs: true ## default is false
+

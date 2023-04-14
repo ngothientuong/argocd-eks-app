@@ -1,0 +1,38 @@
+controller:
+  # Specifies whether a deployment should be created
+  create: true
+  # Number for the log level verbosity
+  logLevel: 4  
+  serviceAccount:
+    create: true
+    name: efs-csi-controller-sa
+
+node:
+  # Number for the log level verbosity
+  logLevel: 4
+  hostAliases:
+    {}
+    # For cross VPC EFS, you need to poison or overwrite the DNS for the efs volume as per
+    # https://docs.aws.amazon.com/efs/latest/ug/efs-different-vpc.html#wt6-efs-utils-step3
+    # implementing the suggested solution found here:
+    # https://github.com/kubernetes-sigs/aws-efs-csi-driver/issues/240#issuecomment-676849346
+    # EFS Vol ID, IP, Region
+    # "fs-01234567":
+    #   ip: 10.10.2.2
+    #   region: us-east-2
+  dnsPolicy: ClusterFirst
+  dnsConfig:
+    {}
+    # Example config which uses the AWS nameservers
+    # dnsPolicy: "None"
+    # dnsConfig:
+    #   nameservers:
+    #     - 169.254.169.253
+  serviceAccount:
+    create: true
+    name: efs-csi-node-sa
+
+## Use FISP encryption
+useFips: true
+
+replicaCount: 2
