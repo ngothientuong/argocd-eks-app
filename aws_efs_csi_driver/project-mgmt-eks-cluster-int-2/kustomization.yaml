@@ -5,3 +5,4 @@ kind: Kustomization
 patches:
 - path: patch_sa.yaml
 - path: patch_sa2.yaml
+- path: patch_controller_deploy.yaml
