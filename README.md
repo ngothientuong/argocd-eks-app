@@ -91,8 +91,9 @@ Example for **cilium-ca** secret:
 
 ## Cilium Rotate IPSec secrets for each cluster
 - Perform the following set of command   
->    KEYID=$(kubectl get secret -n kube-system cilium-ipsec-keys -o yaml | awk '/^\s*keys:/ {print $2}' | base64 -d | awk '{print $1}')
-    if [[ $KEYID -ge 15 ]]; then KEYID=0; fi
-    data=$(echo "{\"stringData\":{\"keys\":\"$((($KEYID+1))) "rfc4106\(gcm\(aes\)\)" $(echo $(dd if=/dev/urandom count=20 bs=1 2> /dev/null| xxd -p -c 64)) 128\"}}")
-    kubectl patch secret -n kube-system cilium-ipsec-keys -p="${data}" -v=1
-
+```
+KEYID=$(kubectl get secret -n kube-system cilium-ipsec-keys -o yaml | awk '/^\s*keys:/ {print $2}' | base64 -d | awk '{print $1}')
+if [[ $KEYID -ge 15 ]]; then KEYID=0; fi
+data=$(echo "{\"stringData\":{\"keys\":\"$((($KEYID+1))) "rfc4106\(gcm\(aes\)\)" $(echo $(dd if=/dev/urandom count=20 bs=1 2> /dev/null| xxd -p -c 64)) 128\"}}")
+kubectl patch secret -n kube-system cilium-ipsec-keys -p="${data}" -v=1
+```
