@@ -1,0 +1,11 @@
+apiVersion: velero.io/v1
+kind: BackupStorageLocation
+metadata:
+  name: default
+  namespace: velero
+spec:
+  objectStorage:
+    bucket: project-mgmt-rancher-eks-backup
+    prefix: "eks_backup/project-mgmt-rancher-eks-backup/cluster/"
+  config:
+    region: us-east-2
