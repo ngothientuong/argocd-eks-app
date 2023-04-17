@@ -1,0 +1,5 @@
+serviceAccount:
+  # Specifies whether a service account should be created
+  create: true
+  # The name of the service account to use. If namenot set and create is true, a name is generated using fullname template
+  name: aws-node-termination-handler-sa

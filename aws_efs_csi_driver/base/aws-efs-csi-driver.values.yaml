@@ -35,4 +35,4 @@ node:
 ## Use FISP encryption
 useFips: true
 
-replicaCount: 2
+replicaCount: 1
