@@ -25,10 +25,20 @@ Repo for deploying apps to EKS cluster
 - Need to read through other requirements
 
 ## Cilium Conflicting Requirements
-Note: Cluster communication works without encryption and without ingressController
+**Note**: Cluster communication works without encryption and without ingressController
 - kubeProxyReplacement: partial|strict is required for ingressController conflicting with encyption.type=ipSec causing cluster connectivity failed
+- encryption.type=ipSec does NOT appear to work with clustermesh EKS cluster
 - encyption.type=wireguard does not support L7 Proxy (ingressController)
-- Let's attempt to just enable encryption and see what happens
+- Working combination: 
+    - IngressController.enabled=true, kubeProxyReplacement=partial, encryption.enabled=false
+    - IngressController.enabled=false, kubeProxyReplacement=partial, encryption.enabled=true, encryption.type=wireguard  [CURRENTLY CHOSEN SET UP]
+
+### Cilium Other Gotchas
+- After enabling clustermesh, it could take some time before you can connect between 2 cluster. 
+- If seeing the below error, simply rerun the command to connect between 2 clusters:
+```
+Error: Unable to connect cluster: unable to patch DaemonSet cilium with patch "{\"spec\":{\"template\":{\"spec\":{\"hostAliases\":[{\"ip\":\"\", \"hostnames\":[\"project-mgmt-eks-cluster-int-2.mesh.cilium.io\"]}]}}}}": DaemonSet.apps "cilium" is invalid: spec.template.spec.hostAliases.ip: Invalid value: "": must be valid IP address
+```
 
 ### Cilium Multi-Cluster Setup
 #### URL
