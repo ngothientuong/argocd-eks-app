@@ -9,3 +9,4 @@ patches:
 - path: patch_istiod.yaml
 ## Fix number of HPA in development
 - path: patch_hpa.yaml
+- path: patch_webhook_config.yaml
