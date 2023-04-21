@@ -25,5 +25,6 @@ resources:
 ## aws-node-termination-handler: Allow node to gracefully gets handle if terminated via console
 - aws_node_termination_handler_project-mgmt-eks-cluster-int-2.yaml
 - aws_node_termination_handler_project-mgmt-eks-cluster-int-test.yaml
-- aws_node_termination_handler_project-mgmt-eks-cluster-rancher-test.yaml
 - aws_node_termination_handler_project-eumgmt-eks-eu-west-2.yaml
+## Remove aws-node-termination-handler for rancher-test cluster due to controller adding label exceeding 63 characters long
+#- aws_node_termination_handler_project-mgmt-eks-cluster-rancher-test.yaml
