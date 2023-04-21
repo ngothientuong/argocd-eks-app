@@ -26,7 +26,7 @@ global:
       limits:
         cpu: 500m     # Default 2000m
         memory: 512Mi   # Default 1024Mi
-  operatorManageWebhooks: false
+  operatorManageWebhooks: true
   # Enabled by default in master for maximising testing.
   istiod:
     enableAnalysis: false
