@@ -113,3 +113,9 @@ if [[ $KEYID -ge 15 ]]; then KEYID=0; fi
 data=$(echo "{\"stringData\":{\"keys\":\"$((($KEYID+1))) "rfc4106\(gcm\(aes\)\)" $(echo $(dd if=/dev/urandom count=20 bs=1 2> /dev/null| xxd -p -c 64)) 128\"}}")
 kubectl patch secret -n kube-system cilium-ipsec-keys -p="${data}" -v=1
 ```
+## Trouble Shoot ClusterMesh
+### Inter-Region ClusterMesh connectivity
+- Issue: Pod from 1 region could not reach to pod from another region via global shared service.
+
+  **Resolution**: After standing up EKS cluster at another region, if any of the worker node has additional ENI shown on EC2 Dashboard then scale then ASG down to 0 manually and then spin it back up.
+
