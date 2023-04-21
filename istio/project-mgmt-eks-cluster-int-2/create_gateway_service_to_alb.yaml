@@ -7,7 +7,7 @@ metadata:
     alb.ingress.kubernetes.io/listen-ports: '[{"HTTPS":443},{"HTTP":80}]' # Required
     alb.ingress.kubernetes.io/ssl-redirect: '443' # Required
     alb.ingress.kubernetes.io/backend-protocol: "HTTPS" # Required
-    alb.ingress.kubernetes.io/load-balancer-name: tngo-eks-istio-gateway-project-mgmt-eks-cluster-int-2-alb
+    alb.ingress.kubernetes.io/load-balancer-name: tngo-istio-gateway-int-2-alb
     alb.ingress.kubernetes.io/ip-address-type: ipv4
     kubernetes.io/ingress.class: alb    # Required
     #alb.ingress.kubernetes.io/healthcheck-path: "/healthz?full=true"    # Required
