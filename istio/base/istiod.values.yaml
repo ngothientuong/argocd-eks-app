@@ -10,7 +10,7 @@ global:
       limits:
         cpu: 500m     # Default 2000m
         memory: 512Mi   # Default 1024Mi
-        
+  operatorManageWebhooks: true
 ## Discovery Settings
 pilot:
   autoscaleEnabled: true
