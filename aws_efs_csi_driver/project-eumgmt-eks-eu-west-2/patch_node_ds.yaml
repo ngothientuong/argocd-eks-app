@@ -6,4 +6,4 @@ metadata:
 spec:
   template:
     spec:
-      hostNetwork: false
+      hostNetwork: true
