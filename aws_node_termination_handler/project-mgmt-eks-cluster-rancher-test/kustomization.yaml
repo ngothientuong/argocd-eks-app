@@ -1,8 +1,8 @@
+commonLabels:
+  app.kubernetes.io/instance: aws-nth-project-mgmt-eks-cluster-rancher-test
 resources:
 - ../base
 apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
 patches:
 - path: patch_sa.yaml
-commonLabels:
-  app.kubernetes.io/instance: aws-nth-project-mgmt-eks-cluster-rancher-test
