@@ -2,7 +2,7 @@ resources:
 - create_secret_cacerts.yaml
 - ../base
 - create_clustermesh_profile.yaml
--_create_gateway_service_to_alb.yaml
+- create_gateway_service_to_alb.yaml
 apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
 patches:
