@@ -3,7 +3,7 @@ helmCharts:
 - name: aws-node-termination-handler  # Name of the chart
   repo: https://aws.github.io/eks-charts
   version: #
-  releaseName: aws-node-termination-handler
+  releaseName: aws-nth
   namespace: kube-system
   valuesFile: aws-node-termination-handler.values.yaml
   includeCRDs: true ## default is false
