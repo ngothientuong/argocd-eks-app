@@ -2,6 +2,8 @@ apiVersion: v1
 kind: ServiceAccount
 metadata:
   name: aws-node-termination-handler-sa
+  labels:
+    app.kubernetes.io/instance: aws-nth-project-mgmt-eks-cluster-rancher-test
   namespace: kube-system
   annotations:
     eks.amazonaws.com/role-arn: arn:aws:iam::682331604648:role/project/project-mgmt-eks-cluster-rancher-test-openid_connect_role
