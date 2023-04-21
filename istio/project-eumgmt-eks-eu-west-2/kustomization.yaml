@@ -1,0 +1,9 @@
+resources:
+- create_secret_cacerts.yaml
+- ../base
+- create_clustermesh_profile.yaml
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+#patches:
+#- path: patch_sa.yaml
+

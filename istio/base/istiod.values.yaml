@@ -1,60 +1,36 @@
-serviceAccount:
-  server:
-    create: true
-    name: velero-server
+global:
+  # whether to use autoscaling/v2 template for HPA settings
+  # for internal usage only, not to be configured by users.
+  autoscalingv2API: true  
+    # Resources for the sidecar.
+    resources:
+      requests:
+        cpu: 50m   # Default 100m
+        memory: 64Mi  # Default 128Mi 
+      limits:
+        cpu: 500m     # Default 2000m
+        memory: 512Mi   # Default 1024Mi
+        
+## Discovery Settings
+pilot:
+  autoscaleEnabled: true
+  autoscaleMin: 1
+  autoscaleMax: 2
+  replicaCount: 1
+  rollingMaxSurge: 100%
+  rollingMaxUnavailable: 25%
 
-configuration:
-  provider: velero.io/aws
-  volumeSnapshotLocation:
-    name: default
-  backupStorageLocation:
-    name: default
-  ## Patched
-  # volumeSnapshotLocation:  
-  #   config:
-  #     region: us-east-2  
-  # `velero server` default: 1m
-  backupSyncPeriod:
-  # `velero server` default: 1h
-  resticTimeout:
-  # `velero server` default: namespaces,persistentvolumes,persistentvolumeclaims,secrets,configmaps,serviceaccounts,limitranges,pods
-  restoreResourcePriorities:
-  # `velero server` default: false
-  restoreOnlyMode:
-  # extraEnvVars:
-  #   AWS_CLUSTER_NAME: ${cluster_name}
-  # Set log-level for Velero pod. Default: info. Other options: debug, warning, error, fatal, panic.
-  logLevel: debug    
+  hub: ""
+  tag: ""
+  variant: ""
 
-##
-## Settings for additional Velero resources.
-##
-rbac:
-  create: true
-  clusterAdministrator: true
-backupsEnabled: true
-snapshotsEnabled: true
-deployNodeAgent: false  
-
-initContainers:
-- name: velero-plugin-for-aws
-  image: velero/velero-plugin-for-aws:v1.6.1
-  volumeMounts:
-  - mountPath: /target
-    name: plugins
-
-credentials:
-  useSecret: false
-  ## Use service account annotations instead
-  # secretContents:
-  #   cloud: |
-  #     [default]
-  #     aws_access_key_id=${aws_access_key_id}
-  #     aws_secret_access_key=${aws_secret_access_key}  
-
-# # Allow API server to talk to webhook Pod via hostNetwork  
-# webhook:
-#   hostNetwork: true
-#   port: 
-# # Allow API server to talk to all pod Pods via hostNetwork  
-# hostNetwork: true
+  # Can be a full hub/image:tag
+  image: pilot
+  traceSampling: 1.0
+  
+  # Monitor this to fine tune in Prod
+  # Resources for a small pilot install
+  resources:
+    requests:
+      cpu: 250m   # Default 500m
+      memory: 1024Mi   # Default 2048Mi  

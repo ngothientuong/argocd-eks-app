@@ -1,0 +1,8 @@
+## Resource for Gateway
+resources:
+  requests:
+    cpu: 50m     # Default 100m
+    memory: 64Mi  # Default 128Mi 
+  limits:
+    cpu: 500m     # Default 2000m 
+    memory: 512Mi  # Default 1024Mi

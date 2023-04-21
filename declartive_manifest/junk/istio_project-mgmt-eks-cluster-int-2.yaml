@@ -1,0 +1,30 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: istio-project-mgmt-eks-cluster-int-2
+  # You'll usually want to add your resources to the argocd namespace.
+  namespace: argocd
+  # Add a this finalizer ONLY if you want these to cascade delete.
+  finalizers:
+    - resources-finalizer.argocd.argoproj.io
+spec:
+  # The project the application belongs to.
+  project: default
+  source:
+    repoURL: 'git@github.com:ngothientuong/argocd-eks-app.git'
+    path: istio/project-mgmt-eks-cluster-int-2
+  destination:
+    server: 'https://4C526CF1C0B090E3D856BB53D73DB87B.gr7.us-east-2.eks.amazonaws.com'
+    namespace: istio
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+    syncOptions:
+      - CreateNamespace=true
+    retry:
+      limit: 5
+      backoff:
+        duration: 5s
+        factor: 2
+        maxDuration: 3m0s

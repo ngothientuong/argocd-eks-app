@@ -1,0 +1,9 @@
+apiVersion: install.istio.io/v1alpha1
+kind: IstioOperator
+spec:
+  values:
+    global:
+      meshID: mesh2
+      multiCluster:
+        clusterName: project-mgmt-eks-cluster-int-2
+      network: network1

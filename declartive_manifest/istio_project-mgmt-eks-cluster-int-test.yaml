@@ -1,7 +1,7 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: aws-efs-csi-project-eumgmt-eks-eu-west-2
+  name: istio-project-mgmt-eks-cluster-int-test
   # You'll usually want to add your resources to the argocd namespace.
   namespace: argocd
   # Add a this finalizer ONLY if you want these to cascade delete.
@@ -12,10 +12,10 @@ spec:
   project: default
   source:
     repoURL: 'git@github.com:ngothientuong/argocd-eks-app.git'
-    path: aws_efs_csi_driver/project-eumgmt-eks-eu-west-2
+    path: istio/project-mgmt-eks-cluster-int-test
   destination:
-    server: 'https://DD9C03E1D12C707818F395E287C2996B.gr7.eu-west-2.eks.amazonaws.com'
-    namespace: kube-system
+    server: 'https://DCE6C39EE8E03B839EF4F8F1DA4672E5.gr7.us-east-2.eks.amazonaws.com'
+    namespace: istio   
   syncPolicy:
     automated:
       prune: true
