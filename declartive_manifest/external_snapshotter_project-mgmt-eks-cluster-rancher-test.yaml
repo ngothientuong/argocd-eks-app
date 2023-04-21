@@ -14,7 +14,7 @@ spec:
     repoURL: 'git@github.com:ngothientuong/argocd-eks-app.git'
     path: external_snapshotter/project-mgmt-eks-cluster-rancher-test
   destination:
-    server: 'https://EE00B7C37FBEFD736D4DCB89D9BF09D7.sk1.us-east-2.eks.amazonaws.com'
+    server: 'https://9A5969C874B923B781EC8FA1665988EE.gr7.us-east-2.eks.amazonaws.com'
     namespace: kube-system
   syncPolicy:
     automated:

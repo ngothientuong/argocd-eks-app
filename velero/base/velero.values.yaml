@@ -9,11 +9,6 @@ configuration:
     name: default
   backupStorageLocation:
     name: default
-  ## Patched
-  # volumeSnapshotLocation:  
-  #   config:
-  #     region: us-east-2  
-  # `velero server` default: 1m
   backupSyncPeriod:
   # `velero server` default: 1h
   resticTimeout:

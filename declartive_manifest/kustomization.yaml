@@ -5,20 +5,25 @@ resources:
 - external_secret_project-mgmt-eks-cluster-int-2.yaml
 - external_secret_project-mgmt-eks-cluster-int-test.yaml
 - external_secret_project-mgmt-eks-cluster-rancher-test.yaml
+- external_secret_project-eumgmt-eks-eu-west-2.yaml
 ## External-Snapshotter: Need to pay attention to the certificates requested via AWSPCA
 - external_snapshotter_project-mgmt-eks-cluster-int-2.yaml
 - external_snapshotter_project-mgmt-eks-cluster-int-test.yaml
 - external_snapshotter_project-mgmt-eks-cluster-rancher-test.yaml
+- external_snapshotter_project-eumgmt-eks-eu-west-2.yaml
 ## Velero: Need to make sure all prerequisite buckets for storage exists
 - velero_project-mgmt-eks-cluster-int-2.yaml
 - velero_project-mgmt-eks-cluster-int-test.yaml
 - velero_project-mgmt-eks-cluster-rancher-test.yaml
+- velero_project-eumgmt-eks-eu-west-2.yaml
 ## aws-efs-csi-driver:  Since EFS is an elastic file system it doesn't really enforce any file system capacity. The actual storage capacity value in persistent volume and persistent volume claim is not used when creating the file system. However, since the storage capacity is a required field by Kubernetes, you must specify the value and you can use any valid value for the capacity.
 #                       node.DNS or so has to be altered/hardcoded to use across VPC
 - aws_efs_csi_project-mgmt-eks-cluster-int-2.yaml
 - aws_efs_csi_project-mgmt-eks-cluster-int-test.yaml
 - aws_efs_csi_project-mgmt-eks-cluster-rancher-test.yaml
+- aws_efs_csi_project-eumgmt-eks-eu-west-2.yaml
 ## aws-node-termination-handler: Allow node to gracefully gets handle if terminated via console
 - aws_node_termination_handler_project-mgmt-eks-cluster-int-2.yaml
 - aws_node_termination_handler_project-mgmt-eks-cluster-int-test.yaml
 - aws_node_termination_handler_project-mgmt-eks-cluster-rancher-test.yaml
+- aws_node_termination_handler_project-eumgmt-eks-eu-west-2.yaml

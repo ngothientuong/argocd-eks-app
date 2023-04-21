@@ -1,0 +1,9 @@
+resources:
+- ../base
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+patches:
+- path: patch_sa.yaml
+- path: patch_sa2.yaml
+- path: patch_controller_deploy.yaml
+- path: patch_node_ds.yaml

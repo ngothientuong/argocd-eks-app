@@ -14,7 +14,7 @@ spec:
     repoURL: 'git@github.com:ngothientuong/argocd-eks-app.git'
     path: aws_efs_csi_driver/project-mgmt-eks-cluster-int-2
   destination:
-    server: 'https://5E7A1F7119EC1B3A4AEA414E93D048D8.gr7.us-east-2.eks.amazonaws.com'
+    server: 'https://4C526CF1C0B090E3D856BB53D73DB87B.gr7.us-east-2.eks.amazonaws.com'
     namespace: kube-system
   syncPolicy:
     automated:

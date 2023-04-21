@@ -14,7 +14,7 @@ spec:
     repoURL: 'git@github.com:ngothientuong/argocd-eks-app.git'
     path: velero/project-mgmt-eks-cluster-int-test
   destination:
-    server: 'https://93C08E0ADD36AFEBF2B86F0EE63F6B3B.gr7.us-east-2.eks.amazonaws.com'
+    server: 'https://DCE6C39EE8E03B839EF4F8F1DA4672E5.gr7.us-east-2.eks.amazonaws.com'
     namespace: velero   
   syncPolicy:
     automated:

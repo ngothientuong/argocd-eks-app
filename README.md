@@ -40,6 +40,12 @@ Repo for deploying apps to EKS cluster
 ```
 Error: Unable to connect cluster: unable to patch DaemonSet cilium with patch "{\"spec\":{\"template\":{\"spec\":{\"hostAliases\":[{\"ip\":\"\", \"hostnames\":[\"project-mgmt-eks-cluster-int-2.mesh.cilium.io\"]}]}}}}": DaemonSet.apps "cilium" is invalid: spec.template.spec.hostAliases.ip: Invalid value: "": must be valid IP address
 ```
+1. Manually copy JUST the iam-roles terraform.tfstate from original bucket over
+2. Added Peer Connection from 1 region's VPC and accepted on other region's VPC
+3. Allow accepter VPC to resolve DNS of hosts in both requester and accepter VPN
+4. Added entry for other VPC's cidr block pointing to the Peering Connection ID for VPC route table associating with the Private Subnets
+5. Ensure the same route table there has subnet associations of private subnets in the Explicit subnet associations section and NOT the subnet without explicit associations section
+6. If the worker node has secondary ENI and a whole bunch of secondary IPs assigned to it, then scale down the ASG to 0 and spin it back on. This might also require manual rollout restart of the deployments in all namespaces
 
 ### Cilium Multi-Cluster Setup
 #### URL
