@@ -2,6 +2,22 @@ global:
   # whether to use autoscaling/v2 template for HPA settings
   # for internal usage only, not to be configured by users.
   autoscalingv2API: true  
+  proxy:
+    image: proxyv2
+
+    # This controls the 'policy' in the sidecar injector.
+    autoInject: enabled
+
+    # CAUTION: It is important to ensure that all Istio helm charts specify the same clusterDomain value
+    # cluster domain. Default value is "cluster.local".
+    clusterDomain: "cluster.local"
+
+    # Per Component log level for proxy, applies to gateways and sidecars. If a component level is
+    # not set, then the global "logLevel" will be used.
+    componentLogLevel: "misc:info"
+
+    # If set, newly injected sidecars will have core dumps enabled.
+    enableCoreDump: true  
     # Resources for the sidecar.
     resources:
       requests:
@@ -10,7 +26,11 @@ global:
       limits:
         cpu: 500m     # Default 2000m
         memory: 512Mi   # Default 1024Mi
-  operatorManageWebhooks: true
+  operatorManageWebhooks: false
+  # Enabled by default in master for maximising testing.
+  istiod:
+    enableAnalysis: false
+
 ## Discovery Settings
 pilot:
   autoscaleEnabled: true
