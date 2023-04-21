@@ -24,6 +24,7 @@ Repo for deploying apps to EKS cluster
 - FIPS encryption at rest is enabled. Has to be mounting your file system using encryption of data in transit.
 - Need to read through other requirements
 
+--- 
 ## Cilium Conflicting Requirements
 **Note**: Cluster communication works without encryption and without ingressController
 - kubeProxyReplacement: partial|strict is required for ingressController conflicting with encyption.type=ipSec causing cluster connectivity failed
