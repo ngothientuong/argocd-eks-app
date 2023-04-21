@@ -17,9 +17,9 @@ metadata:
     alb.ingress.kubernetes.io/subnets: 'subnet-0698f5156de80d6ae,subnet-056c275475bd56e47'   # Required to be in public subnets for internet facing!!  
 
     # Cert Manager
-    cert-manager.io/issuer-name: tngo-eks-ca
+    #cert-manager.io/issuer-name: tngo-eks-ca
     #cert-manager.io/cluster-issuer: tngo-eks-ca
-    cert-manager.io/issuer-kind: AWSPCAClusterIssuer
+    #cert-manager.io/issuer-kind: AWSPCAClusterIssuer
     #cert-manager.io/common-name: tngo-eks-istiod-gateway-eu-west-2.bylightsdc.bylight.com   ## AWS ALB does not support cert-manager
     #cert-manager.io/issuer-group: awspca.cert-manager.io
 
