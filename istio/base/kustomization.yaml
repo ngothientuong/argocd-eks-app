@@ -1,27 +1,26 @@
+namespace: istio-system
 helmCharts:
 ## Helm chart for deploying Istio cluster resource...
 - name: base  # Name of the chart
   repo: https://istio-release.storage.googleapis.com/charts
   version: #
-  releaseName: istio-base  # Can be whatever
+  releaseName: istio-base
   namespace: istio-system
-  valuesFile: #base.values.yaml   Pretty Standard, nothing toadd
-  includeCRDs: true ## default is false
-## Helm chart for istio control plane
+  valuesFile: #external_secrets.values.yaml
+  includeCRDs: true
+# ## Helm chart for istio control plane  
 - name: istiod  # Name of the chart
   repo: https://istio-release.storage.googleapis.com/charts
   version: #
-  releaseName: istio-istiod  # Can be whatever
+  releaseName: istio-istiod
   namespace: istio-system
-  valuesFile: istiod.values.yaml
-  includeCRDs: true ## default is false
-## Helm chart for istio ingress gateway
+  valuesFile: #external_secrets.values.yaml
+  includeCRDs: true
+# ## Helm chart for istio ingress gateway
 - name: gateway  # Name of the chart
   repo: https://istio-release.storage.googleapis.com/charts
   version: #
-  releaseName: istio-gateway   # Can be whatever
-  namespace: istio-ingress
-  valuesFile: gateway.values.yaml
-  includeCRDs: true ## default is false  
-
-
+  releaseName: istio-gateway
+  namespace: istio-system
+  valuesFile: #external_secrets.values.yaml
+  includeCRDs: true  
