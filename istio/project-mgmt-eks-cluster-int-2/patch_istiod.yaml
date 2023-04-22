@@ -25,11 +25,11 @@ spec:
           - containerPort: 15017
             hostPort: 15017
             protocol: TCP    
-      readinessProbe:
-        httpGet:
-          path: /ready
-          port: 8090
-          scheme: HTTP
+      # readinessProbe:
+      #   httpGet:
+      #     path: /ready
+      #     port: 8090
+      #     scheme: HTTP
         # httpGet:
         #   path: /ready
         #   port: 8080
