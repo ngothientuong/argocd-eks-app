@@ -30,8 +30,8 @@ spec:
           path: /ready
           port: 8090
           scheme: HTTP
-        httpGet:
-          path: /ready
-          port: 8080
-          scheme: HTTP
-          $patch: delete
+        # httpGet:
+        #   path: /ready
+        #   port: 8080
+        #   scheme: HTTP
+        #   $patch: delete
