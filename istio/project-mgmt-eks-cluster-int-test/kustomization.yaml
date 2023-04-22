@@ -12,4 +12,11 @@ patches:
 - path: patch_webhook_config.yaml
 - path: patch_gateway_svc_to_node_port.yaml
 
+patchesJson6902:
+- target:
+    version: v1
+    kind: Deployment
+    name: istiod
+    namespace: istio-system
+  path: istiod_readiness.yaml
 

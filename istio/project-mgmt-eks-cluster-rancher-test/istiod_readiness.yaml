@@ -1,0 +1,3 @@
+- op: replace
+  path: "/spec/containers[name=discovery]/readinessProbe/httpGet/port"
+  value: "8090"
