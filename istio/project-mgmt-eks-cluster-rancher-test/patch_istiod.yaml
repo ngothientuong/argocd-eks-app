@@ -4,7 +4,19 @@ metadata:
   name: istiod
   namespace: istio-system
 spec:
-  replicas: 2
+  replicas: 3
   template:
     spec:
       hostNetwork: true
+    - args:
+      name: discovery
+      ports:
+        - containerPort: 8080   
+          hostPort: 8090      # Change port so won't be conflict with others
+          protocol: TCP
+        - containerPort: 15010
+          hostPort: 15010
+          protocol: TCP
+        - containerPort: 15017
+          hostPort: 15017
+          protocol: TCP    
