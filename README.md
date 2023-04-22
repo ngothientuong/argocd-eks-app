@@ -137,3 +137,13 @@ kubectl patch secret -n kube-system cilium-ipsec-keys -p="${data}" -v=1
   - Modify svc clustermesh-apiserver
   - Remove entry: "service.beta.kubernetes.io/aws-load-balancer-internal: 0.0.0.0/0"  # Deprecated
   - Add entry "service.beta.kubernetes.io/aws-load-balancer-scheme: internal"
+
+
+---
+# Other Issues
+- Issue: Resources hang such as namespace forever
+
+  **Resolution**: 
+  - Attempt to delete namespace, if keep seeing messages "customresourcedefinition.apiextensions.k8s.io "applications.argoproj.io" force deleted" that means resources relating to that namespace still remains and you have to delete it manually or else associated namespace cannot be deleted.
+  - Run the following command: 
+>  patch customresourcedefinition.apiextensions.k8s.io/applications.argoproj.io -p '{"metadata":{"finalizers":[]}}' --type=merge
