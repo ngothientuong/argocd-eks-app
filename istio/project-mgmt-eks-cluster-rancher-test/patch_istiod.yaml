@@ -4,6 +4,7 @@ metadata:
   name: istiod
   namespace: istio-system
 spec:
+  replicas: 3
   template:
     spec:
       hostNetwork: true

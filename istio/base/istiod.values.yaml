@@ -26,7 +26,7 @@ global:
       limits:
         cpu: 500m     # Default 2000m
         memory: 512Mi   # Default 1024Mi
-  operatorManageWebhooks: true
+  operatorManageWebhooks: false
   # Enabled by default in master for maximising testing.
   istiod:
     enableAnalysis: false
@@ -35,8 +35,8 @@ global:
 pilot:
   autoscaleEnabled: true
   autoscaleMin: 1
-  autoscaleMax: 2
-  replicaCount: 1
+  autoscaleMax: 3
+  replicaCount: 2
   rollingMaxSurge: 100%
   rollingMaxUnavailable: 25%
 
