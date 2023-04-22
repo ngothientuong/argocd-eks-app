@@ -126,3 +126,14 @@ kubectl patch secret -n kube-system cilium-ipsec-keys -p="${data}" -v=1
 
   **Resolution**: After standing up EKS cluster at another region, if any of the worker node has additional ENI shown on EC2 Dashboard then scale then ASG down to 0 manually and then spin it back up.
 
+- Issue: Error during connectivity test
+> curl -w %{local_ip}:%{local_port} -> %{remote_ip}:%{remote_port} = %{response_code} --silent --fail --show-error --output /dev/null --connect-timeout 2 --max-time 10 http://10.204.198.86:8080" failed: command terminated with exit code 28
+
+  **Resolution** : Scale down NG to 0 and bring NG back on
+
+- Issue: Cannot get service IP during connectivity test
+
+  **Resolution**: 
+  - Modify svc clustermesh-apiserver
+  - Remove entry: "service.beta.kubernetes.io/aws-load-balancer-internal: 0.0.0.0/0"  # Deprecated
+  - Add entry "service.beta.kubernetes.io/aws-load-balancer-scheme: internal"
