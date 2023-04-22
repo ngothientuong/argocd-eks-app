@@ -12,7 +12,7 @@ spec:
       - args:
         name: discovery
         ports:
-          - containerPort: 8080   
+          - containerPort: 8090     # must match `hostPort` when `hostNetwork` is true
             hostPort: 8090      # Change port so won't be conflict with others
             protocol: TCP
           - containerPort: 15010
