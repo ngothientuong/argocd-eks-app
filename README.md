@@ -34,6 +34,22 @@ Repo for deploying apps to EKS cluster
     - IngressController.enabled=true, kubeProxyReplacement=partial, encryption.enabled=false
     - IngressController.enabled=false, kubeProxyReplacement=partial, encryption.enabled=true, encryption.type=wireguard  [CURRENTLY CHOSEN SET UP]
 
+### Cilium MAJOR clusterPoolIPv4PodCIDRList and clusterPoolIPv4MaskSize Requirement
+- When installing with helm, ensure that the **clusterPoolIPv4MaskSize** number is LARGER that has smaller the mask size in clusterPoolIPv4PodCIDRList X.X.X.X/**{Mask Size}**. 
+- The clusterPoolIPv4MaskSize will be the cidr_block allocated to EACH NODE out of the cidr_blocks pool provided by the clusterPoolIPv4PodCIDRList.
+- In example below:
+    - The clusterPoolIPv4PodCIDRList: ["10.208.0.0/**15**","10.210.0.0/**15**"] means that the total IPs given the the cluster is 10.208.0.1 -> 10.209.255.254
+    - The clusterPoolIPv4MaskSize: "**21**"  means that the IP given to each node is with cidr_blocks 10.208.0.0/21, 10.208.8.0/28, ... 10.211.248.0/21
+    - This means that each node can only have the maximum of 2046 virtual IPs assigned by Cilium because of the mask size /21
+    - Notice the number **21** > than **15**
+```
+ipam:  
+  mode: "cluster-pool"
+  operator:    
+    clusterPoolIPv4PodCIDRList: ["10.208.0.0/15","10.210.0.0/15"]
+    clusterPoolIPv4MaskSize: "21"  
+```
+
 ### Cilium Other Gotchas
 - After enabling clustermesh, it could take some time before you can connect between 2 cluster. 
 - If seeing the below error, simply rerun the command to connect between 2 clusters:
