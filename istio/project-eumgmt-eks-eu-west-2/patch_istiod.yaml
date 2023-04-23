@@ -8,24 +8,24 @@ spec:
   template:
     spec:
       hostNetwork: true
-      containers:
-      - args:
-        name: discovery
-        ports:
-          ## Changed back to 8080 from 8090 since container failed
-          - containerPort: 8080     # must match `hostPort` when `hostNetwork` is true
-            hostPort: 8080      # Change port so won't be conflict with others
-            protocol: TCP
-          # - containerPort: 8080     # Deleting port 8080
-          #   hostPort: 8080      # Deleting port so won't be conflict with others
-          #   protocol: TCP
-          #   $patch: delete            
-          - containerPort: 15010
-            hostPort: 15010
-            protocol: TCP
-          - containerPort: 15017
-            hostPort: 15017
-            protocol: TCP    
+      # containers:
+      # - args:
+      #   name: discovery
+      #   ports:
+      #     ## Changed back to 8080 from 8090 since container failed
+      #     - containerPort: 8080     # must match `hostPort` when `hostNetwork` is true
+      #       hostPort: 8080      # Change port so won't be conflict with others
+      #       protocol: TCP
+      #     # - containerPort: 8080     # Deleting port 8080
+      #     #   hostPort: 8080      # Deleting port so won't be conflict with others
+      #     #   protocol: TCP
+      #     #   $patch: delete            
+      #     - containerPort: 15010
+      #       hostPort: 15010
+      #       protocol: TCP
+      #     - containerPort: 15017
+      #       hostPort: 15017
+      #       protocol: TCP    
       # readinessProbe:
       #   httpGet:
       #     path: /ready

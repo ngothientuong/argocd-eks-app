@@ -17,11 +17,12 @@ spec:
     server: 'https://9A5969C874B923B781EC8FA1665988EE.gr7.us-east-2.eks.amazonaws.com'
     namespace: istio-system
   syncPolicy:
-    automated:
-      prune: true
-      selfHeal: true
+    # automated:
+    #   prune: true
+    #   selfHeal: true
     syncOptions:
       - CreateNamespace=true
+      - PruneLast=true
     retry:
       limit: 5
       backoff:
