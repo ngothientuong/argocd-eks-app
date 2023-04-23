@@ -4,7 +4,7 @@ metadata:
   name: istiod
   namespace: istio-system
 spec:
-  maxReplicas: 3   ## Fixed number of replicas in development
+  maxReplicas: 2   ## Fixed number of replicas in development
   metrics:
     - resource:
         name: cpu
@@ -12,7 +12,7 @@ spec:
           averageUtilization: 80
           type: Utilization
       type: Resource
-  minReplicas: 3
+  minReplicas: 2
   scaleTargetRef:
     apiVersion: apps/v1
     kind: Deployment
