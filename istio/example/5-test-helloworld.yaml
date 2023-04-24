@@ -1,0 +1,33 @@
+# Test Sample service against pod in cluster 1
+while true; do kubectl exec --context="${CLUSTER1}" -n sample -c sleep \
+    "$(kubectl get pod --context="${CLUSTER1}" -n sample -l \
+    app=sleep -o jsonpath='{.items[0].metadata.name}')" \
+    -- curl -sS helloworld.sample:5000/hello ; done 
+
+# Test Sample service against pod in cluster 2
+while true; do kubectl exec --context="${CLUSTER2}" -n sample -c sleep \
+    "$(kubectl get pod --context="${CLUSTER2}" -n sample -l \
+    app=sleep -o jsonpath='{.items[0].metadata.name}')" \
+    -- curl -sS helloworld.sample:5000/hello ; done 
+
+# Test Sample service against pod in cluster 3
+while true; do kubectl exec --context="${CLUSTER3}" -n sample -c sleep \
+    "$(kubectl get pod --context="${CLUSTER3}" -n sample -l \
+    app=sleep -o jsonpath='{.items[0].metadata.name}')" \
+    -- curl -sS helloworld.sample:5000/hello ; done 
+
+# Test Sample service against pod in cluster 4
+while true; do kubectl exec --context="${CLUSTER4}" -n sample -c sleep \
+    "$(kubectl get pod --context="${CLUSTER4}" -n sample -l \
+    app=sleep -o jsonpath='{.items[0].metadata.name}')" \
+    -- curl -sS helloworld.sample:5000/hello ; done 
+
+
+## Expected output: helloworld-v1 and helloworld-v2 where helloworld-v1 is solely in 1 cluster and helloworld-v2 is in another cluster
+Hello version: v1, instance: helloworld-v1-77489ccb5f-2ffnr
+Hello version: v1, instance: helloworld-v1-77489ccb5f-2ffnr
+Hello version: v2, instance: helloworld-v2-7bd9f44595-f6rf4
+Hello version: v2, instance: helloworld-v2-7bd9f44595-f6rf4
+Hello version: v1, instance: helloworld-v1-77489ccb5f-2ffnr
+Hello version: v2, instance: helloworld-v2-7bd9f44595-f6rf4
+Hello version: v1, instance: helloworld-v1-77489ccb5f-2ffnr

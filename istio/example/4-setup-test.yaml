@@ -1,0 +1,15 @@
+## Deploy helloworld-v1 to first cluster
+## First CLuster, i.e CLUSTER1 
+ka 1-sample-namespace.yaml --context=$CLUSTER1
+ka 2-sample-helloworld.yaml --context=$CLUSTER1 -l service=helloworld -n sample
+ka 2-sample-helloworld.yaml --context=$CLUSTER1 -l version=v1 -n sample
+ka 3-sleep-app.yaml --context=$CLUSTER1 -n sample
+
+
+## Deploy helloworld-v2 to the other cluster
+## Other Cluster, i.e. CLUSTER2
+ka 1-sample-namespace.yaml --context=$CLUSTER2
+ka 2-sample-helloworld.yaml --context=$CLUSTER2 -l service=helloworld -n sample
+ka 2-sample-helloworld.yaml --context=$CLUSTER2 -l version=v2 -n sample
+ka 3-sleep-app.yaml --context=$CLUSTER2 -n sample
+
