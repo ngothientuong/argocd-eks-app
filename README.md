@@ -187,23 +187,23 @@ kubectl patch secret -n kube-system cilium-ipsec-keys -p="${data}" -v=1
 
 ## Trouble Shoot ClusterMesh
 ### Inter-Region ClusterMesh connectivity
-1. ***Issue***: Pod from 1 region could not reach to pod from another region via global shared service.
+1. ***Issue: Pod from 1 region could not reach to pod from another region via global shared service.***
 
   - **Resolution**: After standing up EKS cluster at another region, if any of the worker node has additional ENI shown on EC2 Dashboard then scale then ASG down to 0 manually and then spin it back up.
 
-2. ***Issue***: Error during connectivity test
+2. ***Issue: Error during connectivity test***
 > curl -w %{local_ip}:%{local_port} -> %{remote_ip}:%{remote_port} = %{response_code} --silent --fail --show-error --output /dev/null --connect-timeout 2 --max-time 10 http://10.204.198.86:8080" failed: command terminated with exit code 28
 
   - **Resolution** : Scale down NG to 0 and bring NG back on
 
-3. Issue: Cannot get service IP during connectivity test
+3. ***Issue: Cannot get service IP during connectivity test***
 
   - **Resolution**: 
     - Modify svc clustermesh-apiserver
     - Remove entry: "service.beta.kubernetes.io/aws-load-balancer-internal: 0.0.0.0/0"  # Deprecated
     - Add entry "service.beta.kubernetes.io/aws-load-balancer-scheme: internal"
 
-4. ***Issue***: A cilium Pod failed to get kubernetes.service
+4. ***Issue: A cilium Pod failed to get kubernetes.service***
   - **Resolution**:
     - Restart deployment/cilium-operator 
     - Restart ds/cilium daemonset
@@ -231,7 +231,7 @@ kubectl patch secret -n kube-system cilium-ipsec-keys -p="${data}" -v=1
       kubectl rollout restart ds/cilium -n kube-system
       - [Enable clustermesh](#enable-cluster-mesh)
 
-5. ***Issue***: Random pod in ds/cilium never comes up after initialization, occurs to random nodes
+5. ***Issue: Random pod in ds/cilium never comes up after initialization, occurs to random nodes***
   - **Resolution**: 
     - Restart deployment/cilium-operator 
     - Restart ds/cilium daemonset
