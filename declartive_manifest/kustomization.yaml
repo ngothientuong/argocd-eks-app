@@ -34,3 +34,9 @@ resources:
 - istio_project-mgmt-eks-cluster-int-test.yaml
 - istio_project-mgmt-eks-cluster-rancher-test.yaml
 - istio_project-eumgmt-eks-eu-west-2.yaml
+
+## Cluster Wide resources: Make the needed resources available to all namespaces to use without specifically tying to any app
+- cluster_wide-mgmt-eks-cluster-int-2.yaml
+- cluster_wide-mgmt-eks-cluster-int-test.yaml
+- cluster_wide-mgmt-eks-cluster-rancher-test.yaml
+- cluster_wide-eumgmt-eks-eu-west-2.yaml

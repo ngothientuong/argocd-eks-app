@@ -1,0 +1,13 @@
+# A demo custom resource for the Kopf example operators.
+apiVersion: clustersecret.io/v1
+kind: ClusterSecret
+metadata:
+  name: global-aws-cred
+  namespace: global-secret
+matchNamespace:
+  - '.*'
+  # it will be replicated in clustersecret namespace.
+avoidNamespaces:
+  - default 
+data:
+  aws_cred.config: W2RlZmF1bHRdCmF3c19hY2Nlc3Nfa2V5X2lkPSJBS0lBWjVYUkNBMlVLRENaN09HTSIKYXdzX3NlY3JldF9hY2Nlc3Nfa2V5PSI3cmYxcnFka3ZWa0VtUVpwMy9QUEhFbFFHdUxCdXhUczRmNTFydjNnIgpyZWdpb249dXMtZWFzdC0yCg==

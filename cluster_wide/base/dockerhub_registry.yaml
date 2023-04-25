@@ -1,0 +1,18 @@
+# A demo custom resource for the Kopf example operators.
+apiVersion: clustersecret.io/v1
+kind: ClusterSecret
+metadata:
+  name: hub-regcred
+  namespace: global-secret
+  labels:
+    secret: hubregcred
+  # annotations:
+  #   someannotation: somevalue
+matchNamespace:
+  - '.*'
+avoidNamespaces:
+  - 'default'
+type: kubernetes.io/dockerconfigjson
+# as output in kubectl create secret docker-registry regkey --docker-server my.docker.registry --docker-username adminuser --docker-password adminpass -o yaml --dry-run
+data:
+  .dockerconfigjson: eyJhdXRocyI6eyJodWIuZG9ja2VyLmNvbSI6eyJ1c2VybmFtZSI6InR1b25nZGV2b3BzMSIsInBhc3N3b3JkIjoiVHJhbmFuMSEiLCJlbWFpbCI6InR1b25nZGV2b3BzMUBnbWFpbC5jb20iLCJhdXRoIjoiZEhWdmJtZGtaWFp2Y0hNeE9sUnlZVzVoYmpFaCJ9fX0=

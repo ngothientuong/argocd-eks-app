@@ -1,0 +1,30 @@
+---    
+kind: Certificate
+apiVersion: cert-manager.io/v1
+metadata:
+  name: tngo-eks-ingress-gw-cert  ##  The secret name must be different than the certificate name
+spec:
+  commonName: "tngo-eks-monitor-mgmt.bylightsdc.bylight.com"
+  dnsNames:
+    ### Must exists first and match the spec.tls.hosts in the ingress.
+    ### So that ingress can use this created the secret to use in TLS section!
+    - 'tngo-eks-monitor-mgmt.bylightsdc.bylight.com'
+    - "tngo-eks-grafana-mgmt.bylightsdc.bylight.com"
+    - "tngo-eks-alertmanager-mgmt.bylightsdc.bylight.com"
+
+  #duration: 7200h0m0s  # Let this be the default of 1 year
+  issuerRef:
+    group: awspca.cert-manager.io
+    kind: AWSPCAClusterIssuer
+    name: tngo-eks-ca
+  renewBefore: 360h0m0s
+  ## The secret name must be different than the certificate name
+  ### Has to match with secretName in spec.tls.secretName in ingress
+  secretName: tngo-eks-ingress-gw-secret  
+  usages:
+    - server auth
+    - client auth
+  privateKey:
+    algorithm: "RSA"
+    size: 2048
+---
