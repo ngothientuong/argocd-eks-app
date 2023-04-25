@@ -3,7 +3,7 @@ namespace: kube-system
 secretGenerator:
 - files:
   - common_files/awspca_root.crt
-  name: awspca_root.crt
+  name: awspca-root.crt
 resources:
 - awspca_cluster_issuer.yaml
 #- cluster_secret_ns.yaml
