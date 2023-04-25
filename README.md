@@ -258,7 +258,7 @@ kubectl patch secret -n kube-system cilium-ipsec-keys -p="${data}" -v=1
       - Restart **all other** deployment, sts, ds in the cluster. [Manual - Yes it is a painful administraive process!]
 ---
 # Other Issues
-- Issue: Resources hang such as namespace forever
+- ***Issue: Resources hang such as namespace forever***
 
   **Resolution**: 
   - Attempt to delete namespace, if keep seeing messages "customresourcedefinition.apiextensions.k8s.io "applications.argoproj.io" force deleted" that means resources relating to that namespace still remains and you have to delete it manually or else associated namespace cannot be deleted.
@@ -267,8 +267,15 @@ kubectl patch secret -n kube-system cilium-ipsec-keys -p="${data}" -v=1
   kubectl patch customresourcedefinition.apiextensions.k8s.io/applications.argoproj.io -p '{"metadata":{"finalizers":[]}}' --type=merge
   kubectl delete customresourcedefinition.apiextensions.k8s.io/applications.argoproj.io
   ```
-
-
+- ***Issue: ArgoCD app resources hang and can't be deleted from the console***
+  **Resolution**: 
+  - Change to cluster context hosting argoCD 
+  - Change to namespace argocd
+  - Run the following clean up commands
+    ```
+    kubectl patch app APPNAME -p '{"metadata": {"finalizers": null}}' --type merge
+    kubectl delete app APPNAME
+    ```
 ---
 # ISTIO
 
