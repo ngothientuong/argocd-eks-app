@@ -10,7 +10,7 @@ spec:
 kind: Certificate
 apiVersion: cert-manager.io/v1
 metadata:
-  name: tngo-monitor-eks-cert  ## The name doesn't matter
+  name: tngo-monitor-eks-cert  ##  The secret name must be different than the certificate name
 spec:
   commonName: "tngo-eks-monitor-mgmt.bylightsdc.bylight.com"
   dnsNames:
@@ -26,7 +26,9 @@ spec:
     kind: AWSPCAClusterIssuer
     name: tngo-eks-ca
   renewBefore: 360h0m0s
-  secretName: tngo-eks-monitor-cert   ### Has to match with secretName in spec.tls.secretName in ingress
+  ## The secret name must be different than the certificate name
+  ### Has to match with secretName in spec.tls.secretName in ingress
+  secretName: tngo-eks-monitor-secret  
   usages:
     - server auth
     - client auth
@@ -77,10 +79,10 @@ spec:
   tls: # < placing a host in the TLS config will determine what ends up in the cert's subjectAltNames  
   - hosts:
     ### Must match with the spec.dnsNames in the existing certificate creation
-    - 'tngo-eks-monitor-mgmt.bylightsdc.bylight.com'   
-    - 'tngo-eks-grafana-mgmt.bylightsdc.bylight.com'
-    - 'tngo-eks-alertmanager-mgmt.bylightsdc.bylight.com'
-    secretName: tngo-eks-monitor-cert  # < cert-manager will store the created certificate in this secret.  
+    - tngo-eks-monitor-mgmt.bylightsdc.bylight.com   
+    - tngo-eks-grafana-mgmt.bylightsdc.bylight.com
+    - tngo-eks-alertmanager-mgmt.bylightsdc.bylight.com
+    secretName: tngo-eks-monitor-secret  # < cert-manager will store the created certificate in this secret.  
   rules:
   - host: "tngo-eks-grafana-mgmt.bylightsdc.bylight.com" ## Modify this and other services
     host: "tngo-eks-alertmanager-mgmt.bylightsdc.bylight.com"
