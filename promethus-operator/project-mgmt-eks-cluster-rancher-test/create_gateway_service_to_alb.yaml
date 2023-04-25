@@ -1,0 +1,47 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: istio-gateway-ingress
+  annotations:
+    alb.ingress.kubernetes.io/scheme: internet-facing # Required
+    alb.ingress.kubernetes.io/listen-ports: '[{"HTTPS":443},{"HTTP":80}]' # Required
+    alb.ingress.kubernetes.io/ssl-redirect: '443' # Required
+    alb.ingress.kubernetes.io/backend-protocol: "HTTPS" # Required
+    alb.ingress.kubernetes.io/load-balancer-name: tngo-istio-gateway-mgmt-alb
+    alb.ingress.kubernetes.io/ip-address-type: ipv4
+    kubernetes.io/ingress.class: alb    # Required
+    #alb.ingress.kubernetes.io/healthcheck-path: "/healthz?full=true"    # Required
+    alb.ingress.kubernetes.io/healthcheck-path: "/"    # Required
+    alb.ingress.kubernetes.io/healthcheck-protocol: "HTTP"  # Required
+    alb.ingress.kubernetes.io/success-codes: '404'
+    alb.ingress.kubernetes.io/healthcheck-port: "30999"      # Has to be the same as the (https or status-port?) nodePort. Hardcoded nodePort for Istio-Gateway in service as well
+    alb.ingress.kubernetes.io/subnets: 'subnet-0f08d68d1c661395a,subnet-0312fb0e0e36c8b49'   # Required to be in public subnets for internet facing!!  
+
+    # Cert Manager
+    #cert-manager.io/issuer-name: tngo-eks-ca
+    #cert-manager.io/cluster-issuer: tngo-eks-ca
+    #cert-manager.io/issuer-kind: AWSPCAClusterIssuer
+    #cert-manager.io/common-name: tngo-eks-istiod-gateway-rancher-test.bylightsdc.bylight.com
+    #cert-manager.io/issuer-group: awspca.cert-manager.io
+
+    # External DNS
+    external-dns.alpha.kubernetes.io/hostname: tngo-eks-istiod-gateway-rancher-test.bylightsdc.bylight.com
+
+spec:
+  #ingressClassName: alb
+  tls: # < placing a host in the TLS config will determine what ends up in the cert's subjectAltNames
+  - hosts:
+    - tngo-eks-istiod-gateway-rancher-test.bylightsdc.bylight.com
+    secretName: tngo-eks-istiod-gateway-cert # < cert-manager will store the created certificate in this secret.
+  rules:
+  - host: tngo-eks-istiod-gateway-rancher-test.bylightsdc.bylight.com
+    http:
+      paths:
+      - path: /
+        pathType: Prefix
+        backend:
+          service:
+            name: istio-gateway
+            port:
+              number: 443    
+

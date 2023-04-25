@@ -1,0 +1,3 @@
+- op: replace
+  path: /spec/template/spec/containers/0/readinessProbe/httpGet/port
+  value: 8080

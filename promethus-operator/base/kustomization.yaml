@@ -1,0 +1,10 @@
+namespace: prometheus
+helmCharts:
+## Helm chart for deploying Istio cluster resource...
+- name: prometheus  # Name of the chart
+  repo: https://istio-release.storage.googleapis.com/charts
+  version: #
+  releaseName: prometheus-community
+  namespace: prometheus
+  valuesFile: prometheus_operator.values.yaml
+  includeCRDs: true

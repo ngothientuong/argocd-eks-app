@@ -1,0 +1,37 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: istiod
+  namespace: istio-system
+spec:
+  replicas: 2
+  template:
+    spec:
+      hostNetwork: true
+      # containers:
+      # - args:
+      #   name: discovery
+      #   ports:
+      #     - containerPort: 8090     # must match `hostPort` when `hostNetwork` is true
+      #       hostPort: 8090      # Change port so won't be conflict with others
+      #       protocol: TCP
+      #     - containerPort: 8080     # Deleting port 8080
+      #       hostPort: 8080      # Deleting port so won't be conflict with others
+      #       protocol: TCP
+      #       $patch: delete            
+      #     - containerPort: 15010
+      #       hostPort: 15010
+      #       protocol: TCP
+      #     - containerPort: 15017
+      #       hostPort: 15017
+      #       protocol: TCP    
+      # readinessProbe:
+      #   httpGet:
+      #     path: /ready
+      #     port: 8090
+      #     scheme: HTTP
+        # httpGet:
+        #   path: /ready
+        #   port: 8080
+        #   scheme: HTTP
+        #   $patch: delete

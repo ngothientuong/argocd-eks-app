@@ -1,0 +1,133 @@
+apiVersion: awspca.cert-manager.io/v1beta1
+kind: AWSPCAClusterIssuer
+metadata:
+  name: tngo-eks-apps-ca
+spec:
+  arn: arn:aws:acm-pca:us-east-2:682331604648:certificate-authority/d6d38646-9c02-488b-94ab-c5894de95b95
+  region: us-east-2
+---
+---    
+kind: Certificate
+apiVersion: cert-manager.io/v1
+metadata:
+  name: tngo-monitor-eks-cert  ## The name doesn't matter
+spec:
+  commonName: "tngo-eks-monitor-mgmt.bylightsdc.bylight.com"
+  dnsNames:
+    ### Must exists first and match the spec.tls.hosts in the ingress.
+    ### So that ingress can use this created the secret to use in TLS section!
+    - 'tngo-eks-monitor-mgmt.bylightsdc.bylight.com'
+    - "tngo-eks-grafana-mgmt.bylightsdc.bylight.com"
+    - "tngo-eks-alertmanager-mgmt.bylightsdc.bylight.com"
+
+  duration: 7200h0m0s
+  issuerRef:
+    group: awspca.cert-manager.io
+    kind: AWSPCAClusterIssuer
+    name: tngo-eks-ca
+  renewBefore: 360h0m0s
+  secretName: tngo-eks-monitor-cert   ### Has to match with secretName in spec.tls.secretName in ingress
+  usages:
+    - server auth
+    - client auth
+  privateKey:
+    algorithm: "RSA"
+    size: 2048
+---
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  annotations:
+    kubernetes.io/ingress.class: alb
+    alb.ingress.kubernetes.io/scheme: internet-facing
+    alb.ingress.kubernetes.io/healthcheck-path: /healthz/ready
+    alb.ingress.kubernetes.io/healthcheck-port: traffic-port
+    alb.ingress.kubernetes.io/backend-protocol: HTTPS
+    alb.ingress.kubernetes.io/listen-ports: '[{"HTTP": 80}, {"HTTPS":443}]'
+    alb.ingress.kubernetes.io/subnets: 'subnet-0698f5156de80d6ae,subnet-056c275475bd56e47'   # Required to be in public subnets for internet facing!!  
+    alb.ingress.kubernetes.io/actions.ssl-redirect: |
+      {
+        "Type": "redirect", 
+        "RedirectConfig": { 
+          "Protocol": "HTTPS", 
+          "Port": "443", 
+          "StatusCode": "HTTP_301"
+        }
+      }    
+    # ALB will automatically pull the cert from ACM unless we want to specify certain one      
+    # alb.ingress.kubernetes.io/certificate-arn: |
+    #   arn:aws:acm:xxxxxx:999999999999:certificate/xxxxxxxxx
+
+
+    cert-manager.io/cluster-issuer: tngo-eks-apps-ca
+
+
+    # External DNS
+    # external-dns.alpha.kubernetes.io/hostname: tngo-eks-alertmanager-mgmt-eu.bylightsdc.bylight.com
+    # external-dns.alpha.kubernetes.io/hostname: tngo-eks-alertmanager-mgmt-us.bylightsdc.bylight.com
+    external-dns.alpha.kubernetes.io/hostname: tngo-eks-alertmanager-mgmt.bylightsdc.bylight.com
+    external-dns.alpha.kubernetes.io/hostname: tngo-eks-grafana-mgmt.bylightsdc.bylight.com
+    # external-dns.alpha.kubernetes.io/hostname: tngo-eks-grafana-mgmt-us.bylightsdc.bylight.com
+    # external-dns.alpha.kubernetes.io/hostname: tngo-eks-grafana-mgmt-eu.bylightsdc.bylight.com
+
+  name: gw-ingress
+  namespace: istio-system
+spec:
+  # #ingressClassName: alb
+  tls: # < placing a host in the TLS config will determine what ends up in the cert's subjectAltNames  
+  - hosts:
+    ### Must match with the spec.dnsNames in the existing certificate creation
+    - 'tngo-eks-monitor-mgmt.bylightsdc.bylight.com'   
+    - 'tngo-eks-grafana-mgmt.bylightsdc.bylight.com'
+    - 'tngo-eks-alertmanager-mgmt.bylightsdc.bylight.com'
+    secretName: tngo-eks-monitor-cert  # < cert-manager will store the created certificate in this secret.  
+  rules:
+  - host: "tngo-eks-grafana-mgmt.bylightsdc.bylight.com" ## Modify this and other services
+    host: "tngo-eks-alertmanager-mgmt.bylightsdc.bylight.com"
+    http:
+      paths:      
+      - backend:
+          service:
+            name: ssl-redirect
+            port: 
+              name: use-annotation
+        path: /    
+        pathType: Prefix  
+      - backend:
+          service:
+            name: istio-ingressgateway
+            port: 
+              number: 15021
+        path: /healthz/ready
+        pathType: Prefix
+      - backend:
+          service:
+            name: istio-ingressgateway
+            port: 
+              number: 443
+        path: /
+        pathType: Prefix
+  # - host: tngo-eks-alertmanager-mgmt.bylightsdc.bylight.com ## Modify this and other services
+  #   http:
+  #     paths:      
+  #     - backend:
+  #         service:
+  #           name: ssl-redirect
+  #           port: 
+  #             name: use-annotation
+  #       path: /    
+  #       pathType: Prefix  
+  #     - backend:
+  #         service:
+  #           name: istio-ingressgateway
+  #           port: 
+  #             number: 15021
+  #       path: /healthz/ready
+  #       pathType: Prefix
+  #     - backend:
+  #         service:
+  #           name: istio-ingressgateway
+  #           port: 
+  #             number: 443
+  #       path: /
+  #       pathType: Prefix        

@@ -1,0 +1,12 @@
+apiVersion: install.istio.io/v1alpha1
+kind: IstioOperator
+metadata:
+  name: istio-cluster-profile
+  namespace: istio-system
+spec:
+  values:
+    global:
+      meshID: mesh0
+      multiCluster:
+        clusterName: project-mgmt-eks-cluster-rancher-test
+      network: network1
