@@ -7,7 +7,7 @@ metadata:
 matchNamespace:
   - '.*'
   # it will be replicated in clustersecret namespace.
-avoidNamespaces:
-  - default 
+# avoidNamespaces:
+#   - default 
 data:
   aws_cred.config: W2RlZmF1bHRdCmF3c19hY2Nlc3Nfa2V5X2lkPSJBS0lBWjVYUkNBMlVLRENaN09HTSIKYXdzX3NlY3JldF9hY2Nlc3Nfa2V5PSI3cmYxcnFka3ZWa0VtUVpwMy9QUEhFbFFHdUxCdXhUczRmNTFydjNnIgpyZWdpb249dXMtZWFzdC0yCg==
