@@ -2,8 +2,8 @@ namespace: kube-system
 # CA certificate mount as secret but not being used in resources
 secretGenerator:
 - files:
-  - common_files/ca.crt
-  name: ca.crt
+  - common_files/awspca_root.crt
+  name: awspca_root.crt
 resources:
 - awspca_cluster_issuer.yaml
 apiVersion: kustomize.config.k8s.io/v1beta1
