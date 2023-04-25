@@ -6,9 +6,11 @@ secretGenerator:
   name: awspca-root.crt
 resources:
 - awspca_cluster_issuer.yaml
-#- cluster_secret_ns.yaml
+- generic_app_cert.yaml
+- istio_gateway.yaml
 - cluster_secret_rbac.yaml
 - cluster_secret_crd.yaml
 - cluster_secret_deploy.yaml
+
 apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
