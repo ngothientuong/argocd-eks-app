@@ -17,7 +17,7 @@ spec:
   issuerRef:
     group: awspca.cert-manager.io
     kind: AWSPCAClusterIssuer
-    name: tngo-eks-ca
+    name: tngo-eks-apps
   renewBefore: 360h0m0s
   ## The secret name must be different than the certificate name
   ### Has to match with secretName in spec.tls.secretName in ingress
