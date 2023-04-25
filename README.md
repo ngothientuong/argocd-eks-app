@@ -276,6 +276,15 @@ kubectl patch secret -n kube-system cilium-ipsec-keys -p="${data}" -v=1
     kubectl patch app APPNAME -p '{"metadata": {"finalizers": null}}' --type merge
     kubectl delete app APPNAME
     ```
+
+- ***Issue: Amazon Linux 2 cannot authenticate against a host due to CA not known***
+  **Resolution**: 
+  - Copy IMMEDIATE CA and ROOT CA of the endpoint cert to /etc/pki/ca-trust/source/anchors/
+  - Run command:
+  ```
+  sudo update-ca-trust force-enable
+  sudo update-ca-trust
+  ```
 ---
 # ISTIO
 
