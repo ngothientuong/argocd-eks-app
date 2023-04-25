@@ -2,7 +2,7 @@
 kind: Certificate
 apiVersion: cert-manager.io/v1
 metadata:
-  name: tngo-eks-ca  ##  The secret name must be different than the certificate name
+  name: tngo-eks-apps  ##  The secret name must be different than the certificate name
   namespace: istio-system
 spec:
   commonName: "*.bylightsdc.bylight.com"
@@ -17,7 +17,7 @@ spec:
   issuerRef:
     group: awspca.cert-manager.io
     kind: AWSPCAClusterIssuer
-    name: tngo-eks-apps
+    name: tngo-eks-ca
   renewBefore: 360h0m0s
   ## The secret name must be different than the certificate name
   ### Has to match with secretName in spec.tls.secretName in ingress
