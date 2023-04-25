@@ -263,7 +263,11 @@ kubectl patch secret -n kube-system cilium-ipsec-keys -p="${data}" -v=1
   **Resolution**: 
   - Attempt to delete namespace, if keep seeing messages "customresourcedefinition.apiextensions.k8s.io "applications.argoproj.io" force deleted" that means resources relating to that namespace still remains and you have to delete it manually or else associated namespace cannot be deleted.
   - Run the following command: 
->  patch customresourcedefinition.apiextensions.k8s.io/applications.argoproj.io -p '{"metadata":{"finalizers":[]}}' --type=merge
+  ```
+  kubectl patch customresourcedefinition.apiextensions.k8s.io/applications.argoproj.io -p '{"metadata":{"finalizers":[]}}' --type=merge
+  kubectl delete customresourcedefinition.apiextensions.k8s.io/applications.argoproj.io
+  ```
+
 
 ---
 # ISTIO
