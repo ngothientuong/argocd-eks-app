@@ -16,7 +16,7 @@ spec:
     path: cluster_wide/project-mgmt-eks-cluster-int-2
   destination:
     server: 'https://4C526CF1C0B090E3D856BB53D73DB87B.gr7.us-east-2.eks.amazonaws.com'
-    namespace: default
+    namespace: clustersecret
   syncPolicy:
     automated:
       prune: true

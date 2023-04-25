@@ -16,7 +16,7 @@ spec:
     path: cluster_wide/project-eumgmt-eks-eu-west-2
   destination:
     server: 'https://DD9C03E1D12C707818F395E287C2996B.gr7.eu-west-2.eks.amazonaws.com'
-    namespace: default
+    namespace: clustersecret
   syncPolicy:
     automated:
       prune: true
