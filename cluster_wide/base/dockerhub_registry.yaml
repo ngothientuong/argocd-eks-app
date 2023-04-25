@@ -3,7 +3,7 @@ apiVersion: clustersecret.io/v1
 kind: ClusterSecret
 metadata:
   name: hub-regcred
-  namespace: global-secret
+  namespace: clustersecret
   labels:
     secret: hubregcred
   # annotations:

@@ -3,7 +3,7 @@ apiVersion: clustersecret.io/v1
 kind: ClusterSecret
 metadata:
   name: global-aws-cred
-  namespace: global-secret
+  namespace: clustersecret
 matchNamespace:
   - '.*'
   # it will be replicated in clustersecret namespace.

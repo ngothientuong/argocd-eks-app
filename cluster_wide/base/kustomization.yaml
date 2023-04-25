@@ -6,7 +6,7 @@ secretGenerator:
   name: awspca_root.crt
 resources:
 - awspca_cluster_issuer.yaml
-- cluster_secret_ns.yaml
+#- cluster_secret_ns.yaml
 - cluster_secret_rbac.yaml
 - cluster_secret_crd.yaml
 - cluster_secret_deploy.yaml
