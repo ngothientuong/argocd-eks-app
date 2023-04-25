@@ -10,8 +10,8 @@ metadata:
   #   someannotation: somevalue
 matchNamespace:
   - '.*'
-avoidNamespaces:
-  - 'default'
+# avoidNamespaces:
+#   - 'default'
 type: kubernetes.io/dockerconfigjson
 # as output in kubectl create secret docker-registry regkey --docker-server my.docker.registry --docker-username adminuser --docker-password adminpass -o yaml --dry-run
 data:
