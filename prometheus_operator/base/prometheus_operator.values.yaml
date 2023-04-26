@@ -2320,10 +2320,10 @@ prometheus:
           resources:
             requests:
               storage: 50Gi
-        selector: {
+        selector: 
           app: prometheus
           k8s-app: prometheus              
-        }
+        
 
     ## Using tmpfs volume
     ##
