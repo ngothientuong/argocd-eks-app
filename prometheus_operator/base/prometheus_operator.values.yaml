@@ -2242,11 +2242,11 @@ prometheus:
     #   app: prometheus
     #   k8s-app: prometheus
     ### Tim - label for prometheus deployment
-    podMetadata: {
-      labels:
-        app: prometheus
-        k8s-app: prometheus    
-    }      
+    podMetadata: {}
+    labels:
+      app: prometheus
+      k8s-app: prometheus    
+
 
 
     ## Pod anti-affinity can prevent the scheduler from placing Prometheus replicas on the same node.
