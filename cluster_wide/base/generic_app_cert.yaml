@@ -20,7 +20,7 @@ spec:
   renewBefore: 360h0m0s
   ## The secret name must be different than the certificate name
   ### Has to match with secretName in spec.tls.secretName in ingress
-  secretName: tngo-eks-apps-secret  
+  secretName: tngo-eks-apps-tls  
   usages:
     - server auth
     - client auth
