@@ -6,7 +6,7 @@ secretGenerator:
   name: awspca-root.crt
 resources:
 - awspca_cluster_issuer.yaml
-- generic_app_cert.yaml
+#- generic_app_cert.yaml
 - istio_gateway.yaml
 - cluster_secret_rbac.yaml
 - cluster_secret_crd.yaml
