@@ -11,4 +11,4 @@ mountOptions:
   - debug
 parameters:
   type: io1  
-  iopsPerGB: 50  ## Only required specifically for gp3, io1 and io2
+  iopsPerGB: "50"  ## Only required specifically for gp3, io1 and io2
