@@ -1,22 +1,32 @@
-project: default
-source:
-  repoURL: 'git@github.com:ngothientuong/argocd-eks-app.git'
-  path: declartive_manifest
-  targetRevision: HEAD
-destination:
-  server: 'https://kubernetes.default.svc'
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  ## Name must not have lower case
+  name: declarative-all-apps
+  # You'll usually want to add your resources to the argocd namespace.
   namespace: argocd
-syncPolicy:
-  automated:
-    prune: true
-    selfHeal: true
-  syncOptions:
-    - CreateNamespace=true
-    - PruneLast=true
-    - ApplyOutOfSyncOnly=true
-  retry:
-    limit: 2
-    backoff:
-      duration: 5s
-      factor: 2
-      maxDuration: 3m0s
+  # Add a this finalizer ONLY if you want these to cascade delete.
+  finalizers:
+spec:  
+  project: default
+  source:
+    repoURL: 'git@github.com:ngothientuong/argocd-eks-app.git'
+    path: declartive_manifest
+    targetRevision: HEAD
+  destination:
+    server: 'https://kubernetes.default.svc'
+    namespace: argocd
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+    syncOptions:
+      - CreateNamespace=true
+      - PruneLast=true
+      - ApplyOutOfSyncOnly=true
+    retry:
+      limit: 2
+      backoff:
+        duration: 5s
+        factor: 2
+        maxDuration: 3m0s
