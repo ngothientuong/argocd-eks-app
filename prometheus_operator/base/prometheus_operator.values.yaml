@@ -639,7 +639,7 @@ alertmanager:
           accessModes: ["ReadWriteOnce"]
           resources:
             requests:
-              storage: 60Gi
+              storage: 65Gi
         # selector: 
         #   app: alertmanager
         #   k8s-app: alertmanager
@@ -2320,7 +2320,7 @@ prometheus:
           accessModes: ["ReadWriteOnce"]
           resources:
             requests:
-              storage: 50Gi
+              storage: 71Gi
         # selector: 
         #   app: prometheus
         #   k8s-app: prometheus              
