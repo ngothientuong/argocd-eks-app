@@ -6,6 +6,10 @@ metadata:
 spec:
   arn: arn:aws:acm-pca:us-east-2:682331604648:certificate-authority/d6d38646-9c02-488b-94ab-c5894de95b95
   region: us-east-2
+
+#### Move cert to cluster_wide to for easier management.
+#### Still have to hard code cert in admission-configuration.yaml 
+#### with root CA which is valid for 10 years till 2033  
 ---
 kind: Certificate
 apiVersion: cert-manager.io/v1

@@ -1161,9 +1161,9 @@ prometheusOperator:
 
     # Use certmanager to generate webhook certs
     certManager:
-      # enabled: false
+      enabled: false
       ### Tim
-      enabled: true
+      # enabled: true
       # self-signed root certificate
       rootCert:
         duration: ""  # default to be 5y
@@ -1173,9 +1173,9 @@ prometheusOperator:
       #   name: "issuer"
       #   kind: "ClusterIssuer"
       ### Tim
-      issuerRef:
-        name: "tngo-eks-apps-ca"
-        kind: "AWSPCAClusterIssuer"
+      # issuerRef:
+      #   name: "tngo-eks-apps-ca"
+      #   kind: "AWSPCAClusterIssuer"
 
   ## Namespaces to scope the interaction of the Prometheus Operator and the apiserver (allow list).
   ## This is mutually exclusive with denyNamespaces. Setting this to an empty object will disable the configuration

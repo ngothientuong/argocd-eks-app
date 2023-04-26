@@ -12,6 +12,7 @@ resources:
 - cluster_secret_crd.yaml
 - cluster_secret_deploy.yaml
 - dockerhub_registry.yaml
+- external_snapshotter_webhook_cert.yaml
 
 apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
