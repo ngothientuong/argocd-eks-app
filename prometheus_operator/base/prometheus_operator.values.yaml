@@ -267,9 +267,9 @@ alertmanager:
     # See https://kubernetes.io/blog/2020/04/02/improvements-to-the-ingress-api-in-kubernetes-1.18/#specifying-the-class-of-an-ingress
     # ingressClassName: nginx
 
-    annotations: {
-      kubernetes.io/ingress.class: istio
-    }
+    # annotations: {
+    #   kubernetes.io/ingress.class: istio
+    # }
 
     labels: {}
 
@@ -326,9 +326,9 @@ alertmanager:
     # See https://kubernetes.io/blog/2020/04/02/improvements-to-the-ingress-api-in-kubernetes-1.18/#specifying-the-class-of-an-ingress
     # ingressClassName: nginx
 
-    annotations: {
-      kubernetes.io/ingress.class: istio
-    }
+    # annotations: {
+    #   kubernetes.io/ingress.class: istio
+    # }
     labels: {}
 
     ## Final form of the hostname for each per replica ingress is
@@ -515,10 +515,7 @@ alertmanager:
     ##
     #podMetadata: {}
     ### Tim
-    podMetadata: {
-      labels:
-        k8s-app=alertmanager
-    }
+    podMetadata: {}
     labels:
         k8s-app=alertmanager
 
