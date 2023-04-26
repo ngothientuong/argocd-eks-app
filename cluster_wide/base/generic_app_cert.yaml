@@ -9,7 +9,6 @@ spec:
   dnsNames:
     ### Must exists first and match the spec.tls.hosts in the ingress.
     ### So that ingress can use this created the secret to use in TLS section!
-    - 'tngo-eks-*.bylightsdc.bylight.com'
     - '*.bylightsdc.bylight.com'
     #- "tngo-eks-alertmanager-mgmt.bylightsdc.bylight.com"
 

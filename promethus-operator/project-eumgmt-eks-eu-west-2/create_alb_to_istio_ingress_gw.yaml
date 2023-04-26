@@ -1,40 +1,43 @@
-apiVersion: awspca.cert-manager.io/v1beta1
-kind: AWSPCAClusterIssuer
-metadata:
-  name: tngo-eks-ca
-spec:
-  arn: arn:aws:acm-pca:us-east-2:682331604648:certificate-authority/d6d38646-9c02-488b-94ab-c5894de95b95
-  region: us-east-2
----
----    
-kind: Certificate
-apiVersion: cert-manager.io/v1
-metadata:
-  name: tngo-eks-monitor-cert  ##  The secret name must be different than the certificate name
-spec:
-  commonName: "tngo-eks-monitor-mgmt.bylightsdc.bylight.com"
-  dnsNames:
-    ### Must exists first and match the spec.tls.hosts in the ingress.
-    ### So that ingress can use this created the secret to use in TLS section!
-    - 'tngo-eks-monitor-mgmt.bylightsdc.bylight.com'
-    - "tngo-eks-grafana-mgmt.bylightsdc.bylight.com"
-    - "tngo-eks-alertmanager-mgmt.bylightsdc.bylight.com"
+### The AWSPCAClusterIssuer and cert generation are taken care of by cluster-wide
+### They are also in istio-system 
 
-  duration: 7200h0m0s
-  issuerRef:
-    group: awspca.cert-manager.io
-    kind: AWSPCAClusterIssuer
-    name: tngo-eks-ca
-  renewBefore: 360h0m0s
-  ## The secret name must be different than the certificate name
-  ### Has to match with secretName in spec.tls.secretName in ingress
-  secretName: tngo-eks-monitor-secret  
-  usages:
-    - server auth
-    - client auth
-  privateKey:
-    algorithm: "RSA"
-    size: 2048
+# apiVersion: awspca.cert-manager.io/v1beta1
+# kind: AWSPCAClusterIssuer
+# metadata:
+#   name: tngo-eks-ca
+# spec:
+#   arn: arn:aws:acm-pca:us-east-2:682331604648:certificate-authority/d6d38646-9c02-488b-94ab-c5894de95b95
+#   region: us-east-2
+# ---
+# ---    
+# kind: Certificate
+# apiVersion: cert-manager.io/v1
+# metadata:
+#   name: tngo-eks-alb-cert  ##  The secret name must be different than the certificate name
+# spec:
+#   commonName: "tngo-eks-*.bylightsdc.bylight.com"
+#   dnsNames:
+#     ### Must exists first and match the spec.tls.hosts in the ingress.
+#     ### So that ingress can use this created the secret to use in TLS section!
+#     - 'tngo-eks-*.bylightsdc.bylight.com'
+#     - "tngo-*.bylightsdc.bylight.com"
+#     - "*.bylightsdc.bylight.com"
+
+#   #duration: 7200h0m0s
+#   issuerRef:
+#     group: awspca.cert-manager.io
+#     kind: AWSPCAClusterIssuer
+#     name: tngo-eks-ca
+#   renewBefore: 360h0m0s
+#   ## The secret name must be different than the certificate name
+#   ### Has to match with secretName in spec.tls.secretName in ingress
+#   secretName: tngo-eks-alb-secret 
+#   usages:
+#     - server auth
+#     - client auth
+#   privateKey:
+#     algorithm: "RSA"
+#     size: 2048
 ---
 apiVersion: networking.k8s.io/v1
 kind: Ingress
@@ -75,10 +78,8 @@ spec:
   tls: # < placing a host in the TLS config will determine what ends up in the cert's subjectAltNames  
   - hosts:
     ### Must match with the spec.dnsNames in the existing certificate creation
-    - tngo-eks-monitor-mgmt.bylightsdc.bylight.com   
-    - tngo-eks-grafana-mgmt.bylightsdc.bylight.com
-    - tngo-eks-alertmanager-mgmt.bylightsdc.bylight.com
-    secretName: tngo-eks-monitor-secret  # < cert-manager will store the created certificate in this secret.  
+    - '*.bylightsdc.bylight.com'
+    secretName: tngo-eks-apps-secret    # < cert-manager will store the created certificate in this secret.  
   rules:
   - host: "tngo-eks-grafana-mgmt.bylightsdc.bylight.com" ## Modify this and other services    
     http:
