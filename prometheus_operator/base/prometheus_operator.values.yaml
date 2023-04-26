@@ -640,9 +640,9 @@ alertmanager:
           resources:
             requests:
               storage: 60Gi
-        selector: 
-          app: alertmanager
-          k8s-app: alertmanager
+        # selector: 
+        #   app: alertmanager
+        #   k8s-app: alertmanager
 
 
     ## The external URL the Alertmanager instances will be available under. This is necessary to generate correct URLs. This is necessary if Alertmanager is not served from root of a DNS name. string  false
@@ -2321,9 +2321,9 @@ prometheus:
           resources:
             requests:
               storage: 50Gi
-        selector: 
-          app: prometheus
-          k8s-app: prometheus              
+        # selector: 
+        #   app: prometheus
+        #   k8s-app: prometheus              
         
 
     ## Using tmpfs volume
