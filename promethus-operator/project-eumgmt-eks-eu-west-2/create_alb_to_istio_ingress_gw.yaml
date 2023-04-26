@@ -79,7 +79,7 @@ spec:
   - hosts:
     ### Must match with the spec.dnsNames in the existing certificate creation
     - '*.bylightsdc.bylight.com'
-    secretName: tngo-eks-apps-secret    # < cert-manager will store the created certificate in this secret.  
+    secretName: tngo-eks-apps-tls    # < cert-manager will store the created certificate in this secret.  
   rules:
   - host: "tngo-eks-grafana-mgmt.bylightsdc.bylight.com" ## Modify this and other services    
     http:

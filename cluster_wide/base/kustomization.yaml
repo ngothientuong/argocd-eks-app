@@ -1,4 +1,4 @@
-namespace: clustersecret
+#namespace: clustersecret
 # CA certificate mount as secret but not being used in resources
 secretGenerator:
 - files:
