@@ -75,10 +75,12 @@ spec:
   tls: # < placing a host in the TLS config will determine what ends up in the cert's subjectAltNames  
   - hosts:
     ### Must match with the spec.dnsNames in the existing certificate creation
-    - '*.bylightsdc.bylight.com'
-    secretName: tngo-eks-apps-tls    # < cert-manager will store the created certificate in this secret.  
+    - tngo-eks-alertmanager-mgmt-eu.bylightsdc.bylight.com
+    - tngo-eks-grafana-mgmt-eu.bylightsdc.bylight.com
+    - tngo-eks-prometheus-mgmt-eu.bylightsdc.bylight.com
+    secretName: tngo-eks-alb-gw-tls      # < cert-manager will store the created certificate in this secret.  
   rules:
-    - host: "*.bylightsdc.bylight.com"
+    - host: "tngo-eks-alertmanager-mgmt-eu.bylightsdc.bylight.com"
       http: &backend
         paths:
          - path: /healthz/ready
@@ -94,9 +96,7 @@ spec:
              service:
                name: istio-gateway
                port:
-                 number: 443
-    - host: "tngo-eks-alertmanager-mgmt-eu.bylightsdc.bylight.com"
-      http: *backend        
+                 number: 443       
     - host: "tngo-eks-grafana-mgmt-eu.bylightsdc.bylight.com"
       http: *backend            
     - host: "tngo-eks-prometheus-mgmt-eu.bylightsdc.bylight.com"

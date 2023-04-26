@@ -1,8 +1,8 @@
 namespace: prometheus
 helmCharts:
 ## Helm chart for deploying Istio cluster resource...
-- name: prometheus  # Name of the chart
-  repo: https://istio-release.storage.googleapis.com/charts
+- name: kube-prometheus-stack  # Name of the chart
+  repo: https://prometheus-community.github.io/helm-charts
   version: #
   releaseName: prometheus-community
   namespace: prometheus
