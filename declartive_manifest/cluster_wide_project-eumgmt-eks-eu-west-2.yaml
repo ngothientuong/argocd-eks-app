@@ -24,7 +24,8 @@ spec:
     syncOptions:
     - CreateNamespace=true
     - ApplyOutOfSyncOnly=true
-    - PruneLast=true
+    - PruneLast=false
+    - ServerSideApply=true    
     retry:
       limit: 5
       backoff:
