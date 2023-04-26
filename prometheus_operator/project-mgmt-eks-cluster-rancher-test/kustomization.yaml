@@ -1,8 +1,9 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
 resources:
 - create_alb_to_istio_ingress_gw.yaml
 - ../base
-apiVersion: kustomize.config.k8s.io/v1beta1
-kind: Kustomization
+- monitor_vs_dr.yaml
 patches:
 #- path: patch_istiod.yaml
 ## Fix number of HPA in development

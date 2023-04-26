@@ -22,7 +22,7 @@ spec:
       prune: false
       selfHeal: false
     syncOptions:
-    - CreateNamespace=true
+    - CreateNamespace=false
     - ApplyOutOfSyncOnly=false
     - PruneLast=false
     - ServerSideApply=false 
