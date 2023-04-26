@@ -2,7 +2,7 @@
 kind: Certificate
 apiVersion: cert-manager.io/v1
 metadata:
-  name: tngo-eks-apps  ##  The secret name must be different than the certificate name
+  name: tngo-eks-apps-cert  ##  The secret name must be different than the certificate name
   namespace: istio-system
 spec:
   commonName: "*.bylightsdc.bylight.com"
