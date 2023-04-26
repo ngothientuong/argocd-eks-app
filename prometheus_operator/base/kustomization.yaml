@@ -15,7 +15,8 @@ helmCharts:
   namespace: prometheus
   valuesFile: prometheus_operator.values.yaml
   includeCRDs: true
-
+patches:
+- path: patch_long_annotations.yaml
 # resources:
 # - istio_fedearation_prometheus_operator.yaml
 # - istio_workload_level_aggregation_recording_rules.yaml
