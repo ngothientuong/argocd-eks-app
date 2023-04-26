@@ -19,10 +19,12 @@ spec:
     namespace: clustersecret
   syncPolicy:
     automated:
-      prune: true
+      prune: false
       selfHeal: true
     syncOptions:
-      - CreateNamespace=true
+    - CreateNamespace=true
+    - ApplyOutOfSyncOnly=true
+    - PruneLast=true
     retry:
       limit: 5
       backoff:
