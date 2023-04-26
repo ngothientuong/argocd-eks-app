@@ -5,9 +5,9 @@ metadata:
 provisioner: ebs.csi.aws.com
 volumeBindingMode: WaitForFirstConsumer
 # ## Added
-# reclaimPolicy: Retain
-# allowVolumeExpansion: true
-# mountOptions:
-#   - debug
-# parameters:
-#   type: io1  
+reclaimPolicy: Retain
+allowVolumeExpansion: true
+mountOptions:
+  - debug
+parameters:
+  type: io1  
