@@ -40,3 +40,6 @@ resources:
 - cluster_wide_project-mgmt-eks-cluster-int-test.yaml
 - cluster_wide_project-mgmt-eks-cluster-rancher-test.yaml
 - cluster_wide_project-eumgmt-eks-eu-west-2.yaml
+
+# ## Prometheus, Grafana, AlertManager
+- prometheus_operator_project-eumgmt-eks-eu-west-2.yaml

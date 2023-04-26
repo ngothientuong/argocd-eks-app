@@ -1,0 +1,22 @@
+apiVersion: networking.istio.io/v1alpha3
+kind: VirtualService
+metadata:
+  name: prometheus
+  namespace: prometheus
+spec:
+  gateways:
+    - public-gateway.istio-system.svc.cluster.local
+    - mesh
+  hosts:
+    - tngo-eks-alertmanager-mgmt-eu.bylightsdc.bylight.com
+  http:
+  - appendHeaders:
+      x-envoy-max-retries: "10"
+      x-envoy-retry-on: gateway-error,connect-failure,refused-stream
+      x-envoy-upstream-rq-timeout-ms: "15000"
+    route:
+    - destination:
+        host: podinfo
+        port:
+          number: 9898
+      weight: 100

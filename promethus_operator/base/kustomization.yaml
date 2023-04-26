@@ -1,4 +1,8 @@
-namespace: prometheus
+#namespace: prometheus
+resources:
+- create_ebs_sc.yaml
+- create_snapshot_class.yaml
+
 helmCharts:
 ## Helm chart for deploying Istio cluster resource...
 - name: kube-prometheus-stack  # Name of the chart
@@ -8,3 +12,8 @@ helmCharts:
   namespace: prometheus
   valuesFile: prometheus_operator.values.yaml
   includeCRDs: true
+
+resources:
+- istio_fedearation_prometheus_operator.yaml
+- istio_workload_level_aggregation_recording_rules.yaml
+- prometheus-k8s-service-monitor-kubelet.yaml
