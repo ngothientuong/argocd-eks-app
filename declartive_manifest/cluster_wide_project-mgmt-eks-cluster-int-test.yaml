@@ -19,15 +19,15 @@ spec:
     namespace: clustersecret
   syncPolicy:
     automated:
-      prune: false
-      selfHeal: false
+      prune: true
+      selfHeal: true
     syncOptions:
     - CreateNamespace=false
     - ApplyOutOfSyncOnly=false
     - PruneLast=false
     - ServerSideApply=false
     retry:
-      limit: 1
+      limit: 5
       backoff:
         duration: 5s
         factor: 2
