@@ -106,9 +106,9 @@ spec:
       http: *backend   
     - host: "tngo-eks-kiali-mgmt-eu.bylightsdc.bylight.com"
       http: *backend   
-    host: "tngo-eks-jaeger-mgmt-eu.bylightsdc.bylight.com"
+    - host: "tngo-eks-jaeger-mgmt-eu.bylightsdc.bylight.com"
       http: *backend                    
-    host: "tngo-eks-thanos-mgmt-eu.bylightsdc.bylight.com"
+    - host: "tngo-eks-thanos-mgmt-eu.bylightsdc.bylight.com"
       http: *backend                          
 ## AlertManager: "http-web"
 ## Grafana:  
