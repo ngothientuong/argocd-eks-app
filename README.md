@@ -388,3 +388,14 @@ istioctl x create-remote-secret --context=$CLUSTER4 --name=project-eumgmt-eks-eu
 - URL: https://www.cncf.io/blog/2021/10/25/prometheus-definitive-guide-part-iii-prometheus-operator/#:~:text=In%20simple%20words%2C%20Prometheus%20Operator,cluster%20monitoring%20in%20just%20a
 - Github Repo: https://github.com/prometheus-community/helm-charts/tree/main/charts/kube-prometheus-stack
 
+---
+# KIALI
+## Kiali Requirements
+- Required pre-existing components: Istio , Prometheus (preferred)
+- Optional needed components: Grafana, Jaeger
+- Kiali-Operator install via Helm is missing CRD. Must install separately!
+
+## Install
+- Kiali-Operator Github: https://github.com/kiali/kiali-operator
+- Kiali missing CRD URL: https://github.com/kiali/kiali-operator/blob/master/crd-docs/crd/kiali.io_kialis.yaml 
+- Have to install Kiali backends with Grafana, Prometheus, Istio via Kiali resource
