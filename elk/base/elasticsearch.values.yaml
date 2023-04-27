@@ -94,14 +94,14 @@ esJavaOpts: "" # example: "-Xmx1g -Xms1g"
 #   limits:
 #     cpu: "1000m"
 #     memory: "2Gi"
-### Tim - Adjust to 1/4 in Development
+### Tim - Adjust to 1/2 in Development
 resources:
   requests:
-    cpu: "250m"
-    memory: "500Mi"
+    cpu: "500m"
+    memory: "1500Mi"
   limits:
-    cpu: "250m"
-    memory: "500Mi"  
+    cpu: "500m"
+    memory: "1500Mi"  
 
 initResources: {}
 # limits:

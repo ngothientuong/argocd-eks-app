@@ -14,6 +14,7 @@ resources:
 - dockerhub_registry.yaml
 - external_snapshotter_webhook_cert.yaml
 - create_ebs_sc.yaml
+- create_efs_sc.yaml
 - create_snapshot_class.yaml
 
 apiVersion: kustomize.config.k8s.io/v1beta1

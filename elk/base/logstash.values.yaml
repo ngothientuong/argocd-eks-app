@@ -100,7 +100,7 @@ resources:
 
 volumeClaimTemplate:
   ### Tim - added storageClassName
-  storageClassName: ebs-sc
+  storageClassName: efs-sc
   accessModes: ["ReadWriteOnce"]
   resources:
     requests:
