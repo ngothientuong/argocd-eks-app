@@ -1,6 +1,6 @@
 ### ALERT MANAGER
 ---
-apiVersion: networking.istio.io/v1beta1
+apiVersion: networking.istio.io/v1alpha3
 kind: VirtualService
 metadata:
   name: alertmanager-vs
@@ -30,7 +30,7 @@ spec:
       weight: 100      
 ---
 kind: DestinationRule
-apiVersion: networking.istio.io/v1beta1
+apiVersion: networking.istio.io/v1alpha3
 metadata:
   name: alertmanager-dr
   namespace: prometheus
@@ -47,7 +47,7 @@ spec:
 ---
 ### Grafana
 ---
-apiVersion: networking.istio.io/v1beta1
+apiVersion: networking.istio.io/v1alpha3
 kind: VirtualService
 metadata:
   name: grafana-vs
@@ -70,7 +70,7 @@ spec:
       weight: 100      
 ---
 kind: DestinationRule
-apiVersion: networking.istio.io/v1beta1
+apiVersion: networking.istio.io/v1alpha3
 metadata:
   name: grafana-dr
   namespace: prometheus
@@ -87,7 +87,7 @@ spec:
 ---
 ## PROMETHEUS
 ---
-apiVersion: networking.istio.io/v1beta1
+apiVersion: networking.istio.io/v1alpha3
 kind: VirtualService
 metadata:
   name: prometheus-vs
@@ -110,7 +110,7 @@ spec:
       weight: 100      
 ---
 kind: DestinationRule
-apiVersion: networking.istio.io/v1beta1
+apiVersion: networking.istio.io/v1alpha3
 metadata:
   name: prometheus-dr
   namespace: prometheus
