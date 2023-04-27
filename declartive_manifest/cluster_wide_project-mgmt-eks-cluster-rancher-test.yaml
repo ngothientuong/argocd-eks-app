@@ -18,9 +18,9 @@ spec:
     server: 'https://9A5969C874B923B781EC8FA1665988EE.gr7.us-east-2.eks.amazonaws.com'
     namespace: clustersecret
   syncPolicy:
-    automated:
-      prune: true
-      selfHeal: true
+    # automated:
+    #   prune: false
+    #   selfHeal: false
     syncOptions:
     - CreateNamespace=false
     - ApplyOutOfSyncOnly=false
