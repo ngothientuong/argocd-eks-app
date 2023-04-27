@@ -8,3 +8,4 @@ helmCharts:
   valuesFile: kiali.values.yaml
 resources:
 - crd.yaml
+- sa-token.yaml
