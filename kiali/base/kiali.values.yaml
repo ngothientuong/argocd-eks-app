@@ -3,7 +3,7 @@ fullnameOverride: ""
 
 image: # see: https://quay.io/repository/kiali/kiali-operator?tab=tags
   repo: quay.io/kiali/kiali-operator # quay.io/kiali/kiali-operator
-  tag: v1.67.0 # version string like v1.39.0 or a digest hash
+  tag: latest # version string like v1.39.0 or a digest hash
   digest: "" # use "sha256" if tag is a sha256 hash (do NOT prefix this value with a "@")
   pullPolicy: Always
   pullSecrets: []
@@ -68,7 +68,7 @@ allowAdHocKialiNamespace: true
 # to the image the operator will install by default. In other words, it will allow the
 # Kiali CR spec.deployment.image_name and spec.deployment.image_version to be configured by the user.
 # You may want to disable this if you do not want users to install their own Kiali images.
-allowAdHocKialiImage: false
+allowAdHocKialiImage: true
 
 # allowSecurityContextOverride tells the operator to allow a user to be able to fully override the Kiali
 # container securityContext. If this is false, certain securityContext settings must exist on the Kiali
