@@ -8,5 +8,5 @@ helmCharts:
   valuesFile: kiali.values.yaml
   includeCRDs: true  ## Was missing!
 resources:
-- crd.yaml
+#- crd.yaml
 - sa-token.yaml
