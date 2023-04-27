@@ -1,0 +1,9 @@
+#namespace: istio-system
+helmCharts:
+- name: kiali-operator  # Name of the chart
+  repo: https://kiali.org/helm-charts
+  version: #
+  releaseName: kiali
+  namespace: istio-system
+  valuesFile: kiali.values.yaml
+

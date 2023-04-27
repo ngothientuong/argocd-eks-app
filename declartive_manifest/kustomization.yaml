@@ -46,3 +46,9 @@ resources:
 
 # ## Prometheus, Grafana, AlertManager
 - prometheus_operator_project-eumgmt-eks-eu-west-2.yaml
+
+# ## Kiali - requires Promethes
+- kiali_project-eumgmt-eks-eu-west-2.yaml
+# - kiali_project-mgmt-eks-cluster-int-2.yaml
+# - kiali_project-mgmt-eks-cluster-int-test.yaml
+# - kiali_project-mgmt-eks-cluster-rancher-test.yaml

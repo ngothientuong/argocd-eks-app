@@ -12,11 +12,12 @@ spec:
   hosts:
     - tngo-eks-alertmanager-mgmt-eu.bylightsdc.bylight.com
   http:
-  - appendHeaders:
-      x-envoy-max-retries: "10"
-      x-envoy-retry-on: gateway-error,connect-failure,refused-stream
-      x-envoy-upstream-rq-timeout-ms: "15000"
-    route:
+  # - appendHeaders:
+  #     x-envoy-max-retries: "10"
+  #     x-envoy-retry-on: gateway-error,connect-failure,refused-stream
+  #     x-envoy-upstream-rq-timeout-ms: "15000"
+  #   route:
+  - route:
     ## This could work without DestinationRule
     # - destination:
     #     host: prometheus-community-kube-alertmanager
@@ -59,11 +60,12 @@ spec:
   hosts:
     - tngo-eks-grafana-mgmt-eu.bylightsdc.bylight.com
   http:
-  - appendHeaders:
-      x-envoy-max-retries: "10"
-      x-envoy-retry-on: gateway-error,connect-failure,refused-stream
-      x-envoy-upstream-rq-timeout-ms: "15000"
-    route:
+  # - appendHeaders:
+  #     x-envoy-max-retries: "10"
+  #     x-envoy-retry-on: gateway-error,connect-failure,refused-stream
+  #     x-envoy-upstream-rq-timeout-ms: "15000"
+  #   route:
+  - route:
     - destination:
         host: prometheus-community-grafana   ## Service name in spec.host in DR
         subset: alertmanager-ss   ## Match with name of subsets[*].name in DR
@@ -99,11 +101,12 @@ spec:
   hosts:
     - tngo-eks-prometheus-mgmt-eu.bylightsdc.bylight.com
   http:
-  - appendHeaders:
-      x-envoy-max-retries: "10"
-      x-envoy-retry-on: gateway-error,connect-failure,refused-stream
-      x-envoy-upstream-rq-timeout-ms: "15000"
-    route:
+  # - appendHeaders:
+  #     x-envoy-max-retries: "10"
+  #     x-envoy-retry-on: gateway-error,connect-failure,refused-stream
+  #     x-envoy-upstream-rq-timeout-ms: "15000"
+  #   route:
+  - route:
     - destination:
         host: prometheus-community-kube-prometheus   ## Service name in spec.host in DR
         subset: prometheus-ss   ## Match with name of subsets[*].name in DR
