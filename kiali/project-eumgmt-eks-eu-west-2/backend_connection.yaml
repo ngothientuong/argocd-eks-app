@@ -70,12 +70,12 @@ spec:
 
   health_config:
     rate: []
-  identity:
-  istio_component_namespaces:
-    grafana: "prometheus"
-    istiod:  "istio-system"
-    prometheus: "prometheus"
-    tracing: "jaeger"
+  # identity:
+  # istio_component_namespaces:
+  #   grafana: "prometheus"
+  #   istiod:  "istio-system"
+  #   prometheus: "prometheus"
+  #   tracing: "jaeger"
   istio_labels:
     app_label_name: app
     injection_label_name: istio-injection
@@ -86,7 +86,7 @@ spec:
   kubernetes_config:
     burst: 200
     cache_duration: 300
-    cache_enabled: true
+    # cache_enabled: true
     cache_istio_types:
     - DestinationRule
     - Gateway
