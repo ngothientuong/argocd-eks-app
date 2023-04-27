@@ -87,21 +87,21 @@ labels: {}
 
 esJavaOpts: "" # example: "-Xmx1g -Xms1g"
 
-# resources:
-#   requests:
-#     cpu: "1000m"
-#     memory: "2Gi"
-#   limits:
-#     cpu: "1000m"
-#     memory: "2Gi"
-### Tim - Adjust to 1/2 in Development
 resources:
   requests:
-    cpu: "500m"
-    memory: "1500Mi"
+    cpu: "1000m"
+    memory: "2Gi"
   limits:
-    cpu: "500m"
-    memory: "1500Mi"  
+    cpu: "1000m"
+    memory: "2Gi"
+### Tim - Adjust to 1/2 in Development
+# resources:
+#   requests:
+#     cpu: "500m"
+#     memory: "1500Mi"
+#   limits:
+#     cpu: "500m"
+#     memory: "1500Mi"  
 
 initResources: {}
 # limits:
