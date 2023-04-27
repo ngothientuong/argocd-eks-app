@@ -52,3 +52,6 @@ resources:
 # - kiali_project-mgmt-eks-cluster-int-2.yaml
 # - kiali_project-mgmt-eks-cluster-int-test.yaml
 # - kiali_project-mgmt-eks-cluster-rancher-test.yaml
+
+# ## Elastic Search - Kibana - Metric Beat
+- elk_project-eumgmt-eks-eu-west-2.yaml

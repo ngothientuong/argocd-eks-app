@@ -1,7 +1,8 @@
 #namespace: prometheus
 resources:
-- create_ebs_sc.yaml
-- create_snapshot_class.yaml
+## Move ebs_sc and snapshot_class to cluster_wide
+# - create_ebs_sc.yaml
+# - create_snapshot_class.yaml
 - istio_fedearation_prometheus_operator.yaml
 - istio_workload_level_aggregation_recording_rules.yaml
 - prometheus-k8s-service-monitor-kubelet.yaml

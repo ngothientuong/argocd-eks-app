@@ -1,0 +1,25 @@
+#namespace: istio-system
+## ECK Global resources
+helmCharts:
+- name: elasticsearch  # Name of the chart
+  repo: https://helm.elastic.co
+  version: #
+  releaseName: elastic
+  namespace: elastic-system
+  valuesFile: # eck.values.yaml
+## KIBANA
+- name: kibana  # Name of the chart
+  repo: https://helm.elastic.co
+  version: #
+  releaseName: elastic
+  namespace: elastic-system
+  valuesFile: kibana.values.yaml
+## LOG STASH
+- name: logstash  # Name of the chart
+  repo: https://helm.elastic.co
+  version: #
+  releaseName: elastic
+  namespace: elastic-system
+  valuesFile: kibana.values.yaml  
+# resources:
+# - sa-token.yaml

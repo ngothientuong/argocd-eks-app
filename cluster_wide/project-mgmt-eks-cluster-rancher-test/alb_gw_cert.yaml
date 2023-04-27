@@ -12,6 +12,12 @@ spec:
     - tngo-eks-alertmanager-mgmt-us.bylightsdc.bylight.com
     - tngo-eks-grafana-mgmt-us.bylightsdc.bylight.com
     - tngo-eks-prometheus-mgmt-us.bylightsdc.bylight.com
+    - tngo-eks-kiali-mgmt-us.bylightsdc.bylight.com
+    - tngo-eks-jaeger-mgmt-us.bylightsdc.bylight.com        
+    - tngo-eks-thanos-mgmt-us.bylightsdc.bylight.com            
+    - tngo-eks-es-mgmt-us.bylightsdc.bylight.com    
+    - tngo-eks-kibana-mgmt-us.bylightsdc.bylight.com
+    - tngo-eks-logstash-mgmt-us.bylightsdc.bylight.com
   #duration: 7200h0m0s
   issuerRef:
     group: awspca.cert-manager.io
