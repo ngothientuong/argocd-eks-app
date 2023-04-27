@@ -3,5 +3,6 @@ kind: Kustomization
 resources:
 - ../base
 - kiali_vs_dr.yaml
+- backend_connection.yaml
 # patches:
 # - path: patch_sa.yaml

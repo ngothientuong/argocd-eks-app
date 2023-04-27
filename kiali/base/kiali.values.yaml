@@ -36,7 +36,7 @@ debug:
   enableProfiler: false
 
 # Defines where the operator will look for Kial CR resources. "" means "all namespaces".
-watchNamespace: "kiali-operator"
+watchNamespace: ""
 
 # Set to true if you want the operator to be able to create cluster roles. This is necessary
 # if you want to support Kiali CRs with spec.deployment.accessible_namespaces of '**'.
