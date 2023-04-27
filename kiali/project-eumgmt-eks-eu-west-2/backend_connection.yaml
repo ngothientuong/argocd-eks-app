@@ -49,7 +49,7 @@ spec:
       enabled: true
       in_cluster_url: "http://prometheus-community-grafana.prometheus/grafana"
       #is_core_component: false
-      url: ''
+      url: 'http://prometheus-community-grafana.prometheus/grafana'
 ### ISTIO 
     istio:
       component_status:
@@ -61,7 +61,7 @@ spec:
           is_core: true
           namespace: istio-system
         enabled: true
-      config_map_name: istio.istio-system
+      config_map_name: istio
       envoy_admin_local_port: 15000
       istio_identity_domain: svc.cluster.local
       istio_injection_annotation: sidecar.istio.io/inject
@@ -70,12 +70,6 @@ spec:
 
   health_config:
     rate: []
-  # identity:
-  # istio_component_namespaces:
-  #   grafana: "prometheus"
-  #   istiod:  "istio-system"
-  #   prometheus: "prometheus"
-  #   tracing: "jaeger"
   istio_labels:
     app_label_name: app
     injection_label_name: istio-injection
