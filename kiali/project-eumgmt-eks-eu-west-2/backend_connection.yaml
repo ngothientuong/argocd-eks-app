@@ -1,7 +1,7 @@
 apiVersion: kiali.io/v1alpha1
 kind: Kiali
 metadata:
-  name: kiali
+  name: kiali-prometheus-connection
   namespace: kiali-operator
 spec:
   external_services:
@@ -12,7 +12,7 @@ spec:
 apiVersion: kiali.io/v1alpha1
 kind: Kiali
 metadata:
-  name: kiali
+  name: kiali-grafana-connection
   namespace: kiali-operator
 spec:
   external_services:
@@ -25,7 +25,7 @@ spec:
 
 ---
 apiVersion: kiali.io/v1alpha1
-kind: Kiali
+kind: Kiali-istio-connection
 metadata:
   name: kiali
   namespace: kiali-operator
