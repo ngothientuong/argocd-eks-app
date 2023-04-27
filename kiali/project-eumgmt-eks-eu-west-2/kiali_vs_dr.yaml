@@ -36,7 +36,7 @@ kind: DestinationRule
 apiVersion: networking.istio.io/v1alpha3
 metadata:
   name: kiali-dr
-  namespace: prometheus
+  namespace: kiali-operator
 spec:
   host: kiali
   subsets:
