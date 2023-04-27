@@ -32,7 +32,7 @@ metrics:
 # debug.enableProfiler: when true (regardless of debug.enabled), timings for the most expensive tasks will be logged after each reconciliation loop
 debug:
   enabled: true
-  verbosity: "4"
+  verbosity: "2"
   enableProfiler: false
 
 # Defines where the operator will look for Kial CR resources. "" means "all namespaces".
