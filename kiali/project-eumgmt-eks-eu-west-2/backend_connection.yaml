@@ -6,30 +6,64 @@ metadata:
 spec:
   external_services:
     prometheus:
-      # Prometheus service name is "metrics" and is in the "telemetry" namespace
+      auth:
+        insecure_skip_verify: false
+        type: none
+        use_kiali_token: false
+      cache_duration: 7
+      cache_enabled: true
+      cache_expiration: 300
       url: "http://prometheus-community-kube-prometheus.prometheus:9090/"
----
-apiVersion: kiali.io/v1alpha1
-kind: Kiali
-metadata:
-  name: kiali-grafana-connection
-  namespace: kiali-operator
-spec:
-  external_services:
-    grafana:
+    tracing:
+      auth:
+        insecure_skip_verify: false
+        type: none
+        use_kiali_token: false
       enabled: true
-      # Grafana service name is "grafana" and is in the "telemetry" namespace.
-      in_cluster_url: 'http://prometheus-community-grafana.prometheus:3000/'
-      # # Public facing URL of Grafana
-      # url: 'http://my-ingress-host/grafana'
-
----
-apiVersion: kiali.io/v1alpha1
-kind: Kiali
-metadata:
-  name: kiali-istio-connection
-  namespace: kiali-operator
-spec:
-  external_services:
+      ### Need to update this once jaeger installed
+      in_cluster_url: "http://jaeger-svc.jaeger-ns"
+      is_core_component: false
+      namespace_selector: true
+      whitelist_istio_system:
+      - jaeger-query
+      - istio-gateway      
+### GRAFANA
+    grafana:
+      auth:
+        ca_file: ''
+        insecure_skip_verify: false
+        password: ''
+        token: ''
+        type: none
+        use_kiali_token: false
+        username: ''
+      dashboards:
+      - name: Istio Service Dashboard
+        variables:
+          namespace: var-namespace
+          service: var-service
+      - name: Istio Workload Dashboard
+        variables:
+          namespace: var-namespace
+          workload: var-workload
+      enabled: true
+      in_cluster_url: "http://prometheus-community-grafana.prometheus/grafana"
+      is_core_component: false
+      url: ''
+### ISTIO 
     istio:
-      root_namespace: "istio-system"
+      component_status:
+        components:
+        - app_label: istiod
+          is_core: true
+          namespace: istio-system
+        - app_label: istio-gateway
+          is_core: true
+          namespace: istio-system
+        enabled: true
+      config_map_name: istio.istio-system
+      envoy_admin_local_port: 15000
+      istio_identity_domain: svc.cluster.local
+      istio_injection_annotation: sidecar.istio.io/inject
+      istio_sidecar_annotation: sidecar.istio.io/status
+      url_service_version: "http://istiod.istio-system:15014/version"
