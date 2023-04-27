@@ -2,7 +2,7 @@
 helmCharts:
 - name: kiali-operator  # Name of the chart
   repo: https://kiali.org/helm-charts
-  version: #
+  version: "1.40.0"
   releaseName: kiali
   namespace: kiali-operator
   valuesFile: kiali.values.yaml
