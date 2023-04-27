@@ -1,0 +1,127 @@
+### ALERT MANAGER
+---
+apiVersion: networking.istio.io/v1beta1
+kind: VirtualService
+metadata:
+  name: alertmanager-vs
+  namespace: prometheus
+spec:
+  gateways:
+    - public-gateway.istio-system.svc.cluster.local
+    - mesh
+  hosts:
+    - tngo-eks-alertmanager-mgmt-us.bylightsdc.bylight.com
+  http:
+  - appendHeaders:
+      x-envoy-max-retries: "10"
+      x-envoy-retry-on: gateway-error,connect-failure,refused-stream
+      x-envoy-upstream-rq-timeout-ms: "15000"
+    route:
+    ## This could work without DestinationRule
+    # - destination:
+    #     host: prometheus-community-kube-alertmanager
+    #     port:
+    #       number: 9093
+    #   weight: 100
+    ### Tim
+    - destination:
+        host: prometheus-community-kube-alertmanager   ## Service name in spec.host in DR
+        subset: alertmanager-ss   ## Match with name of subsets[*].name in DR
+      weight: 100      
+---
+kind: DestinationRule
+apiVersion: networking.istio.io/v1beta1
+metadata:
+  name: alertmanager-dr
+  namespace: prometheus
+spec:
+  host: prometheus-community-kube-alertmanager
+  subsets:
+    - labels:
+        app.kubernetes.io/name: alertmanager
+      name: alertmanager-ss
+    ### Label of canary set  
+    # - labels:
+    #     version: v2.0
+    #   name: subsetname2-in-destination.subset
+---
+### Grafana
+---
+apiVersion: networking.istio.io/v1beta1
+kind: VirtualService
+metadata:
+  name: grafana-vs
+  namespace: prometheus
+spec:
+  gateways:
+    - public-gateway.istio-system.svc.cluster.local
+    - mesh
+  hosts:
+    - tngo-eks-grafana-mgmt-us.bylightsdc.bylight.com
+  http:
+  - appendHeaders:
+      x-envoy-max-retries: "10"
+      x-envoy-retry-on: gateway-error,connect-failure,refused-stream
+      x-envoy-upstream-rq-timeout-ms: "15000"
+    route:
+    - destination:
+        host: prometheus-community-grafana   ## Service name in spec.host in DR
+        subset: alertmanager-ss   ## Match with name of subsets[*].name in DR
+      weight: 100      
+---
+kind: DestinationRule
+apiVersion: networking.istio.io/v1beta1
+metadata:
+  name: grafana-dr
+  namespace: prometheus
+spec:
+  host: prometheus-community-grafana
+  subsets:
+    - labels:
+        app.kubernetes.io/name: grafana
+      name: alertmanager-ss
+    ### Label of canary set  
+    # - labels:
+    #     version: v2.0
+    #   name: subsetname2-in-destination.subset
+---
+## PROMETHEUS
+---
+apiVersion: networking.istio.io/v1beta1
+kind: VirtualService
+metadata:
+  name: prometheus-vs
+  namespace: prometheus
+spec:
+  gateways:
+    - public-gateway.istio-system.svc.cluster.local
+    - mesh
+  hosts:
+    - tngo-eks-prometheus-mgmt-us.bylightsdc.bylight.com
+  http:
+  - appendHeaders:
+      x-envoy-max-retries: "10"
+      x-envoy-retry-on: gateway-error,connect-failure,refused-stream
+      x-envoy-upstream-rq-timeout-ms: "15000"
+    route:
+    - destination:
+        host: prometheus-community-kube-prometheus   ## Service name in spec.host in DR
+        subset: prometheus-ss   ## Match with name of subsets[*].name in DR
+      weight: 100      
+---
+kind: DestinationRule
+apiVersion: networking.istio.io/v1beta1
+metadata:
+  name: prometheus-dr
+  namespace: prometheus
+spec:
+  host: prometheus-community-kube-prometheus
+  subsets:
+    - labels:
+        app.kubernetes.io/name: prometheus
+      name: prometheus-ss
+    ### Label of canary set  
+    # - labels:
+    #     version: v2.0
+    #   name: subsetname2-in-destination.subset
+---
