@@ -6,6 +6,7 @@ helmCharts:
   releaseName: kiali
   namespace: kiali-operator
   valuesFile: kiali.values.yaml
+  includeCRDs: true  ## Was missing!
 resources:
 - crd.yaml
 - sa-token.yaml
