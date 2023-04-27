@@ -6,7 +6,7 @@ helmCharts:
   version: #
   releaseName: elastic
   namespace: elastic-system  
-  valuesFile: # eck.values.yaml
+  valuesFile: elasticsearch.values.yaml
   includeCRDs: true
 ## KIBANA
 - name: kibana  # Name of the chart
@@ -22,7 +22,7 @@ helmCharts:
   version: #
   releaseName: elastic
   namespace: elastic-system
-  valuesFile: kibana.values.yaml  
+  valuesFile: logstash.values.yaml  
   includeCRDs: true
 # resources:
 # - sa-token.yaml
