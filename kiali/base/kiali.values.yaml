@@ -19,7 +19,7 @@ resources:
     cpu: "10m"
     memory: "64Mi"
 affinity: {}
-replicaCount: 2
+replicaCount: 1
 priorityClassName: ""
 securityContext: {}
 
@@ -32,11 +32,11 @@ metrics:
 # debug.enableProfiler: when true (regardless of debug.enabled), timings for the most expensive tasks will be logged after each reconciliation loop
 debug:
   enabled: true
-  verbosity: "2"
+  verbosity: "1"
   enableProfiler: false
 
 # Defines where the operator will look for Kial CR resources. "" means "all namespaces".
-watchNamespace: ""
+watchNamespace: "kiali-operator"
 
 # Set to true if you want the operator to be able to create cluster roles. This is necessary
 # if you want to support Kiali CRs with spec.deployment.accessible_namespaces of '**'.

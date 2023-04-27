@@ -6,4 +6,5 @@ helmCharts:
   releaseName: kiali
   namespace: kiali-operator
   valuesFile: kiali.values.yaml
-
+resources:
+- crd.yaml
