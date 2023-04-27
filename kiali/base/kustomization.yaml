@@ -4,6 +4,6 @@ helmCharts:
   repo: https://kiali.org/helm-charts
   version: #
   releaseName: kiali
-  namespace: istio-system
+  namespace: kiali-operator
   valuesFile: kiali.values.yaml
 
