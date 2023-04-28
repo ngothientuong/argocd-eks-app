@@ -9,13 +9,13 @@ helmCharts:
   valuesFile: elasticsearch.values.yaml
   includeCRDs: true
 ## KIBANA
-- name: kibana  # Name of the chart
-  repo: https://helm.elastic.co
-  version: #
-  releaseName: elastic
-  namespace: elastic-system
-  valuesFile: kibana.values.yaml
-  includeCRDs: true
+# - name: kibana  # Name of the chart
+#   repo: https://helm.elastic.co
+#   version: #
+#   releaseName: elastic
+#   namespace: elastic-system
+#   valuesFile: kibana.values.yaml
+#   includeCRDs: true
 ## LOG STASH
 - name: logstash  # Name of the chart
   repo: https://helm.elastic.co
