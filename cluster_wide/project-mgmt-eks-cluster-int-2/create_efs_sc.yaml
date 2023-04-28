@@ -9,8 +9,8 @@ reclaimPolicy: Retain
 allowVolumeExpansion: true
 parameters:
   provisioningMode: efs-ap
-  fileSystemId: fs-0bee6082a5475e7c2
+  fileSystemId: fs-0d2cb4585a9d03683    ## Specific to region/zone
   directoryPerms: "700"
   gidRangeStart: "1000" # optional
   gidRangeEnd: "2000" # optional
-  basePath: "/dynamic_provisioning" # optional
+  basePath: "/dynamic_provisioning/int-2" # optional
