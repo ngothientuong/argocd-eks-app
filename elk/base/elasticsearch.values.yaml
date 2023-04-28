@@ -153,7 +153,7 @@ podSecurityPolicy:
 persistence:
   # enabled: true
   ### Tim
-  enabled: false
+  enabled: true
   labels:
     # Add default labels for the volumeClaimTemplate of the StatefulSet
     enabled: false
@@ -203,7 +203,7 @@ podManagementPolicy: "Parallel"
 # If you experience slow pod startups you probably want to set this to `false`.
 enableServiceLinks: true
 
-protocol: http2
+protocol: http
 httpPort: 9200
 transportPort: 9300
 
