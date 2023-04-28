@@ -399,3 +399,6 @@ istioctl x create-remote-secret --context=$CLUSTER4 --name=project-eumgmt-eks-eu
 - Kiali-Operator Github: https://github.com/kiali/kiali-operator
 - Kiali missing CRD URL: https://github.com/kiali/kiali-operator/blob/master/crd-docs/crd/kiali.io_kialis.yaml 
 - Have to install Kiali backends with Grafana, Prometheus, Istio via Kiali resource
+
+
+# ELK - ELASTIC SEARCH, KIBANA, LOGSTASH
