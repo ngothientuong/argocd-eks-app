@@ -1,0 +1,50 @@
+### kibana
+---
+apiVersion: networking.istio.io/v1alpha3
+kind: VirtualService
+metadata:
+  name: kibana-vs
+  namespace: elastic-system
+spec:
+  gateways:
+    - public-gateway.istio-system.svc.cluster.local
+    - mesh
+  hosts:
+    - tngo-eks-kibana-mgmt-eu.bylightsdc.bylight.com
+  http:
+  # - appendHeaders:
+  #     x-envoy-max-retries: "10"
+  #     x-envoy-retry-on: gateway-error,connect-failure,refused-stream
+  #     x-envoy-upstream-rq-timeout-ms: "15000"
+  #   route:
+  - route:
+    ## This could work without DestinationRule
+    # - destination:
+    #     host: prometheus-community-kube-kibana
+    #     port:
+    #       number: 9093
+    #   weight: 100
+    ### Tim
+    - destination:
+        host: kibana   ## Service name in spec.host in DR
+        subset: kibana-ss   ## Match with name of subsets[*].name in DR
+        port:
+          number: 5601
+      weight: 100      
+---
+kind: DestinationRule
+apiVersion: networking.istio.io/v1alpha3
+metadata:
+  name: kibana-dr
+  namespace: elastic-system
+spec:
+  host: kibana
+  subsets:
+    - labels:
+        app: kibana-master
+      name: kibana-ss
+    ### Label of canary set  
+    # - labels:
+    #     version: v2.0
+    #   name: subsetname2-in-destination.subset
+---

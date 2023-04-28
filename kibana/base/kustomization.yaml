@@ -1,0 +1,29 @@
+#namespace: istio-system
+## ECK Global resources
+# helmCharts:
+# - name: elasticsearch  # Name of the chart
+#   repo: https://helm.elastic.co
+#   version: #
+#   releaseName: elastic
+#   namespace: elastic-system  
+#   valuesFile: elasticsearch.values.yaml
+#   includeCRDs: true
+# ## KIBANA
+helmCharts:
+- name: kibana  # Name of the chart
+  repo: https://helm.elastic.co
+  version: #
+  releaseName: elastic
+  namespace: elastic-system
+  valuesFile: kibana.values.yaml
+  includeCRDs: true
+# # LOG STASH
+# - name: logstash  # Name of the chart
+#   repo: https://helm.elastic.co
+#   version: #
+#   releaseName: elastic
+#   namespace: elastic-system
+#   valuesFile: logstash.values.yaml  
+#   includeCRDs: true
+# resources:
+# - sa-token.yaml
