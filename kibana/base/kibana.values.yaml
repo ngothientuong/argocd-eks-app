@@ -55,21 +55,21 @@ podAnnotations:
   iam.amazonaws.com/role: project-eumgmt-eks-eu-west-2-openid_connect_role  
 # iam.amazonaws.com/role: es-cluster
 
-# resources:
-#   requests:
-#     cpu: "1000m"
-#     memory: "2Gi"
-#   limits:
-#     cpu: "1000m"
-#     memory: "2Gi"
-### Tim - Adjust to 1/4 in Development
 resources:
   requests:
-    cpu: "500m"
-    memory: "1Gi"
+    cpu: "1000m"
+    memory: "2Gi"
   limits:
-    cpu: "500m"
-    memory: "1Gi" 
+    cpu: "1000m"
+    memory: "2Gi"
+### Tim - Adjust to 1/4 in Development
+# resources:
+#   requests:
+#     cpu: "500m"
+#     memory: "1Gi"
+#   limits:
+#     cpu: "500m"
+#     memory: "1Gi" 
 
 protocol: http
 
