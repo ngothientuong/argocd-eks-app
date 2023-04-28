@@ -84,8 +84,9 @@ healthCheckPath: "/app/kibana"
 #     key:
 #       nestedkey: value
 ### Tim
-kibanaConfig: {}
-  # kibana.yml: |    
+kibanaConfig: 
+  kibana.yml: |    
+    server.publicBaseUrl: https://tngo-eks-kibana-mgmt-eu.bylightsdc.bylight.com/
   #   server.ssl.enabled: false
   #   elasticsearch.ssl.verificationMode: none
 
