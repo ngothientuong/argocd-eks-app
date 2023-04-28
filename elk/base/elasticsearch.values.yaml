@@ -203,7 +203,7 @@ podManagementPolicy: "Parallel"
 # If you experience slow pod startups you probably want to set this to `false`.
 enableServiceLinks: true
 
-protocol: https
+protocol: http2
 httpPort: 9200
 transportPort: 9300
 
@@ -269,14 +269,14 @@ tolerations: []
 # Enabling this will publicly expose your Elasticsearch instance.
 # Only enable this if you have security enabled on your cluster
 ingress:
-  enabled: false
+  enabled: true
   annotations: {}
   # kubernetes.io/ingress.class: nginx
   # kubernetes.io/tls-acme: "true"
   className: "nginx"
   pathtype: ImplementationSpecific
   hosts:
-    - host: chart-example.local
+    - host: https://tngo-eks-es-mgmt-eu.bylightsdc.bylight.com/
       paths:
         - path: /
   tls: []
