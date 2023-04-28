@@ -18,9 +18,9 @@ spec:
     server: 'https://DD9C03E1D12C707818F395E287C2996B.gr7.eu-west-2.eks.amazonaws.com'
     namespace: elastic-system
   syncPolicy:
-    # automated:
-    #   prune: true
-    #   selfHeal: true
+    automated:
+      prune: true
+      selfHeal: true
     syncOptions:
       - CreateNamespace=false
       #- Replace=true

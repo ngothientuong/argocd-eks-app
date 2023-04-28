@@ -8,7 +8,7 @@ elasticsearchCredentialSecret: elasticsearch-master-credentials
 
 # replicas: 1
 ### Tim
-replicas: 1
+replicas: 2
 
 # Extra environment variables to append to this nodeGroup
 # This will be appended to the current 'env:' key. You can use any of the kubernetes env
@@ -65,11 +65,11 @@ podAnnotations:
 ### Tim - Adjust to 1/4 in Development
 resources:
   requests:
-    cpu: "500m"
-    memory: "1Gi"
+    cpu: "750m"
+    memory: "1500Mi"
   limits:
-    cpu: "500m"
-    memory: "1Gi" 
+    cpu: "750m"
+    memory: "1500Mi" 
 
 protocol: http
 

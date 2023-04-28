@@ -41,7 +41,7 @@ spec:
   host: elastic-kibana
   subsets:
     - labels:
-        app: kibana-master
+        app: kibana
       name: kibana-ss
     ### Label of canary set  
     # - labels:

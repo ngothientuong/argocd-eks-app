@@ -2,7 +2,7 @@ apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
   ## Name cannot have -
-  name: elk-project-eumgmt-eks-eu-west-2
+  name: elasticsearch-project-eumgmt-eks-eu-west-2
   # You'll usually want to add your resources to the argocd namespace.
   namespace: argocd
   # Add a this finalizer ONLY if you want these to cascade delete.
@@ -13,20 +13,20 @@ spec:
   project: default
   source:
     repoURL: 'git@github.com:ngothientuong/argocd-eks-app.git'
-    path: elk/project-eumgmt-eks-eu-west-2
+    path: elasticsearch/project-eumgmt-eks-eu-west-2
   destination:
     server: 'https://DD9C03E1D12C707818F395E287C2996B.gr7.eu-west-2.eks.amazonaws.com'
     namespace: elastic-system
   syncPolicy:
-    # automated:
-    #   prune: true
-    #   selfHeal: true
+    automated:
+      prune: true
+      selfHeal: true
     syncOptions:
       - CreateNamespace=true
       #- Replace=true
       - PruneLast=true      
     retry:
-      limit: 3
+      limit: 2
       backoff:
         duration: 5s
         factor: 2

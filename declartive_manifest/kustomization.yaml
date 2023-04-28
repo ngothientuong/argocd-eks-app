@@ -54,7 +54,7 @@ resources:
 # - kiali_project-mgmt-eks-cluster-rancher-test.yaml
 
 # ## Elastic Search
-- elk_project-eumgmt-eks-eu-west-2.yaml
+- elasticsearch_project-eumgmt-eks-eu-west-2.yaml
 
 # ## Kibana
 - kibana_project-eumgmt-eks-eu-west-2.yaml
