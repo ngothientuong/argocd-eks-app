@@ -48,7 +48,9 @@ labels: {}
 
 annotations: {}
 
-podAnnotations: {}
+podAnnotations: 
+  eks.amazonaws.com/role-arn: arn:aws:iam::682331604648:role/project/project-eumgmt-eks-eu-west-2-openid_connect_role
+  iam.amazonaws.com/role: project-eumgmt-eks-eu-west-2-openid_connect_role  
 # iam.amazonaws.com/role: es-cluster
 
 # resources:

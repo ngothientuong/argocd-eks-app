@@ -79,7 +79,9 @@ image: "docker.elastic.co/elasticsearch/elasticsearch"
 imageTag: "8.5.1"
 imagePullPolicy: "IfNotPresent"
 
-podAnnotations: {}
+podAnnotations: 
+  eks.amazonaws.com/role-arn: arn:aws:iam::682331604648:role/project/project-eumgmt-eks-eu-west-2-openid_connect_role
+  iam.amazonaws.com/role: project-eumgmt-eks-eu-west-2-openid_connect_role  
 # iam.amazonaws.com/role: es-cluster
 
 # additionals labels
