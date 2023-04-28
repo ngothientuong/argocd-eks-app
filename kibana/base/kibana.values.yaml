@@ -156,7 +156,7 @@ service:
   httpPortName: http
 
 ingress:
-  enabled: true
+  enabled: false
   className: "nginx"
   pathtype: ImplementationSpecific
   annotations: {}
