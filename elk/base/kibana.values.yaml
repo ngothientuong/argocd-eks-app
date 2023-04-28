@@ -95,7 +95,7 @@ securityContext:
   runAsNonRoot: true
   runAsUser: 1000
 
-serviceAccount: "kibana-sa"
+serviceAccount: ""
 
 # Whether or not to automount the service account token in the pod. Normally, Kibana does not need this
 automountToken: true
