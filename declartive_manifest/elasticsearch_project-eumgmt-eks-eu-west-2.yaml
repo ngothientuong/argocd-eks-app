@@ -24,7 +24,7 @@ spec:
     syncOptions:
       - CreateNamespace=true
       #- Replace=true
-      - PruneLast=true      
+      - PruneLast=false      
     retry:
       limit: 2
       backoff:
