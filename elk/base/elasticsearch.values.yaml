@@ -40,7 +40,7 @@ esConfig:
 #  log4j2.properties: |
 #    key = value
 
-createCert: false
+createCert: true
 
 esJvmOptions: {}
 #  processors.options: |

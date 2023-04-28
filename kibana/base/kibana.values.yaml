@@ -87,6 +87,8 @@ healthCheckPath: "/app/kibana"
 kibanaConfig:
   kibana.yml: |    
     server.ssl.enabled: false
+    elasticsearch.ssl.verificationMode: none
+
 
 # If Pod Security Policy in use it may be required to specify security context as well as service account
 
