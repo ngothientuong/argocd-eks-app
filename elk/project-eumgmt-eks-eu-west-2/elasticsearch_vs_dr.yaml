@@ -26,10 +26,10 @@ spec:
     #   weight: 100
     ### Tim
     - destination:
-        host: elasticsearch   ## Service name in spec.host in DR
+        host: elasticsearch-master   ## Service name in spec.host in DR
         subset: elasticsearch-ss   ## Match with name of subsets[*].name in DR
-        # port:
-        #   number: 20001
+        port:
+          number: 9200
       weight: 100      
 ---
 kind: DestinationRule
@@ -38,10 +38,10 @@ metadata:
   name: elasticsearch-dr
   namespace: elastic-system
 spec:
-  host: elasticsearch
+  host: elasticsearch-master
   subsets:
     - labels:
-        app.kubernetes.io/name: elasticsearch
+        app: elasticsearch-master
       name: elasticsearch-ss
     ### Label of canary set  
     # - labels:
