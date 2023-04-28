@@ -6,3 +6,4 @@ resources:
 - alb_gw_cert.yaml
 - create_alb_to_istio_ingress_gw.yaml
 - create_efs_sc.yaml
+- elastic_cred.yaml
