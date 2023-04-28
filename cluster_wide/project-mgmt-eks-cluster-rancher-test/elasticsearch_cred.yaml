@@ -18,7 +18,7 @@ data:
 apiVersion: clustersecret.io/v1
 kind: ClusterSecret
 metadata:
-  name: elasticsearch-master-credentials
+  name: elasticsearch-master-certs
   namespace: clustersecret
 matchNamespace:
   - 'elastic-system'
