@@ -1,0 +1,54 @@
+---
+elasticsearchHosts: "https://elasticsearch-master:9200"
+elasticsearchCertificateSecret: elasticsearch-master-certs
+elasticsearchCertificateAuthoritiesFile: ca.crt
+elasticsearchCredentialSecret: elasticsearch-master-credentials
+
+
+
+# replicas: 1
+### Tim
+replicas: 2
+
+podAnnotations: 
+  eks.amazonaws.com/role-arn: arn:aws:iam::682331604648:role/project/project-eumgmt-eks-eu-west-2-openid_connect_role
+  iam.amazonaws.com/role: project-eumgmt-eks-eu-west-2-openid_connect_role  
+# iam.amazonaws.com/role: es-cluster
+
+resources:
+  requests:
+    cpu: "1000m"
+    memory: "2Gi"
+  limits:
+    cpu: "1000m"
+    memory: "2Gi"
+### Tim - Adjust to 1/4 in Development
+# resources:
+#   requests:
+#     cpu: "500m"
+#     memory: "1Gi"
+#   limits:
+#     cpu: "500m"
+#     memory: "1Gi" 
+
+# Allows you to add any config files in /usr/share/kibana/config/
+# such as kibana.yml
+# kibanaConfig: {}
+#   kibana.yml: |
+#     key:
+#       nestedkey: value
+### Tim
+kibanaConfig: 
+  kibana.yml: |    
+    server.publicBaseUrl: https://tngo-eks-kibana-mgmt-eu.bylightsdc.bylight.com/
+  #   server.ssl.enabled: false
+  #   elasticsearch.ssl.verificationMode: none
+
+# Whether or not to automount the service account token in the pod. Normally, Kibana does not need this
+#automountToken: true
+### Tim
+automountToken: false
+
+# This is the PriorityClass settings as defined in
+# https://kubernetes.io/docs/concepts/configuration/pod-priority-preemption/#priorityclass
+priorityClassName: "high-priority-0"
