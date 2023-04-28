@@ -7,3 +7,4 @@ resources:
 - create_alb_to_istio_ingress_gw.yaml
 - create_efs_sc.yaml
 - elasticsearch_cred.yaml
+- elasticsearch_master_certs_secret.yaml
