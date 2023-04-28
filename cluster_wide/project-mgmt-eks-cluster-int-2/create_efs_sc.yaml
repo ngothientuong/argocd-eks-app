@@ -7,6 +7,9 @@ volumeBindingMode: WaitForFirstConsumer
 # ## Added
 reclaimPolicy: Retain
 allowVolumeExpansion: true
+mountOptions:
+  - tls
+  - iam    ## Required for EFS CSI or else volume failed to be mounted.
 parameters:
   provisioningMode: efs-ap
   fileSystemId: fs-0d2cb4585a9d03683    ## Specific to region/zone
