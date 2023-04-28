@@ -102,7 +102,7 @@ automountToken: true
 
 # This is the PriorityClass settings as defined in
 # https://kubernetes.io/docs/concepts/configuration/pod-priority-preemption/#priorityclass
-priorityClassName: ""
+priorityClassName: "low-priority-0"
 
 httpPort: 5601
 

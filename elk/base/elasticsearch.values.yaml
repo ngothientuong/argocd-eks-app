@@ -124,9 +124,9 @@ volumeClaimTemplate:
       storage: 55Gi
 
 rbac:
+  enable: false
+  # ### Tim
   # enabled: true
-  ### Tim
-  enabled: true
   serviceAccountAnnotations: {}
   serviceAccountName: ""
   automountToken: true
@@ -180,7 +180,7 @@ extraInitContainers: []
 
 # This is the PriorityClass settings as defined in
 # https://kubernetes.io/docs/concepts/configuration/pod-priority-preemption/#priorityclass
-priorityClassName: ""
+priorityClassName: "high-priority-0"
 
 # By default this will make sure two pods don't end up on the same node
 # Changing this to a region would allow you to spread pods across regions
