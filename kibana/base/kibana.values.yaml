@@ -8,7 +8,7 @@ elasticsearchCredentialSecret: elasticsearch-master-credentials
 
 # replicas: 1
 ### Tim
-replicas: 3
+replicas: 1
 
 # Extra environment variables to append to this nodeGroup
 # This will be appended to the current 'env:' key. You can use any of the kubernetes env
@@ -65,11 +65,11 @@ podAnnotations:
 ### Tim - Adjust to 1/4 in Development
 resources:
   requests:
-    cpu: "250m"
-    memory: "500Mi"
+    cpu: "500m"
+    memory: "1Gi"
   limits:
-    cpu: "250m"
-    memory: "500Mi" 
+    cpu: "500m"
+    memory: "1Gi" 
 
 protocol: http
 
@@ -84,10 +84,10 @@ healthCheckPath: "/app/kibana"
 #     key:
 #       nestedkey: value
 ### Tim
-kibanaConfig:
-  kibana.yml: |    
-    server.ssl.enabled: false
-    elasticsearch.ssl.verificationMode: none
+kibanaConfig: {}
+  # kibana.yml: |    
+  #   server.ssl.enabled: false
+  #   elasticsearch.ssl.verificationMode: none
 
 
 # If Pod Security Policy in use it may be required to specify security context as well as service account

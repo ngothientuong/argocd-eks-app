@@ -15,7 +15,7 @@ spec:
     - tngo-eks-kiali-mgmt-eu.bylightsdc.bylight.com
     - tngo-eks-jaeger-mgmt-eu.bylightsdc.bylight.com        
     - tngo-eks-thanos-mgmt-eu.bylightsdc.bylight.com            
-    - tngo-eks-es-mgmt-eu.bylightsdc.bylight.com    
+    #- tngo-eks-es-mgmt-eu.bylightsdc.bylight.com    
     - tngo-eks-kibana-mgmt-eu.bylightsdc.bylight.com
     - tngo-eks-logstash-mgmt-eu.bylightsdc.bylight.com
   #duration: 7200h0m0s

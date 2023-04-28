@@ -31,9 +31,9 @@ esMajorVersion: ""
 # esConfig: {}
 ### Tim
 esConfig:
-  elasticsearch.yml: |
-    xpack.security.enabled: false
-    xpack.security.transport.ssl.enabled: false
+  # elasticsearch.yml: |
+  #   xpack.security.enabled: false
+  #   xpack.security.transport.ssl.enabled: false
 #  elasticsearch.yml: |
 #    key:
 #      nestedkey: value
@@ -129,9 +129,9 @@ volumeClaimTemplate:
       storage: 55Gi
 
 rbac:
-  # enable: false
+  enable: false
   # ### Tim
-  enabled: true
+  # enabled: true
   serviceAccountAnnotations: {}
   serviceAccountName: ""
   automountToken: true
@@ -208,7 +208,7 @@ podManagementPolicy: "Parallel"
 # If you experience slow pod startups you probably want to set this to `false`.
 enableServiceLinks: true
 
-protocol: http
+protocol: https
 httpPort: 9200
 transportPort: 9300
 

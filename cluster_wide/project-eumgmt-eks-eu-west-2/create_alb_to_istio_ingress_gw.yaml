@@ -81,7 +81,6 @@ spec:
     - tngo-eks-kiali-mgmt-eu.bylightsdc.bylight.com   
     - tngo-eks-jaeger-mgmt-eu.bylightsdc.bylight.com   
     - tngo-eks-thanos-mgmt-eu.bylightsdc.bylight.com 
-    - tngo-eks-es-mgmt-eu.bylightsdc.bylight.com    
     - tngo-eks-kibana-mgmt-eu.bylightsdc.bylight.com
     - tngo-eks-logstash-mgmt-eu.bylightsdc.bylight.com          
     secretName: tngo-eks-alb-gw-tls      # < cert-manager will store the created certificate in this secret.  
@@ -112,9 +111,7 @@ spec:
     - host: "tngo-eks-jaeger-mgmt-eu.bylightsdc.bylight.com"
       http: *backend                    
     - host: "tngo-eks-thanos-mgmt-eu.bylightsdc.bylight.com"
-      http: *backend       
-    - host: "tngo-eks-es-mgmt-eu.bylightsdc.bylight.com"
-      http: *backend    
+      http: *backend         
     - host: "tngo-eks-kibana-mgmt-eu.bylightsdc.bylight.com"
       http: *backend                                 
     - host: "tngo-eks-logstash-mgmt-eu.bylightsdc.bylight.com"
