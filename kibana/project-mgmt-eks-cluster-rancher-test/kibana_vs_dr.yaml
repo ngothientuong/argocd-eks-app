@@ -10,7 +10,7 @@ spec:
     - public-gateway.istio-system.svc.cluster.local
     - mesh
   hosts:
-    - tngo-eks-kibana-mgmt-eu.bylightsdc.bylight.com
+    - tngo-eks-kibana-mgmt-us.bylightsdc.bylight.com
   http:
   # - appendHeaders:
   #     x-envoy-max-retries: "10"
@@ -26,7 +26,7 @@ spec:
     #   weight: 100
     ### Tim
     - destination:
-        host: kibana   ## Service name in spec.host in DR
+        host: elastic-kibana   ## Service name in spec.host in DR
         subset: kibana-ss   ## Match with name of subsets[*].name in DR
         port:
           number: 5601
@@ -38,7 +38,7 @@ metadata:
   name: kibana-dr
   namespace: elastic-system
 spec:
-  host: kibana
+  host: elastic-kibana
   subsets:
     - labels:
         app: kibana-master

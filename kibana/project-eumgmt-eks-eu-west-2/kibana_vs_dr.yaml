@@ -26,7 +26,7 @@ spec:
     #   weight: 100
     ### Tim
     - destination:
-        host: kibana   ## Service name in spec.host in DR
+        host: elastic-kibana   ## Service name in spec.host in DR
         subset: kibana-ss   ## Match with name of subsets[*].name in DR
         port:
           number: 5601
@@ -38,7 +38,7 @@ metadata:
   name: kibana-dr
   namespace: elastic-system
 spec:
-  host: kibana
+  host: elastic-kibana
   subsets:
     - labels:
         app: kibana-master
