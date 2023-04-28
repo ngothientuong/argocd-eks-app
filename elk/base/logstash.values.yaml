@@ -80,23 +80,23 @@ podAnnotations: {}
 # additionals labels
 labels: {}
 
-logstashJavaOpts: "-Xmx500m -Xms500m"
+logstashJavaOpts: "-Xmx1g -Xms1g"
 
-# resources:
-#   requests:
-#     cpu: "100m"
-#     memory: "1536Mi"
-#   limits:
-#     cpu: "1000m"
-#     memory: "1536Mi"
-### Tim - adjust to 1/4
 resources:
   requests:
     cpu: "100m"
-    memory: "750Mi"
+    memory: "1536Mi"
   limits:
-    cpu: "250m"
-    memory: "750Mi"
+    cpu: "1000m"
+    memory: "1536Mi"
+# ### Tim - adjust to 1/4
+# resources:
+#   requests:
+#     cpu: "100m"
+#     memory: "750Mi"
+#   limits:
+#     cpu: "250m"
+#     memory: "750Mi"
 
 volumeClaimTemplate:
   ### Tim - added storageClassName
