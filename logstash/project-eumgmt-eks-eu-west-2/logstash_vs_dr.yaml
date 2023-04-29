@@ -26,10 +26,10 @@ spec:
     #   weight: 100
     ### Tim
     - destination:
-        host: elastic-logstash   ## Service name in spec.host in DR
+        host: logstash-svc   ## Service name in spec.host in DR
         subset: logstash-ss   ## Match with name of subsets[*].name in DR
-        port:
-          number: 8080
+        # port:
+        #   number: 8080
       weight: 100      
 ---
 kind: DestinationRule
@@ -38,10 +38,10 @@ metadata:
   name: logstash-dr
   namespace: elastic-system
 spec:
-  host: elastic-logstash
+  host: logstash-svc
   subsets:
     - labels:
-        app: logstash
+        app: elastic-logstash
       name: logstash-ss
     ### Label of canary set  
     # - labels:
