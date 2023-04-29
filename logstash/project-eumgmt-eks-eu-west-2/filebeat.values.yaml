@@ -119,7 +119,10 @@ deployment:
         - type: log
           paths:
             - /usr/share/filebeat/logs/filebeat
-
+      setup.kibana:
+        host: "http://elastic-kibana:5601"
+        ssl.verification_mode: "none"
+  
       output.elasticsearch:
         host: "${NODE_NAME}"
         hosts: '["https://${ELASTICSEARCH_HOSTS:elasticsearch-master:9200}"]'
