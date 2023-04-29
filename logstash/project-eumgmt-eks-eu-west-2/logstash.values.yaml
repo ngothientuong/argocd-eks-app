@@ -18,13 +18,13 @@ replicas: 2
 #  log4j2.properties: |
 #    key = value
 ### Tim
-logstashConfig: |
-   logstash.yml: |
+logstashConfig: 
+  logstash.yml: |
       network.host = 0.0.0.0
 
 # Allows you to add any pipeline files in /usr/share/logstash/pipeline/
 ### ***warn*** there is a hardcoded logstash.conf in the image, override it first
-logstashPipeline: {}
+# logstashPipeline: {}
 #  logstash.conf: |
 #    input {
 #      exec {
@@ -33,6 +33,17 @@ logstashPipeline: {}
 #      }
 #    }
 #    output { stdout { } }
+
+# ### Tim
+# logstashPipeline: 
+#   logstash.conf: |
+#     input {
+#       exec {
+#         command => "uptime"
+#         interval => 30
+#       }
+#     }
+#     output { stdout { } }
 
 # Allows you to add any pattern files in your custom pattern dir
 logstashPatternDir: "/usr/share/logstash/patterns/"
