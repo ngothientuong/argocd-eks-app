@@ -1,0 +1,30 @@
+apiVersion: jaegertracing.io/v1
+kind: Jaeger
+metadata:
+  labels:
+    jaegertracing.io/operated-by: observability.jaeger-operator
+  name: jaeger-prod-stragtegy
+  namespace: observability
+spec:
+  strategy: production
+  storage:
+    type: elasticsearch 
+    esIndexCleaner:
+      enabled: true                                # // turn the cron job deployment on and off
+      numberOfDays: 7                              # // number of days to wait before deleting a record
+      schedule: "55 23 * * *"                      # // cron expression for it to run    
+    options:
+      es:
+        server-urls: https://elasticsearch-master.elastic-system:9200 
+        index-prefix: jaeger-prefix
+        tls: 
+          ca: /es/certificates/ca.crt
+    secretName: elasticsearch-master-credentials
+  volumeMounts: 
+    - name: certificates
+      mountPath: /es/certificates/
+      readOnly: true
+  volumes:
+    - name: certificates
+      secret:
+        secretName: elasticsearch-master-certs
