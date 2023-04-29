@@ -19,7 +19,7 @@ logstashConfig:
     xpack.monitoring.elasticsearch.username: "elastic" 
     xpack.monitoring.elasticsearch.password: "2NPZCPQ2sjdXme67"
     xpack.monitoring.elasticsearch.ssl.verification_mode: none
-    path.data: /usr/share/logstash
+    path.data: /usr/share/logstash/data
     pipeline.workers: 4
     pipeline.batch.size: 254
     pipeline.batch.delay: 90
