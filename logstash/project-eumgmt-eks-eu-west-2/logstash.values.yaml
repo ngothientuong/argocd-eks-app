@@ -58,7 +58,9 @@ logstashPipeline:
         hosts => ["https://elasticsearch-master:9200"]
         index => "%{[@metadata][beat]}-%{[@metadata][version]}-%{+YYYY.MM.dd}"
         ssl => false
-        ssl_certificate_verification => false        
+        ssl_certificate_verification => false 
+        user => "elastic" 
+        password: "lYuVyDtfwId2JwDm"
       }
     }
 ### For filebeat input above
