@@ -168,7 +168,7 @@ extraInitContainers:
 
 # This is the PriorityClass settings as defined in
 # https://kubernetes.io/docs/concepts/configuration/pod-priority-preemption/#priorityclass
-priorityClassName: "low-priority-0"
+priorityClassName: "high-priority-0"
 
 # By default this will make sure two pods don't end up on the same node
 # Changing this to a region would allow you to spread pods across regions
@@ -291,7 +291,7 @@ service:
   #     targetPort: 8080
 
 ingress:
-  enabled: false
+  enabled: true
   annotations:
     {}
     # kubernetes.io/tls-acme: "true"

@@ -17,13 +17,13 @@
 #   valuesFile: kibana.values.yaml
 #   includeCRDs: true
 # # LOG STASH
-helmCharts:
-- name: logstash  # Name of the chart
-  repo: https://helm.elastic.co
-  version: #
-  releaseName: elastic
-  namespace: elastic-system
-  valuesFile: logstash.values.yaml  
-  includeCRDs: true
+# helmCharts:
+# - name: logstash  # Name of the chart
+#   repo: https://helm.elastic.co
+#   version: #
+#   releaseName: elastic
+#   namespace: elastic-system
+#   valuesFile: logstash.values.yaml  
+#   includeCRDs: true
 # resources:
 # - sa-token.yaml
