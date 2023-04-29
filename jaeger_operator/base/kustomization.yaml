@@ -7,5 +7,5 @@ helmCharts:
   namespace: observability
   valuesFile: jaeger_operator.values.yaml
   includeCRDs: true ## default is false
-patchesStrategicMerge:
-  - patch_delete_ingress.yaml
+patches:
+- path: patch_delete_ingress.yaml
