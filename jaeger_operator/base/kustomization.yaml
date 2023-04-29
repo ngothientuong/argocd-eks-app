@@ -1,4 +1,4 @@
-namespace: kube-system
+#namespace: observability
 helmCharts:
 - name: jaeger-operator  # Name of the chart
   repo: https://jaegertracing.github.io/helm-charts
