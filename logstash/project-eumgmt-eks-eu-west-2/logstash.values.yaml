@@ -17,7 +17,7 @@ logstashConfig:
     xpack.monitoring.enabled: true
     xpack.monitoring.elasticsearch.hosts: [ "https://elasticsearch-master:9200" ]
     xpack.monitoring.elasticsearch.username: "elastic" 
-    xpack.monitoring.elasticsearch.password: "1M2cgyYzRgiKUkcJ"
+    xpack.monitoring.elasticsearch.password: "lYuVyDtfwId2JwDm"
     xpack.monitoring.elasticsearch.ssl.verification_mode: none
     path.data: /usr/share/logstash/data
     pipeline.workers: 4
@@ -25,7 +25,7 @@ logstashConfig:
     pipeline.batch.delay: 90
     pipeline.unsafe_shutdown: false
     pipeline.ordered: auto
-    path.config: /usr/share/logstash/config
+    path.config: /usr/share/logstash/pipeline
     config.test_and_exit: false
     config.reload.automatic: true
     config.reload.interval: 3s
@@ -57,6 +57,8 @@ logstashPipeline:
       elasticsearch {
         hosts => ["https://elasticsearch-master:9200""]
         index => "%{[@metadata][beat]}-%{[@metadata][version]}-%{+YYYY.MM.dd}"
+        ssl => false
+        ssl_certificate_verification => false        
       }
     }
 ### For filebeat input above
