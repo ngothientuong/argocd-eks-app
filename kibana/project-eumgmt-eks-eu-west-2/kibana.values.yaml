@@ -40,7 +40,9 @@ resources:
 ### Tim
 kibanaConfig: 
   kibana.yml: |    
-    server.publicBaseUrl: https://tngo-eks-kibana-mgmt-eu.bylightsdc.bylight.com/
+    server.host: 0.0.0.0  
+#    server.publicBaseUrl: https://tngo-eks-kibana-mgmt-eu.bylightsdc.bylight.com/
+
   #   server.ssl.enabled: false
   #   elasticsearch.ssl.verificationMode: none
 
