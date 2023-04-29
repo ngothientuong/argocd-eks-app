@@ -46,40 +46,23 @@ logstashConfig:
 # Allows you to add any pipeline files in /usr/share/logstash/pipeline/
 ### ***warn*** there is a hardcoded logstash.conf in the image, override it first
 logstashPipeline:
-  logstash.conf: |
-    input {
-      exec {
-        command => "uptime"
-        interval => 30
-      }
-    }
-    output { stdout { } }
-  dummy-01.conf: |
-    input { stdin{} }  
-    filter { }
-    output { stdout { codec => "rubydebug" } }
-  filebeat-02.conf: |
+  filebeat-03.conf: |
     input {
       beats {
         port => 5044
       }
     }
-    filter { 
-      json {
-        source => "message"
-        target => "message"
-      }
-    } 
-    output { 
-      elasticsearch {               
-        ssl => false 
-        ssl_certificate_verification => false
+
+    output {
+      elasticsearch {
+        hosts => ["https://elasticsearch-master:9200""]
         index => "%{[@metadata][beat]}-%{[@metadata][version]}-%{+YYYY.MM.dd}"
-        hosts => [ "https://elasticsearch-master:9200" ]
-      stdout { 
-          codec => rubydebug 
-        }        
-      }   
+        ssl => false
+        ssl_certificate_verification => false
+        user => "elastic"
+        password => "1M2cgyYzRgiKUkcJ"
+      }
+    }
 ### For filebeat input above
 #        ssl => true
 #        ssl_certificate => "/usr/share/filebeat/certs/tls.crt"
