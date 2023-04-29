@@ -294,15 +294,15 @@ livenessProbe:
   failureThreshold: 3
   successThreshold: 1
 
-readinessProbe:
-  httpGet:
-    path: /
-    port: http
-  initialDelaySeconds: 120
-  periodSeconds: 10
-  timeoutSeconds: 5
-  failureThreshold: 3
-  successThreshold: 3
+# readinessProbe:
+#   httpGet:
+#     path: /
+#     port: http
+#   initialDelaySeconds: 120
+#   periodSeconds: 10
+#   timeoutSeconds: 5
+#   failureThreshold: 3
+#   successThreshold: 3
 
 ## Use an alternate scheduler.
 ## ref: https://kubernetes.io/docs/tasks/administer-cluster/configure-multiple-schedulers/
