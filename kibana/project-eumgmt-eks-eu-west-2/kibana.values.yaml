@@ -41,7 +41,7 @@ resources:
 kibanaConfig: 
   kibana.yml: |    
     server.host: 0.0.0.0
-    readonlyrest_kbn.sessions_probe_interval_seconds: 180
+
 
 #    server.publicBaseUrl: http://tngo-eks-kibana-mgmt-eu.bylightsdc.bylight.com    
 
