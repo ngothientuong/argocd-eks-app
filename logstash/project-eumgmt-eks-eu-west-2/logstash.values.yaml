@@ -19,6 +19,7 @@ logstashConfig:
     xpack.monitoring.elasticsearch.username: "elastic" 
     xpack.monitoring.elasticsearch.password: "lYuVyDtfwId2JwDm"
     xpack.monitoring.elasticsearch.ssl.verification_mode: none
+    http.host: "0.0.0.0"
     path.data: /usr/share/logstash/data
     pipeline.workers: 4
     pipeline.batch.size: 254
@@ -299,7 +300,7 @@ livenessProbe:
     path: /
     port: monitor
     host: 127.0.0.1
-  initialDelaySeconds: 120
+  initialDelaySeconds: 60
   # periodSeconds: 30
   timeoutSeconds: 30
   # failureThreshold: 6
