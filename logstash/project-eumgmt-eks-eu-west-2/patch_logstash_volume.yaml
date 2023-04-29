@@ -12,5 +12,6 @@ spec:
             name: elastic-logstash
             $patch: delete
           ## Change EFS mount to /usr/share/logstash
+      - volumeMounts:          
           - mountPath: /usr/share/logstash
             name: elastic-logstash
