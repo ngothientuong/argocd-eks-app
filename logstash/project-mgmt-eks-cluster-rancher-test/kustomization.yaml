@@ -15,17 +15,12 @@ helmCharts:
 ## FILEBEAT  
 ## Needs FileBeat to collect logs. Logstash will fail to start without pipeline config
 ## No change in filebeat for now, including hostNetwork: false
-- name: filebeat  # Name of the chart
-  repo: https://helm.elastic.co
-  version: #
-  releaseName: elastic
-  namespace: elastic-system
-  valuesFile: filebeat.values.yaml  
-  includeCRDs: true
-# patches:
-# - path: patch_logstash_volume.yaml
-#   target:
-#     version: v1
-#     kind: StatefulSet
-#     name: elastic-logstash
-#     namespace: elastic-system
+# - name: filebeat  # Name of the chart
+#   repo: https://helm.elastic.co
+#   version: #
+#   releaseName: elastic
+#   namespace: elastic-system
+#   valuesFile: filebeat.values.yaml  
+#   includeCRDs: true
+#patches:
+#- path: patch_logstash_volume.yaml

@@ -62,3 +62,8 @@ resources:
 # ## Logstash
 - logstash_project-eumgmt-eks-eu-west-2.yaml
 
+# ## filebeat
+- filebeat_project-eumgmt-eks-eu-west-2.yaml
+
+# ## filebeat
+- jaeger_operator_project-eumgmt-eks-eu-west-2.yaml

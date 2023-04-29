@@ -1,0 +1,13 @@
+#namespace: elastic-system
+## For cross-cluster filebeat to send logs to elastic-search
+## replicate elasticsearch-master-credentials to other clusters
+## Preferred using github action in tandem with clustersecrets resources
+helmCharts:
+- name: filebeat  # Name of the chart
+  repo: https://helm.elastic.co
+  version: #
+  releaseName: elastic
+  namespace: elastic-system
+  valuesFile: filebeat.values.yaml  
+  includeCRDs: true
+#patches:
