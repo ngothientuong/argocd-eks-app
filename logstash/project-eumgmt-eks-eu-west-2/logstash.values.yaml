@@ -311,7 +311,7 @@ service:
   #     targetPort: 8080
 
 ingress:
-  enabled: true
+  enabled: false
   annotations:
     {}
     # kubernetes.io/tls-acme: "true"
