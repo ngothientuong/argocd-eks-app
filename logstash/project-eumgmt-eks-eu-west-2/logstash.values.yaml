@@ -55,7 +55,7 @@ logstashPipeline:
 
     output {
       elasticsearch {
-        hosts => ["https://elasticsearch-master:9200""]
+        hosts => ["https://elasticsearch-master:9200"]
         index => "%{[@metadata][beat]}-%{[@metadata][version]}-%{+YYYY.MM.dd}"
         ssl => false
         ssl_certificate_verification => false        
