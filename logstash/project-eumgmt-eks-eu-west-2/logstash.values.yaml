@@ -285,26 +285,26 @@ terminationGracePeriod: 120
 #       - curl
 #      - localhost:9600
 
-readinessProbe:
-  httpGet:
-    path: /
-    port: monitor
-    # host: 127.0.0.1
-  initialDelaySeconds: 60
-  # periodSeconds: 30
-  timeoutSeconds: 30
-  # failureThreshold: 6
-  # successThreshold: 1
-livenessProbe:
-  httpGet:
-    path: /
-    port: monitor
-    # host: 127.0.0.1
-  initialDelaySeconds: 60
-  # periodSeconds: 30
-  timeoutSeconds: 30
-  # failureThreshold: 6
-  # successThreshold: 1
+# readinessProbe:
+#   httpGet:
+#     path: /
+#     port: monitor
+#     # host: 127.0.0.1
+#   initialDelaySeconds: 60
+#   # periodSeconds: 30
+#   timeoutSeconds: 30
+#   # failureThreshold: 6
+#   # successThreshold: 1
+# livenessProbe:
+#   httpGet:
+#     path: /
+#     port: monitor
+#     # host: 127.0.0.1
+#   initialDelaySeconds: 60
+#   # periodSeconds: 30
+#   timeoutSeconds: 30
+#   # failureThreshold: 6
+#   # successThreshold: 1
 
 ## Use an alternate scheduler.
 ## ref: https://kubernetes.io/docs/tasks/administer-cluster/configure-multiple-schedulers/
