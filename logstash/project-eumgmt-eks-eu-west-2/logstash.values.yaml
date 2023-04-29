@@ -289,7 +289,7 @@ readinessProbe:
   httpGet:
     path: /
     port: monitor
-    host: 127.0.0.1
+    # host: 127.0.0.1
   initialDelaySeconds: 60
   # periodSeconds: 30
   timeoutSeconds: 30
@@ -299,7 +299,7 @@ livenessProbe:
   httpGet:
     path: /
     port: monitor
-    host: 127.0.0.1
+    # host: 127.0.0.1
   initialDelaySeconds: 60
   # periodSeconds: 30
   timeoutSeconds: 30
