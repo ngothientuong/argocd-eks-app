@@ -35,7 +35,7 @@ logstashPipeline:
     input { stdin{} }  
     filter { }
     output { stdout { codec => "rubydebug" } }
-  filebeat-01.conf: |
+  filebeat-02.conf: |
     input {
       beats {
         port => 5044
@@ -51,7 +51,7 @@ logstashPipeline:
       elasticsearch {               
         ssl => false 
         ssl_certificate_verification => false
-        index => "filebeat_index-%{+YYYY.MM.dd}" 
+        index => "%{[@metadata][beat]}-%{[@metadata][version]}-%{+YYYY.MM.dd}"
         hosts => [ "https://elasticsearch-master:9200" ]
         user => "elastic" 
         password => "2NPZCPQ2sjdXme67" 
