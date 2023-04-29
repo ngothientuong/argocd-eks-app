@@ -22,50 +22,44 @@ logstashConfig:
 
 # Allows you to add any pipeline files in /usr/share/logstash/pipeline/
 ### ***warn*** there is a hardcoded logstash.conf in the image, override it first
-# logstashPipeline: {}
-#  logstash.conf: |
-#    input {
-#      exec {
-#        command => "uptime"
-#        interval => 30
-#      }
-#    }
-#    output { stdout { } }
+logstashPipeline:
+  logstash.conf: |
+   input {
+     exec {
+       command => "uptime"
+       interval => 30
+     }
+   }
+   output { stdout { } }
 
-# ### Tim
-# logstashPipeline: 
-#   logstash.conf: |
-#     input {
-#       exec {
-#         command => "uptime"
-#         interval => 30
-#       }
-#     }
-#     output { stdout { } }
-# logstashPipeline: 
-#   logstash.conf: |
-#     input {
-#       exec {
-#         command => "uptime"
-#         interval => 30
-#       }
-#     }
-#     filter { 
+  filebeat.conf: |
+    input {
+      beats {
+        port => 5044
+        ssl => true
+        ssl_certificate => "/usr/share/filebeat/certs/tls.crt"
+        ssl_key => "/usr/share/filebeat/certs/tls.key"
+      }
+    }
+    filter { 
+      json {
+        source => "message"
+        target => "message"
+      }
+    } 
+    output { 
+      elasticsearch {               
+        ssl => false 
+        ssl_certificate_verification => false
+        index => "filebeat_index-%{+YYYY.MM.dd}" 
+        ilm_enabled => false 
+      }   
+## This line might be needed for output.elasticsearch above
+      # hosts => ["https://<NodeIP1>:9200","https://<NodeIP2>:9200","https://<NodeIP3>:9200"]                 
+      # user => "elastic" 
+      # password => "2NPZCPQ2sjdXme67" 
 
-#     } 
-#     output { 
 
-#     elasticsearch { 
-#             hosts => ["https://<NodeIP1>:9200","https://<NodeIP2>:9200","https://<NodeIP3>:9200"]             
-#             ssl => true 
-#             ssl_certificate_verification => false          
-        
-#             user => "elastic" 
-#             password => "2NPZCPQ2sjdXme67" 
-    
-#             index => "logstash_index" 
-#             ilm_enabled => false 
-#     }   
 
 # Allows you to add any pattern files in your custom pattern dir
 logstashPatternDir: "/usr/share/logstash/patterns/"
