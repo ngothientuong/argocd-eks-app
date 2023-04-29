@@ -19,6 +19,29 @@ logstashConfig:
     xpack.monitoring.elasticsearch.username: "elastic" 
     xpack.monitoring.elasticsearch.password: "2NPZCPQ2sjdXme67"
     xpack.monitoring.elasticsearch.ssl.verification_mode: none
+    path.data: /usr/share/logstash
+    pipeline.workers: 4
+    pipeline.batch.size: 254
+    pipeline.batch.delay: 90
+    pipeline.unsafe_shutdown: false
+    pipeline.ordered: auto
+    path.config: /usr/share/logstash/config/conf.d
+    config.test_and_exit: false
+    config.reload.automatic: true
+    config.reload.interval: 3s
+    config.debug: true
+    log.level: trace
+    queue.type: memory
+    path.queue: /usr/share/logstash/queue
+    queue.page_capacity: 64mb
+    queue.max_events: 0
+    queue.max_bytes: 1024mb
+    queue.checkpoint.acks: 1024
+    queue.checkpoint.writes: 1024
+    queue.checkpoint.interval: 1000
+    dead_letter_queue.enable: false
+    log.level: info
+    path.logs: /usr/share/logstash/data/logs    
 
 # Allows you to add any pipeline files in /usr/share/logstash/pipeline/
 ### ***warn*** there is a hardcoded logstash.conf in the image, override it first
@@ -53,8 +76,6 @@ logstashPipeline:
         ssl_certificate_verification => false
         index => "%{[@metadata][beat]}-%{[@metadata][version]}-%{+YYYY.MM.dd}"
         hosts => [ "https://elasticsearch-master:9200" ]
-        user => "elastic" 
-        password => "2NPZCPQ2sjdXme67" 
       stdout { 
           codec => rubydebug 
         }        

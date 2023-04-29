@@ -22,5 +22,10 @@ helmCharts:
   namespace: elastic-system
   valuesFile: filebeat.values.yaml  
   includeCRDs: true
-# patches:
-# - path: patch_sa.yaml
+patches:
+- path: patch_logstash_volume.yaml
+  target:
+    version: v1
+    kind: StatefulSet
+    name: elastic-logstash
+    namespace: elastic-system

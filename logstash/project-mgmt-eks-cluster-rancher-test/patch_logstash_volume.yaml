@@ -1,0 +1,17 @@
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  name: elastic-logstash
+  namespace: elastic-system
+spec:
+  template:
+    metadata:
+      name: elastic-logstash
+    spec:
+      containers:
+        - volumeMounts:
+            - mountPath: /usr/share/logstash/data
+              name: elastic-logstash
+              $patch: delete
+            - mountPath: /usr/share/logstash
+              name: elastic-logstash
