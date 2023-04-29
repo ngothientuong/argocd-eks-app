@@ -20,7 +20,7 @@ replicas: 2
 ### Tim
 logstashConfig: 
   logstash.yml: |
-      network.host = 0.0.0.0
+    server.host: "0.0.0.0"  
 
 # Allows you to add any pipeline files in /usr/share/logstash/pipeline/
 ### ***warn*** there is a hardcoded logstash.conf in the image, override it first
