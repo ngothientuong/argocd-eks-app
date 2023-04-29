@@ -59,3 +59,6 @@ resources:
 # ## Kibana
 - kibana_project-eumgmt-eks-eu-west-2.yaml
 
+# ## Logstash
+- logstash_project-eumgmt-eks-eu-west-2.yaml
+
