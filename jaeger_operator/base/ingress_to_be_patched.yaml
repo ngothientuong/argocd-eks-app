@@ -1,0 +1,10 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: jaeger-operator-jaeger-query
+  namespace: observability
+  ownerReferences:
+  - apiVersion: jaegertracing.io/v1
+    controller: true
+    kind: Jaeger
+    name: jaeger-operator-jaege  

@@ -1,11 +1,13 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
 namespace: observability
 helmCharts:
-- name: jaeger-operator  # Name of the chart
-  repo: https://jaegertracing.github.io/helm-charts
-  version: #
-  releaseName: jaeger-operator
+- includeCRDs: true
+  name: jaeger-operator
   namespace: observability
+  releaseName: jaeger-operator
+  repo: https://jaegertracing.github.io/helm-charts
   valuesFile: jaeger_operator.values.yaml
-  includeCRDs: true ## default is false
-patches:
-- path: patch_delete_ingress.yaml
+resources:
+- ingress_to_be_patched.yaml
+
