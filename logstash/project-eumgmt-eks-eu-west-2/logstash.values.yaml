@@ -25,7 +25,7 @@ logstashConfig:
     pipeline.batch.delay: 90
     pipeline.unsafe_shutdown: false
     pipeline.ordered: auto
-    path.config: /usr/share/logstash/config/conf.d
+    path.config: /usr/share/logstash/config
     config.test_and_exit: false
     config.reload.automatic: true
     config.reload.interval: 3s
