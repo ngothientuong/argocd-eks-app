@@ -1,0 +1,50 @@
+### jaeger-operator-jaeger-query
+---
+apiVersion: networking.istio.io/v1alpha3
+kind: VirtualService
+metadata:
+  name: jaeger-operator-jaeger-query-vs
+  namespace: observability
+spec:
+  gateways:
+    - public-gateway.istio-system.svc.cluster.local
+    - mesh
+  hosts:
+    - tngo-eks-jaequery-mgmt-eu.bylightsdc.bylight.com
+  http:
+  # - appendHeaders:
+  #     x-envoy-max-retries: "10"
+  #     x-envoy-retry-on: gateway-error,connect-failure,refused-stream
+  #     x-envoy-upstream-rq-timeout-ms: "15000"
+  #   route:
+  - route:
+    ## This could work without DestinationRule
+    # - destination:
+    #     host: prometheus-community-kube-jaeger-operator-jaeger-query
+    #     port:
+    #       number: 9093
+    #   weight: 100
+    ### Tim
+    - destination:
+        host: jaeger-operator-jaeger-query   ## Service name in spec.host in DR
+        subset: jaeger-operator-jaeger-query-ss   ## Match with name of subsets[*].name in DR
+        port:
+          number: 16686
+      weight: 100      
+---
+kind: DestinationRule
+apiVersion: networking.istio.io/v1alpha3
+metadata:
+  name: jaeger-operator-jaeger-query-dr
+  namespace: observability
+spec:
+  host: jaeger-operator-jaeger-query
+  subsets:
+    - labels:
+        app.kubernetes.io/name: jaeger-operator-jaeger
+      name: jaeger-operator-jaeger-query-ss
+    ### Label of canary set  
+    # - labels:
+    #     version: v2.0
+    #   name: subsetname2-in-destination.subset
+---

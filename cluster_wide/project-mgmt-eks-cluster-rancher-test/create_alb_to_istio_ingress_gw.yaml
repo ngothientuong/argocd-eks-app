@@ -80,6 +80,7 @@ spec:
     - tngo-eks-prometheus-mgmt-us.bylightsdc.bylight.com
     - tngo-eks-kiali-mgmt-us.bylightsdc.bylight.com   
     - tngo-eks-jaeger-mgmt-us.bylightsdc.bylight.com   
+    - tngo-eks-jaequery-mgmt-us.bylightsdc.bylight.com       
     - tngo-eks-thanos-mgmt-us.bylightsdc.bylight.com 
     - tngo-eks-kibana-mgmt-us.bylightsdc.bylight.com
     - tngo-eks-logstash-mgmt-us.bylightsdc.bylight.com 
@@ -109,7 +110,9 @@ spec:
     - host: "tngo-eks-kiali-mgmt-us.bylightsdc.bylight.com"
       http: *backend   
     - host: "tngo-eks-jaeger-mgmt-us.bylightsdc.bylight.com"
-      http: *backend                    
+      http: *backend    
+    - host: "tngo-eks-jaequery-mgmt-us.bylightsdc.bylight.com"
+      http: *backend                       
     - host: "tngo-eks-thanos-mgmt-us.bylightsdc.bylight.com"
       http: *backend         
     - host: "tngo-eks-kibana-mgmt-us.bylightsdc.bylight.com"
