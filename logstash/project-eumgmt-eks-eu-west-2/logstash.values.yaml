@@ -60,7 +60,7 @@ logstashPipeline:
         ssl => false
         ssl_certificate_verification => false 
         user => "elastic" 
-        password: "lYuVyDtfwId2JwDm"
+        password => "lYuVyDtfwId2JwDm"
       }
     }
 ### For filebeat input above
