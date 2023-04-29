@@ -41,7 +41,7 @@ resources:
 kibanaConfig: 
   kibana.yml: |    
     server.host: "0.0.0.0"  
-    server.publicBaseUrl: https://tngo-eks-kibana-mgmt-eu.bylightsdc.bylight.com:5601
+    server.publicBaseUrl: http://tngo-eks-kibana-mgmt-eu.bylightsdc.bylight.com
 
   #   server.ssl.enabled: false
   #   elasticsearch.ssl.verificationMode: none
