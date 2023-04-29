@@ -17,7 +17,7 @@ logstashConfig:
     xpack.monitoring.enabled: true
     xpack.monitoring.elasticsearch.hosts: [ "https://elasticsearch-master:9200" ]
     xpack.monitoring.elasticsearch.username: "elastic" 
-    xpack.monitoring.elasticsearch.password: "2NPZCPQ2sjdXme67"
+    xpack.monitoring.elasticsearch.password: "1M2cgyYzRgiKUkcJ"
     xpack.monitoring.elasticsearch.ssl.verification_mode: none
     path.data: /usr/share/logstash/data
     pipeline.workers: 4
@@ -87,7 +87,7 @@ logstashPipeline:
 ## This line might be needed for output.elasticsearch above
       # hosts => ["https://<NodeIP1>:9200","https://<NodeIP2>:9200","https://<NodeIP3>:9200"]                 
       # user => "elastic" 
-      # password => "2NPZCPQ2sjdXme67" 
+      # password => "1M2cgyYzRgiKUkcJ" 
 
 
 
