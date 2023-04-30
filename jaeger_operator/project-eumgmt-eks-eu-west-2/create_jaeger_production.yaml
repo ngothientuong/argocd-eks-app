@@ -40,7 +40,7 @@ spec:
       # cpu: 2
       es:
         server-urls: https://elasticsearch-master.elastic-system:9200
-        index-prefix: jaeger-prefix
+        #index-prefix: jaeger-prefix
         tls.enabled: true
         tls.ca: /es/certificates/tls.crt
     secretName: elasticsearch-master-credentials
