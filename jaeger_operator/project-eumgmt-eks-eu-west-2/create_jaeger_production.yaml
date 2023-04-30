@@ -39,7 +39,7 @@ spec:
       # memory: 100000
       # cpu: 2
       es:
-        server-urls: https://elasticsearch-master.elastic-system.svc.cluster.local:9200
+        server-urls: https://elasticsearch-master.elastic-system:9200
         index-prefix: jaeger-prefix
         tls.enabled: true
         tls.ca: /es/certificates/tls.crt
