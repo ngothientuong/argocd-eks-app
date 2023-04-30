@@ -4,7 +4,6 @@ resources:
 - ../base
 - create_jaeger_production.yaml
 - jaeger_operator_vs_dr.yaml
+## Use mordern $patch: delete technique
 # patches:
-# - path: patch_sa.yaml
-patches:
-- path: patch_delete_ingress.yaml
+# - path: patch_delete_ingress.yaml
