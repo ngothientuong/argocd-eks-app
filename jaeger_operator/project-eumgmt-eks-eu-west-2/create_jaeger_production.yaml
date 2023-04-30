@@ -41,8 +41,8 @@ spec:
       es:
         server-urls: https://elasticsearch-master.elastic-system.svc.cluster.local:9200
         index-prefix: jaeger-prefix
-        tls.enabled: false
-        #tls.ca: /es/certificates/tls.crt
+        tls.enabled: true
+        tls.ca: /es/certificates/tls.crt
     secretName: elasticsearch-master-credentials
   ingress:
     enabled: false
