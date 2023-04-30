@@ -39,12 +39,12 @@ spec:
       memory: 100000
       cpu: 2
       es:
-        server-urls: https://elasticsearch-master.elastic-system.svc:9200 
+        server-urls: https://elasticsearch-master.elastic-system.svc.cluster.local:9200
         index-prefix: jaeger-prefix
-        tls: 
-          ca: /es/certificates/ca.crt
-          cert: /es/certificates/tls.crt
-          key: /es/certificates/tls.key
+        tls: "true"
+        tls.ca: /es/certificates/ca.crt
+        tls.cert: /es/certificates/tls.crt
+        tls.key: /es/certificates/tls.key
     secretName: elasticsearch-master-credentials
   ingress:
     enabled: false
