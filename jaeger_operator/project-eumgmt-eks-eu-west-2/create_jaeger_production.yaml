@@ -21,7 +21,7 @@ spec:
         memory: 128Mi  
   storage:
     type: elasticsearch 
-    nodeCount: 1 
+    nodeCount: 3
     dependencies:
       enabled: true                                 # turn the job deployment on and off
       schedule: "55 23 * * *"                       # cron expression for it to run
@@ -43,6 +43,8 @@ spec:
         index-prefix: jaeger-prefix
         tls: 
           ca: /es/certificates/ca.crt
+          cert: /es/certificates/tls.crt
+          key: /es/certificates/tls.key
     secretName: elasticsearch-master-credentials
   ingress:
     enabled: false
