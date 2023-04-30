@@ -10,6 +10,10 @@ spec:
   options: 
     log-level: debug
   collector:
+    strategy:
+      type: RollingUpdate
+      rollingUpdate: 
+        maxSurge: 10%  
     maxReplicas: 2
     resources:
       limits:
@@ -30,6 +34,8 @@ spec:
         tls: 
           ca: /es/certificates/ca.crt
     secretName: elasticsearch-master-credentials
+  ingress:
+    enabled: false
   volumeMounts: 
     - name: certificates
       mountPath: /es/certificates/
