@@ -21,6 +21,7 @@ spec:
         memory: 128Mi  
   storage:
     type: elasticsearch 
+    nodeCount: 1 
     dependencies:
       enabled: true                                 # turn the job deployment on and off
       schedule: "55 23 * * *"                       # cron expression for it to run
@@ -38,7 +39,7 @@ spec:
       memory: 100000
       cpu: 2
       es:
-        server-urls: https://elasticsearch-master.elastic-system:9200 
+        server-urls: https://elasticsearch-master.elastic-system.svc:9200 
         index-prefix: jaeger-prefix
         tls: 
           ca: /es/certificates/ca.crt
