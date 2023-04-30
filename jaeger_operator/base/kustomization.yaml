@@ -8,6 +8,6 @@ helmCharts:
   releaseName: jaeger-operator
   repo: https://jaegertracing.github.io/helm-charts
   valuesFile: jaeger_operator.values.yaml
-resources:
-- kafka_operator.yaml
+# resources:
+# - kafka_operator.yaml
 
