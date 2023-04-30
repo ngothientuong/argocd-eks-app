@@ -41,7 +41,7 @@ spec:
   host: jaeger-prod-stragtegy-query
   subsets:
     - labels:
-        app.kubernetes.io/name: jaeger-operator-jaeger
+        app.kubernetes.io/name: jaeger-prod-stragtegy-query
       name: jaeger-prod-stragtegy-query-ss
     ### Label of canary set  
     # - labels:
