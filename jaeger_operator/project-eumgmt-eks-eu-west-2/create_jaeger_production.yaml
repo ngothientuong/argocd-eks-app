@@ -7,8 +7,6 @@ metadata:
   namespace: observability
 spec:
   strategy: production
-  options: 
-    log-level: debug
   collector:
     strategy:
       type: RollingUpdate
@@ -31,19 +29,20 @@ spec:
     #       memory: 4096Mi
     #     limits:
     #       memory: 4096Mi    
-    # esIndexCleaner:
-    #   enabled: true                                # // turn the cron job deployment on and off
-    #   numberOfDays: 7                              # // number of days to wait before deleting a record
-    #   schedule: "55 23 * * *"                      # // cron expression for it to run    
+    esIndexCleaner:
+      enabled: true                                # // turn the cron job deployment on and off
+      numberOfDays: 7                              # // number of days to wait before deleting a record
+      schedule: "55 23 * * *"                      # // cron expression for it to run    
     options:
+      log-level: debug
       # memory: 100000
       # cpu: 2
       es:
         server-urls: https://elasticsearch-master.elastic-system:9200
         index-prefix: jaeger_
-        create-index-templates: false
+        # create-index-templates: false
         tls.enabled: true
-        tls.ca: /es/certificates/tls.crt
+        tls.ca: /es/certificates/tls.crt   
     secretName: elasticsearch-master-credentials
   ingress:
     enabled: false
