@@ -34,7 +34,7 @@ spec:
       numberOfDays: 7                              # // number of days to wait before deleting a record
       schedule: "55 23 * * *"                      # // cron expression for it to run    
     options:
-      log-level: debug
+      # log-level: debug
       # memory: 100000
       # cpu: 2
       es:
