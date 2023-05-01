@@ -23,7 +23,7 @@ spec:
         use_kiali_token: false
       enabled: true
       ### Need to update this once jaeger installed
-      in_cluster_url: "http://jaeger-prod-stragtegy-query.observability:16686"
+      in_cluster_url: "http://jaeger-prod-stragtegy-query.observability:16685"   ## User port 16685 for grpc 
       #is_core_component: false
       namespace_selector: true
       whitelist_istio_system:
@@ -36,10 +36,10 @@ spec:
         # insecure_skip_verify: false    ## Test with true, meaning connecting insecurely.
         insecure_skip_verify: true
         password: ''
-        token: ''
+        token: 'prom-operator'
         type: none
         use_kiali_token: false
-        username: ''
+        username: 'admin'
       dashboards:
       - name: Istio Service Dashboard
         variables:
