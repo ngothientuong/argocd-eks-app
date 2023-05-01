@@ -23,7 +23,9 @@ spec:
         use_kiali_token: false
       enabled: true
       ### Need to update this once jaeger installed
-      in_cluster_url: "http://jaeger-prod-stragtegy-query.observability:16685"   ## User port 16685 for grpc 
+      in_cluster_url: "http://jaeger-prod-stragtegy-query.observability:16686/"  
+      use_grpc: false 
+      url: 'https://tngo-eks-jaequery-mgmt-eu.bylightsdc.bylight.com'
       #is_core_component: false
       namespace_selector: true
       whitelist_istio_system:
@@ -35,8 +37,8 @@ spec:
         ca_file: ''
         # insecure_skip_verify: false    ## Test with true, meaning connecting insecurely.
         insecure_skip_verify: true
-        password: ''
-        token: 'prom-operator'
+        password: 'prom-operator'
+        token: ''
         type: none
         use_kiali_token: false
         username: 'admin'
