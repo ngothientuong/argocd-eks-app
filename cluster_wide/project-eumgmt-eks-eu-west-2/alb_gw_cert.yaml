@@ -13,7 +13,7 @@ spec:
     - tngo-eks-grafana-mgmt-eu.bylightsdc.bylight.com
     - tngo-eks-prometheus-mgmt-eu.bylightsdc.bylight.com
     - tngo-eks-kiali-mgmt-eu.bylightsdc.bylight.com
-    - tngo-eks-rancher-mgmt-eu.bylightsdc.bylight.com        
+    - tngo-eks-jaeger-mgmt-eu.bylightsdc.bylight.com        
     - tngo-eks-jaequery-mgmt-eu.bylightsdc.bylight.com      
     - tngo-eks-thanos-mgmt-eu.bylightsdc.bylight.com            
     - tngo-eks-kibana-mgmt-eu.bylightsdc.bylight.com
