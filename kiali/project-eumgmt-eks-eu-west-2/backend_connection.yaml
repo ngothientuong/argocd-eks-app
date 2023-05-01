@@ -23,7 +23,7 @@ spec:
         use_kiali_token: false
       enabled: true
       ### Need to update this once jaeger installed
-      in_cluster_url: "http://jaeger-prod-stragtegy-query.observability"
+      in_cluster_url: "http://jaeger-prod-stragtegy-query.observability:16686"
       #is_core_component: false
       namespace_selector: true
       whitelist_istio_system:
@@ -50,9 +50,9 @@ spec:
           namespace: var-namespace
           workload: var-workload
       enabled: true
-      in_cluster_url: "http://prometheus-community-grafana.prometheus/grafana"
+      in_cluster_url: "http://prometheus-community-grafana.prometheus"
       #is_core_component: false
-      url: 'http://prometheus-community-grafana.prometheus/grafana'
+      url: 'http://prometheus-community-grafana.prometheus'
 ### ISTIO 
     istio:
       component_status:

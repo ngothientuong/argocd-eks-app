@@ -1,11 +1,11 @@
 #namespace: cattle-system
 helmCharts:
 - name: rancher  # Name of the chart
-#  repo: https://releases.rancher.com/server-charts/latest
-  repo: https://releases.rancher.com/server-charts/alpha
+  repo: https://releases.rancher.com/server-charts/latest
   version: #
   releaseName: rancher
   namespace: cattle-system
   valuesFile: rancher.values.yaml  
   includeCRDs: true
+  #repo: https://releases.rancher.com/server-charts/alpha  
 #patches:
