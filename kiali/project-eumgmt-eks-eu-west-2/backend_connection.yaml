@@ -39,9 +39,9 @@ spec:
         insecure_skip_verify: true
         password: 'prom-operator'
         token: ''
-        type: none
+        type: basic     ## Changed to basic from 'none' if username/password is being used
         use_kiali_token: false
-        username: 'admin'
+        username: 'admin'   
       dashboards:
       - name: Istio Service Dashboard
         variables:
