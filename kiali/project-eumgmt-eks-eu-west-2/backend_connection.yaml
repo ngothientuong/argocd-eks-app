@@ -52,9 +52,9 @@ spec:
           namespace: var-namespace
           workload: var-workload
       enabled: true
-      in_cluster_url: "http://prometheus-community-grafana.prometheus"
+      in_cluster_url: "http://prometheus-community-grafana.prometheus:3000/"
       #is_core_component: false
-      url: 'http://prometheus-community-grafana.prometheus'
+      url: 'https://tngo-eks-grafana-mgmt-eu.bylightsdc.bylight.com/'
 ### ISTIO 
     istio:
       component_status:
