@@ -10,15 +10,15 @@ spec:
   collector:
     strategy:
       type: RollingUpdate
-      rollingUpdate: 
-        maxSurge: 10%  
+      rollingUpdate:
+        maxSurge: 10%
     maxReplicas: 2
     resources:
       limits:
         cpu: 100m
-        memory: 128Mi  
+        memory: 128Mi
   storage:
-    type: elasticsearch 
+    type: elasticsearch
     # nodeCount: 3
     # dependencies:
     #   enabled: true                                 # turn the job deployment on and off
@@ -30,19 +30,20 @@ spec:
     #     limits:
     #       memory: 4096Mi    
     esIndexCleaner:
-      enabled: true                                # // turn the cron job deployment on and off
-      numberOfDays: 7                              # // number of days to wait before deleting a record
-      schedule: "55 23 * * *"                      # // cron expression for it to run    
+      enabled: true
+      numberOfDays: 7
+      schedule: "55 23 * * *"
     options:
       # log-level: debug
       # memory: 100000
       # cpu: 2
       es:
-        server-urls: https://elasticsearch-master.elastic-system:9200
-        #index-prefix: jaeger_
+        #server-urls: https://elasticsearch-master.elastic-system:9200
+        server-urls: [ "https://elasticsearch-master:9200" ]
+        index-prefix: jaeger_
         create-index-templates: false
         tls.enabled: true
-        tls.ca: /es/certificates/tls.crt   
+        tls.ca: /es/certificates/tls.crt
         version: 8
     secretName: elasticsearch-master-credentials
   ingress:
