@@ -1,0 +1,50 @@
+### rancher
+---
+apiVersion: networking.istio.io/v1alpha3
+kind: VirtualService
+metadata:
+  name: rancher-vs
+  namespace: cattle-system
+spec:
+  gateways:
+    - public-gateway.istio-system.svc.cluster.local
+    - mesh
+  hosts:
+    - tngo-eks-rancher-mgmt-eu.bylightsdc.bylight.com
+  http:
+  # - appendHeaders:
+  #     x-envoy-max-retries: "10"
+  #     x-envoy-retry-on: gateway-error,connect-failure,refused-stream
+  #     x-envoy-upstream-rq-timeout-ms: "15000"
+  #   route:
+  - route:
+    ## This could work without DestinationRule
+    # - destination:
+    #     host: prometheus-community-kube-rancher
+    #     port:
+    #       number: 9093
+    #   weight: 100
+    ### Tim
+    - destination:
+        host: elastic-rancher   ## Service name in spec.host in DR
+        subset: rancher-ss   ## Match with name of subsets[*].name in DR
+        port:
+          number: 5601
+      weight: 100      
+---
+kind: DestinationRule
+apiVersion: networking.istio.io/v1alpha3
+metadata:
+  name: rancher-dr
+  namespace: cattle-system
+spec:
+  host: elastic-rancher
+  subsets:
+    - labels:
+        app: rancher
+      name: rancher-ss
+    ### Label of canary set  
+    # - labels:
+    #     version: v2.0
+    #   name: subsetname2-in-destination.subset
+---

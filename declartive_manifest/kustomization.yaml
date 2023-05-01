@@ -67,3 +67,6 @@ resources:
 
 # ## filebeat
 - jaeger_operator_project-eumgmt-eks-eu-west-2.yaml
+
+# ## Rancher
+- rancher_project-eumgmt-eks-eu-west-2.yaml

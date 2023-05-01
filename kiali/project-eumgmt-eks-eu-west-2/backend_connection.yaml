@@ -16,22 +16,25 @@ spec:
       url: "http://prometheus-community-kube-prometheus.prometheus:9090/"
     tracing:
       auth:
-        insecure_skip_verify: false
+        # insecure_skip_verify: false 
+        ### Tim
+        insecure_skip_verify: true
         type: none
         use_kiali_token: false
       enabled: true
       ### Need to update this once jaeger installed
-      in_cluster_url: "http://jaeger-svc.jaeger-ns"
+      in_cluster_url: "http://jaeger-prod-stragtegy-query.observability"
       #is_core_component: false
       namespace_selector: true
       whitelist_istio_system:
-      - jaeger-query
+      - observability
       - istio-gateway      
 ### GRAFANA
     grafana:
       auth:
         ca_file: ''
-        insecure_skip_verify: false
+        # insecure_skip_verify: false    ## Test with true, meaning connecting insecurely.
+        insecure_skip_verify: true
         password: ''
         token: ''
         type: none

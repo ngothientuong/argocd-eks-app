@@ -1,0 +1,7 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+## FILEBEAT  
+## Needs FileBeat to collect logs. Logstash will fail to start without pipeline config
+## No change in filebeat for now, including hostNetwork: false
+resources:
+- ../base

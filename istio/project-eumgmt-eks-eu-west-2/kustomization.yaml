@@ -1,6 +1,6 @@
 resources:
 - ../base
-- create_secret_cacerts.yaml
+- create_secret_cacerts.yaml  ## Can be shipped to cluster_wide
 - create_clustermesh_profile.yaml
 #- create_gateway_tls.yaml
 - create_gateway_service_to_alb.yaml
