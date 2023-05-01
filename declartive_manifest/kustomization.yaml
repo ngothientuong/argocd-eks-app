@@ -68,5 +68,5 @@ resources:
 # ## filebeat
 - jaeger_operator_project-eumgmt-eks-eu-west-2.yaml
 
-# ## Rancher
-- rancher_project-eumgmt-eks-eu-west-2.yaml
+# ## Rancher - No support for Rancher with K8s 1.26 just yet
+#- rancher_project-eumgmt-eks-eu-west-2.yaml
