@@ -43,6 +43,7 @@ spec:
         create-index-templates: false
         tls.enabled: true
         tls.ca: /es/certificates/tls.crt   
+        version: 8
     secretName: elasticsearch-master-credentials
   ingress:
     enabled: false

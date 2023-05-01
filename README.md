@@ -405,6 +405,21 @@ istioctl x create-remote-secret --context=$CLUSTER4 --name=project-eumgmt-eks-eu
 - Kiali missing CRD URL: https://github.com/kiali/kiali-operator/blob/master/crd-docs/crd/kiali.io_kialis.yaml 
 - Have to install Kiali backends with Grafana, Prometheus, Istio via Kiali resource
 
+## Kialia Known Issues
+- ***Issue: Kiali app in ArgoCD could not be deleted  ***
+  **Resolution**: 
+  - Delete crd kialis.kiali.io manually
+    ```
+    kubectl delete customresourcedefinition.apiextensions.k8s.io/kialis.kiali.io
+    kubectl patch customresourcedefinition.apiextensions.k8s.io/kialis.kiali.io -p '{"metadata":{"finalizers":[]}}' --type=merge
+
+    ```
+- ***Issue: Kiali could not load Istio ***  
+  **Resolution**: 
+  - Delete kiali resource, e.g. kiali-backend-connection and resync
+  - If issue persists, restart istiod, delete Kiali app on argoCd and resync Kiali app
+  - If issue persists still, kiali resource, e.g. kiali-backend-connection and resync
+
 ---
 
 # <p style="text-align: center;">ELK - ELASTIC SEARCH, KIBANA, LOGSTASH, FILEBEAT</p>
