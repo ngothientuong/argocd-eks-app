@@ -399,6 +399,79 @@ istioctl x create-remote-secret --context=$CLUSTER4 --name=project-eumgmt-eks-eu
 - Required pre-existing components: Istio , Prometheus (preferred)
 - Optional needed components: Grafana, Jaeger
 - Kiali-Operator install via Helm is missing CRD. Must install separately!  [Correction: Not missing, just forgot to set createCRD: to true in helm.chart field]
+### Kiali Backend connections with Grafana, Istio, Prometheus
+```
+spec:
+  external_services:
+    prometheus:
+      auth:
+        insecure_skip_verify: false
+        type: none
+        use_kiali_token: false
+      cache_duration: 7
+      cache_enabled: true
+      cache_expiration: 300
+      url: "http://prometheus-community-kube-prometheus.prometheus:9090/"
+    tracing:
+      auth:
+        # insecure_skip_verify: false 
+        ### Tim
+        insecure_skip_verify: true
+        type: none
+        use_kiali_token: false
+      enabled: true
+      ### Need to update this once jaeger installed
+      in_cluster_url: "http://jaeger-prod-stragtegy-query.observability:16686/"  
+      use_grpc: false 
+      url: 'https://tngo-eks-jaequery-mgmt-eu.bylightsdc.bylight.com'
+      #is_core_component: false
+      namespace_selector: true
+      whitelist_istio_system:
+      - observability
+      - istio-gateway      
+### GRAFANA
+    grafana:
+      auth:
+        ca_file: ''
+        # insecure_skip_verify: false    ## Test with true, meaning connecting insecurely.
+        insecure_skip_verify: true
+        password: 'prom-operator'
+        token: ''
+        type: basic     ## Changed to basic from 'none' if username/password is being used
+        use_kiali_token: false
+        username: 'admin'   
+      dashboards:
+      - name: Istio Service Dashboard
+        variables:
+          namespace: var-namespace
+          service: var-service
+      - name: Istio Workload Dashboard
+        variables:
+          namespace: var-namespace
+          workload: var-workload
+      enabled: true
+      in_cluster_url: "http://prometheus-community-grafana.prometheus:/"
+      #is_core_component: false
+      url: 'https://tngo-eks-grafana-mgmt-eu.bylightsdc.bylight.com/'
+### ISTIO 
+    istio:
+      component_status:
+        components:
+        - app_label: istiod
+          is_core: true
+          namespace: istio-system
+        - app_label: istio-gateway
+          is_core: true
+          namespace: istio-system
+        enabled: true
+      config_map_name: istio
+      envoy_admin_local_port: 15000
+      istio_identity_domain: svc.cluster.local
+      istio_injection_annotation: sidecar.istio.io/inject
+      istio_sidecar_annotation: sidecar.istio.io/status
+      url_service_version: "http://istiod.istio-system:15014/version"
+
+```
 
 ## Install
 - Kiali-Operator Github: https://github.com/kiali/kiali-operator
@@ -723,11 +796,13 @@ spec:
       schedule: "55 23 * * *"                      # // cron expression for it to run    
     options:
       es:
-        server-urls: https://elasticsearch-master.elastic-system:9200
+        #server-urls: https://elasticsearch-master.elastic-system:9200
+        server-urls: [ https://elasticsearch-master.elastic-system:9200 ]
         index-prefix: jaeger_
-        create-index-templates: false  ## Needed to resolve template issues
+        create-index-templates: false
         tls.enabled: true
-        tls.ca: /es/certificates/tls.crt   
+        tls.ca: /es/certificates/tls.crt
+        version: 7    ### Hardcode this to version 7 although actual backend is version 8.5!
     secretName: elasticsearch-master-credentials
   ingress:
     enabled: false

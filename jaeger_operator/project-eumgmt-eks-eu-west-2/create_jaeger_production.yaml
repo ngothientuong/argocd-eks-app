@@ -44,7 +44,7 @@ spec:
         create-index-templates: false
         tls.enabled: true
         tls.ca: /es/certificates/tls.crt
-        version: 7
+        version: 7    ### Hardcode this to version 7 although actual backend is version 8.5!
     secretName: elasticsearch-master-credentials
   ingress:
     enabled: false
