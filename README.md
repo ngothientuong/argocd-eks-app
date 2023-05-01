@@ -451,7 +451,16 @@ ingress:
 ## ES Installation
 - Standard install via argoCD
 
-
+## ES - Enabling basic monitoring
+### Browser Access
+- Enable port-forwarding 
+> kubectl port-forward deploy/elastic-kibana -n elastic-system 5601:5061
+- Access browser that is with the same network with your host that you execute kubectl with: 'localhost:5601'
+- Sign in with es credential found in secret elsticsearch-master-credentials
+- Go to the bottom of the left hand side menu -> Stack Monitoring -> Click the center enabling button -> Monkey around with adding built-in / templated items in there.
+### View aggreated container Logs
+- After accessing browser access -> Obverability -> Logs
+  
 # <p style="text-align: center;">KIBANA</p>
 **URL**: https://github.com/elastic/helm-charts/tree/main/kibana
 - Kibana is an free and open frontend application that sits on top of the Elastic Stack, providing search and data visualization capabilities for data indexed
