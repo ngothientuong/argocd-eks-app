@@ -39,7 +39,7 @@ spec:
       # cpu: 2
       es:
         #server-urls: https://elasticsearch-master.elastic-system:9200
-        server-urls: '[ "https://elasticsearch-master.elastic-system:9200" ]'
+        server-urls: '[ https://elasticsearch-master.elastic-system:9200 ]'
         index-prefix: jaeger_
         create-index-templates: false
         tls.enabled: true
