@@ -7,7 +7,9 @@ Repo for deploying apps to EKS cluster
 ---
 ---
 ## APP RELEASE VERSION
-- Velero: velero-4.0.1
+- Velero: 
+  - deployed: 3.1.6
+  - newest: 4.0.1 
 
 ## Successful rolled out components
 - external-secrets (tested)
