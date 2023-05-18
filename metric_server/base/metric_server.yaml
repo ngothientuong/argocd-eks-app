@@ -152,8 +152,7 @@ spec:
         - containerPort: 4443
           name: https
           protocol: TCP
-        hostNetwork:
-          enabled: true
+        hostNetwork: true
         readinessProbe:
           failureThreshold: 3
           httpGet:
