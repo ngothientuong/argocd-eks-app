@@ -70,3 +70,9 @@ resources:
 
 # ## Rancher - No support for Rancher with K8s 1.26 just yet
 #- rancher_project-eumgmt-eks-eu-west-2.yaml
+
+# Metric Server
+- metric_server_project-mgmt-eks-cluster-int-2.yaml
+- metric_server_project-mgmt-eks-cluster-int-test.yaml
+- metric_server_project-mgmt-eks-cluster-rancher-test.yaml
+- metric_server_project-eumgmt-eks-eu-west-2.yaml
