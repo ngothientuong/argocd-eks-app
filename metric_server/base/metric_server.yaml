@@ -152,7 +152,7 @@ spec:
         - containerPort: 4443
           name: https
           protocol: TCP
-        hostNetwork: true
+
         readinessProbe:
           failureThreshold: 3
           httpGet:
@@ -173,6 +173,7 @@ spec:
         volumeMounts:
         - mountPath: /tmp
           name: tmp-dir
+      hostNetwork: true
       nodeSelector:
         kubernetes.io/os: linux
       priorityClassName: system-cluster-critical
