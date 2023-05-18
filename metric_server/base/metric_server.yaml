@@ -132,7 +132,6 @@ spec:
     spec:
       containers:
       - args:
-        - /metrics-server
         - --cert-dir=/tmp
         - --secure-port=4443
         - --kubelet-preferred-address-types=InternalIP,ExternalIP,Hostname
@@ -153,6 +152,8 @@ spec:
         - containerPort: 4443
           name: https
           protocol: TCP
+        hostNetwork:
+          enabled: true
         readinessProbe:
           failureThreshold: 3
           httpGet:
@@ -165,17 +166,11 @@ spec:
           requests:
             cpu: 100m
             memory: 200Mi
-        #
         securityContext:
+          allowPrivilegeEscalation: false
           readOnlyRootFilesystem: true
           runAsNonRoot: true
-          runAsUser: 65534
-          runAsGroup: 65534
-          capabilities:
-            drop:
-              - all
-            add:
-              - NET_BIND_SERVICE                
+          runAsUser: 1000
         volumeMounts:
         - mountPath: /tmp
           name: tmp-dir
