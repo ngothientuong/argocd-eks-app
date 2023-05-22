@@ -287,6 +287,19 @@ kubectl patch secret -n kube-system cilium-ipsec-keys -p="${data}" -v=1
     kubectl delete app APPNAME
     ```
 
+- ***Issue: K8s resources hang and can't be deleted from the commandline***
+  **Resolution**: 
+  - The resource is with format `{api_resource}/resource name`, e.g, `networking.k8s.io/argocd`
+  - Run the following clean up commands
+    ```
+    kubectl patch ingress.networking.k8s.io/argocd-ingress -p '{"metadata": {"finalizers": null}}' --type merge
+    kubectl delete ingress.networking.k8s.io/argocd-ingress
+
+    kubectl patch ns/argocd -p '{"metadata": {"finalizers": null}}' --type merge
+    kubectl delete ns/argocd
+    ```
+
+
 - ***Issue: Amazon Linux 2 cannot authenticate against a host due to CA not known***
   **Resolution**: 
   - Copy IMMEDIATE CA and ROOT CA of the endpoint cert to /etc/pki/ca-trust/source/anchors/
