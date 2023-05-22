@@ -287,6 +287,25 @@ kubectl patch secret -n kube-system cilium-ipsec-keys -p="${data}" -v=1
     kubectl delete app APPNAME
     ```
 
+- ***Issue: ArgoCD argo-all-apps encounter sync error***
+  **Resolution**: 
+  - Delete all sts, deploy
+  - Delete ingress and all resources: 
+  > kdel 3-argocd-install.yaml  
+  - Run the following clean up commands
+    ```
+    kkubectl patch ingress.networking.k8s.io/argocd-ingress -p '{"metadata": {"finalizers": null}}' --type merge
+    kubectl patch ns/argocd -p '{"metadata": {"finalizers": null}}' --type merge
+    kubectl delete ingress.networking.k8s.io/argocd-ingress
+    kubectl delete ns/argocd
+    ```
+  - Restart cilium daemon set
+    ```
+    kubectl restart ds/cilium -n kube-system
+    ```  
+  - Reinstall argocd
+  - Add argocd-all-apps, **apply** only!
+
 - ***Issue: K8s resources hang and can't be deleted from the commandline***
   **Resolution**: 
   - The resource is with format `{api_resource}/resource name`, e.g, `networking.k8s.io/argocd`
